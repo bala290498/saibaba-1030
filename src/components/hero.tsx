@@ -25,17 +25,18 @@ export function Hero() {
       </div>
 
       <div className="relative z-[3] container mx-auto px-4 text-center pb-20 md:pb-32">
-        <blockquote 
-          className="text-xl md:text-2xl lg:text-3xl text-white max-w-4xl mx-auto leading-relaxed font-medium italic mb-4"
+        {/* Small Quote */}
+        <p 
+          className="text-lg md:text-xl lg:text-2xl text-white font-medium"
           style={{
             fontFamily: "var(--font-playfair)",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)"
           }}
         >
-          &ldquo;{t.blessingQuote}&rdquo;
-        </blockquote>
+          &ldquo;{t.smallQuote}&rdquo;
+        </p>
         <p 
-          className="text-lg md:text-xl text-white/90 font-semibold"
+          className="text-base md:text-lg text-white/90 font-semibold mt-4"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8)"
           }}
