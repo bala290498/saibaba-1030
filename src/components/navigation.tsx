@@ -98,7 +98,7 @@ export function Navigation() {
             {/* Logo & Text - Left */}
             <Link 
               href="/" 
-              className="flex items-center gap-2 lg:gap-3 hover:opacity-90 transition-opacity duration-200"
+              className="flex items-center gap-2 lg:gap-3 hover:opacity-90 transition-opacity duration-200 flex-shrink-0"
             >
               <div className="relative w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center flex-shrink-0">
                 <Image
@@ -125,8 +125,35 @@ export function Navigation() {
               </span>
             </Link>
 
+            {/* Text Slider - Desktop Only (Top Bar) */}
+            <div className="hidden lg:flex flex-1 mx-4 overflow-hidden">
+              <div className="relative w-full flex items-center">
+                <div className="animate-scroll-text whitespace-nowrap text-sm text-gray-700 font-medium">
+                  {language === "en" ? (
+                    <>
+                      <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
+                      <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
+                      <span className="inline-block mr-8">Why fear when I am here?</span>
+                      <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
+                      <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
+                      <span className="inline-block mr-8">Why fear when I am here?</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
+                      <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
+                      <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
+                      <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
+                      <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
+                      <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Language Selector - Right */}
-            <div className="relative">
+            <div className="relative flex-shrink-0">
               <button
                 onClick={() => setLanguageOpen(!languageOpen)}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-divine-saffron hover:bg-white/30 transition-all duration-200"
