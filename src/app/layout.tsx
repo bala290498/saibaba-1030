@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
+import { GlobalAudioPlayer } from "@/components/global-audio-player";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfairDisplay = Playfair_Display({ 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen pt-[120px]">{children}</main>
           <Footer />
+          <GlobalAudioPlayer />
         </LanguageProvider>
       </body>
     </html>
