@@ -18,6 +18,33 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar for mobile */
+@media (max-width: 1024px) {
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* Hide scrollbar but allow scrolling */
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
 body {
   color: #1a1a1a;
   font-family: var(--font-inter);
@@ -47,5 +74,15 @@ body {
 
 .hero-grain-overlay {
   animation: float 20s ease-in-out infinite;
+}
+
+/* Hide scrollbar utility class */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 

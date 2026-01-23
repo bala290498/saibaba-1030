@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
       <body>
         <Navigation />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen pt-[120px]">{children}</main>
         <Footer />
       </body>
     </html>
