@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Heart, Info, Sparkles } from "lucide-react";
+import { BookOpen, Heart, Info, Sparkles, ArrowRight } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -71,8 +71,9 @@ export function QuickDevotionalLinks() {
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                 )}
-                <h3 className="text-lg font-bold text-gray-800 group-hover:text-divine-saffron transition-colors">
+                <h3 className="text-lg font-bold text-divine-saffron transition-colors flex items-center gap-2">
                   {link.label}
+                  <ArrowRight className="w-5 h-5 text-divine-saffron group-hover:translate-x-1 transition-transform" />
                 </h3>
               </Link>
             );

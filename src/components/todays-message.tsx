@@ -1,6 +1,5 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -18,8 +17,7 @@ export function TodaysMessage() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <MessageCircle className="w-8 h-8 text-white" />
+          <div className="flex items-center justify-center mb-8">
             <h2 
               className="text-3xl md:text-4xl font-bold text-white"
               style={{
