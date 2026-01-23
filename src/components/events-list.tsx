@@ -30,7 +30,7 @@ const events = [
     date: "Every Day",
     time: "6:00 PM",
     location: "Main Shrine",
-    description: "Daily evening aarti to seek blessings from Sai Baba.",
+    description: "Join us for the daily evening aarti ceremony to seek divine blessings, peace, and spiritual strength from Sai Baba.",
     type: "Regular",
   },
   {
