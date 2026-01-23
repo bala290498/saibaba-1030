@@ -500,6 +500,56 @@ export const translations = {
         makeDonation: "Make a Donation",
       },
     },
+    // Contact Page
+    contact: {
+      hero: {
+        title: "Contact Us",
+        subtitle: "We are here to assist you with devotion, seva, and spiritual guidance.",
+        intro: "Please feel free to reach out to us for any questions related to darshan, aarti timings, donations, or temple services. We welcome your prayers, feedback, and inquiries with humility and devotion.",
+      },
+      info: {
+        phone: {
+          title: "Call Us",
+          number: "+91 XXXXXXXXXX",
+          note: "Available between 9:00 AM – 6:00 PM IST",
+        },
+        email: {
+          title: "Email Us",
+          address: "support@saibabawebsite.org",
+          note: "We usually respond within 24 hours.",
+        },
+        address: {
+          title: "Temple / Trust Address",
+          line1: "Sai Baba Temple Trust",
+          line2: "Shirdi, Maharashtra, India",
+        },
+      },
+      form: {
+        title: "Send Us a Message",
+        helperText: "Your message will be received with respect and confidentiality.",
+        fullName: "Full Name",
+        email: "Email Address",
+        phone: "Phone Number",
+        subject: "Subject",
+        message: "Message",
+        sendMessage: "Send Message",
+        successMessage: "Thank you for contacting us. May Sai Baba bless you. We will get back to you shortly.",
+      },
+      map: {
+        title: "Find Us",
+      },
+      trust: {
+        title: "Trust Information",
+        description: "This website is maintained by the Sai Baba Temple Trust with the intention of spreading spiritual awareness, devotion, and service to humanity.",
+        registeredName: "Registered Trust Name",
+        registrationNumber: "Registration Number",
+        yearEstablished: "Year of Establishment",
+      },
+      blessing: {
+        quote: "Have faith and patience. Then I will be always with you wherever you are.",
+        author: "— Sai Baba",
+      },
+    },
   },
   ta: {
     // Navigation
@@ -998,6 +1048,56 @@ export const translations = {
         viewAarti: "ஆர்த்தியைக் காண்க",
         visitShirdi: "ஷிர்டியைப் பார்வையிடவும்",
         makeDonation: "நன்கொடை அளிக்கவும்",
+      },
+    },
+    // Contact Page
+    contact: {
+      hero: {
+        title: "எங்களைத் தொடர்பு கொள்ளுங்கள்",
+        subtitle: "பக்தி, சேவை மற்றும் ஆன்மீக வழிகாட்டுதலுடன் உங்களுக்கு உதவ நாங்கள் இங்கே இருக்கிறோம்.",
+        intro: "தரிசனம், ஆர்த்தி நேரங்கள், நன்கொடைகள் அல்லது கோயில் சேவைகள் தொடர்பான எந்த கேள்விகளுக்கும் எங்களைத் தொடர்பு கொள்ள தயங்க வேண்டாம். பிரார்த்தனைகள், கருத்துகள் மற்றும் விசாரணைகளை பணிவு மற்றும் பக்தியுடன் வரவேற்கிறோம்.",
+      },
+      info: {
+        phone: {
+          title: "எங்களை அழைக்கவும்",
+          number: "+91 XXXXXXXXXX",
+          note: "காலை 9:00 மணி – மாலை 6:00 மணி IST நேரத்தில் கிடைக்கும்",
+        },
+        email: {
+          title: "மின்னஞ்சல் அனுப்பவும்",
+          address: "support@saibabawebsite.org",
+          note: "நாங்கள் பொதுவாக 24 மணி நேரத்திற்குள் பதிலளிக்கிறோம்.",
+        },
+        address: {
+          title: "கோயில் / அறக்கட்டளை முகவரி",
+          line1: "சாய் பாபா கோயில் அறக்கட்டளை",
+          line2: "ஷிர்டி, மகாராஷ்டிரா, இந்தியா",
+        },
+      },
+      form: {
+        title: "எங்களுக்கு செய்தி அனுப்பவும்",
+        helperText: "உங்கள் செய்தி மரியாதை மற்றும் நம்பிக்கையுடன் பெறப்படும்.",
+        fullName: "முழு பெயர்",
+        email: "மின்னஞ்சல் முகவரி",
+        phone: "தொலைபேசி எண்",
+        subject: "விஷயம்",
+        message: "செய்தி",
+        sendMessage: "செய்தி அனுப்பவும்",
+        successMessage: "எங்களைத் தொடர்பு கொண்டதற்கு நன்றி. சாய் பாபா உங்களை ஆசீர்வதிக்கட்டும். நாங்கள் விரைவில் உங்களுக்கு பதிலளிப்போம்.",
+      },
+      map: {
+        title: "எங்களைக் கண்டுபிடிக்கவும்",
+      },
+      trust: {
+        title: "அறக்கட்டளை தகவல்",
+        description: "இந்த வலைத்தளம் ஆன்மீக விழிப்புணர்வு, பக்தி மற்றும் மனிதகுலத்திற்கு சேவையை பரப்புவதற்கான நோக்கத்துடன் சாய் பாபா கோயில் அறக்கட்டளையால் பராமரிக்கப்படுகிறது.",
+        registeredName: "பதிவுசெய்யப்பட்ட அறக்கட்டளை பெயர்",
+        registrationNumber: "பதிவு எண்",
+        yearEstablished: "நிறுவப்பட்ட ஆண்டு",
+      },
+      blessing: {
+        quote: "நம்பிக்கை மற்றும் பொறுமையைக் கொள்ளுங்கள். பிறகு நீங்கள் எங்கிருந்தாலும் நான் எப்போதும் உங்களுடன் இருப்பேன்.",
+        author: "— சாய் பாபா",
       },
     },
   },
