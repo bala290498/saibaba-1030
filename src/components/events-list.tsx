@@ -6,41 +6,12 @@ import { Card } from "@/components/ui/card";
 const events = [
   {
     id: 1,
-    title: "Weekly Bhajan Session",
-    date: "Every Thursday",
-    time: "7:00 PM - 8:30 PM",
-    location: "Main Hall",
-    description:
-      "Join us for soulful bhajans and prayers every Thursday evening.",
-    type: "Regular",
-  },
-  {
-    id: 2,
-    title: "Guru Purnima Celebration",
-    date: "July 21, 2024",
-    time: "6:00 AM - 9:00 PM",
+    title: "Varushabishekhan",
+    date: "24th January",
+    time: "TBA",
     location: "Temple Premises",
     description:
-      "Special celebration honoring our gurus with prayers, bhajans, and prasad distribution.",
-    type: "Special",
-  },
-  {
-    id: 3,
-    title: "Sai Baba Aarti",
-    date: "Every Day",
-    time: "6:00 PM",
-    location: "Main Shrine",
-    description: "Join us for the daily evening aarti to seek divine blessings and peace from Sai Baba.",
-    type: "Regular",
-  },
-  {
-    id: 4,
-    title: "Navratri Special Pooja",
-    date: "October 3-12, 2024",
-    time: "6:00 AM - 9:00 PM",
-    location: "Temple Premises",
-    description:
-      "Nine days of special prayers and celebrations during Navratri.",
+      "Join us for the special Varushabishekhan celebration on 24th January.",
     type: "Festival",
   },
 ];

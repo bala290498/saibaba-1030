@@ -4,7 +4,7 @@ import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import { DonationForm } from "@/components/donation-form";
-import { Heart, ArrowRight, Shield, CheckCircle } from "lucide-react";
+import { Heart, ArrowRight, Shield, CheckCircle, Building2, CreditCard } from "lucide-react";
 import Link from "next/link";
 
 export default function DonationsPage() {
@@ -209,6 +209,76 @@ export default function DonationsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <DonationForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Bank Details Section */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-4 text-gray-800"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontWeight: 900,
+                }}
+              >
+                {t.bankDetails.title}
+              </h2>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-amber-200/40">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  {language === "en" && <Building2 className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-1" />}
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-600 mb-1">{t.bankDetails.bankName}</p>
+                    <p className="text-lg font-bold text-gray-800">{t.bankDetails.bankNameValue}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  {language === "en" && <Building2 className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-1" />}
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-600 mb-1">{t.bankDetails.accountName}</p>
+                    <p className="text-lg font-bold text-gray-800">{t.bankDetails.accountNameValue}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  {language === "en" && <CreditCard className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-1" />}
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-600 mb-1">{t.bankDetails.accountNumber}</p>
+                    <p className="text-lg font-bold text-gray-800 font-mono">{t.bankDetails.accountNumberValue}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  {language === "en" && <CreditCard className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-1" />}
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-600 mb-1">{t.bankDetails.ifscCode}</p>
+                    <p className="text-lg font-bold text-gray-800 font-mono">{t.bankDetails.ifscCodeValue}</p>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-gray-200">
+                  <div className="flex items-start gap-4">
+                    {language === "en" && <CreditCard className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-1" />}
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-gray-600 mb-1">{t.bankDetails.paymentMethods}</p>
+                      <p className="text-lg text-gray-800">{t.bankDetails.paymentMethodsValue}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

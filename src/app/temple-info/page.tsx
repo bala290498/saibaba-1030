@@ -182,28 +182,16 @@ export default function TempleInfoPage() {
                               <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.openingTime}</td>
                             </tr>
                             <tr className="bg-white/90">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.kakadAarti}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.kakadAartiTime}</td>
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.darshan}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.darshanTime}</td>
                             </tr>
                             <tr className="bg-white/95">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.morningDarshan}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.morningDarshanTime}</td>
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.closing}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.closingTime}</td>
                             </tr>
                             <tr className="bg-white/90">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.madhyanAarti}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.madhyanAartiTime}</td>
-                            </tr>
-                            <tr className="bg-white/95">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.eveningDarshan}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.eveningDarshanTime}</td>
-                            </tr>
-                            <tr className="bg-white/90">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.dhoopAarti}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.dhoopAartiTime}</td>
-                            </tr>
-                            <tr className="bg-white/95">
-                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.shejAarti}</td>
-                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.shejAartiTime}</td>
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.weeklyHoliday}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.noHoliday}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -228,6 +216,7 @@ export default function TempleInfoPage() {
 
                   {section.transport && (
                     <div className={`space-y-3 ${textColor}`}>
+                      <p className="text-lg md:text-xl font-semibold mb-2">{t.section4.address}</p>
                       <p className="text-lg md:text-xl">{t.section4.road}</p>
                       <p className="text-lg md:text-xl">{t.section4.rail}</p>
                       <p className="text-lg md:text-xl">{t.section4.air}</p>

@@ -13,13 +13,8 @@ export function UpcomingEvents() {
   // Sample events - in a real app, this would come from a database
   const events = [
     {
-      title: "Weekly Bhajan Session",
-      date: "Every Sunday",
-      time: "6:00 PM",
-    },
-    {
-      title: "Special Aarti",
-      date: "Coming Soon",
+      title: "Varushabishekhan",
+      date: "24th January",
       time: "TBA",
     },
   ];

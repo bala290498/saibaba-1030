@@ -224,14 +224,14 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl shadow-lg border border-amber-200/40 overflow-hidden">
               <div className="w-full h-[400px] md:h-[500px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3756.1234567890123!2d74.7489!3d19.7598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDQ1JzM1LjMiTiA3NMKwNDQnNTYuMCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d79.7489!3d12.7598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f8b8c8c8c8c8%3A0x8c8c8c8c8c8c8c8c!2sVedha%20Gardens%2C%20Thenpathi%2C%20Amoorndoor%2C%20Chengalpattu%20District%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Sai Baba Temple Trust Location"
+                  title="Sai Baba Temple Trust Location - Vedha Gardens, Thenpathi, Amoorndoor, Chengalpattu District, Tamil Nadu"
                 />
               </div>
             </div>
@@ -256,18 +256,22 @@ export default function ContactPage() {
               <p className="text-lg text-gray-700 mb-6 leading-relaxed text-center">
                 {t.trust.description}
               </p>
-              <div className="space-y-3 text-center">
+              <div className="space-y-4 text-center">
+                <div>
+                  <p className="text-sm font-semibold text-gray-600 mb-1">{t.trust.templeName}</p>
+                  <p className="text-lg text-gray-800">{t.trust.templeNameValue}</p>
+                </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-600 mb-1">{t.trust.registeredName}</p>
-                  <p className="text-lg text-gray-800">Sai Baba Temple Trust</p>
+                  <p className="text-lg text-gray-800">{t.trust.registeredNameValue}</p>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-600 mb-1">{t.trust.registrationNumber}</p>
-                  <p className="text-lg text-gray-800">REG-XXXX-XXXX</p>
+                  <p className="text-lg text-gray-800">{t.trust.registrationNumberValue}</p>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-600 mb-1">{t.trust.yearEstablished}</p>
-                  <p className="text-lg text-gray-800">2020</p>
+                  <p className="text-lg text-gray-800">{t.trust.yearEstablishedValue}</p>
                 </div>
               </div>
             </Card>
