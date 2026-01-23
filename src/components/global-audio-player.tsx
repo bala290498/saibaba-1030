@@ -113,43 +113,16 @@ export function GlobalAudioPlayer() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 md:bottom-4 md:left-auto md:right-4 z-50 px-4 md:px-0">
+    <div className="fixed bottom-4 right-4 z-50">
       {isMinimized ? (
-        <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-amber-200/40 p-3 md:p-4 flex items-center justify-between gap-3 md:w-auto w-full">
-          <button
-            onClick={togglePlayPause}
-            className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110 flex-shrink-0"
-            aria-label={isPlaying ? "Pause" : "Play"}
-          >
-            {isPlaying ? (
-              <Pause className="w-5 h-5 md:w-6 md:h-6" />
-            ) : (
-              <Play className="w-5 h-5 md:w-6 md:h-6" />
-            )}
-          </button>
-          
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-divine-cream flex items-center justify-center flex-shrink-0">
-              {language === "en" && <FileAudio className="w-4 h-4 md:w-5 md:h-5 text-divine-saffron" />}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs md:text-sm font-semibold text-gray-800 truncate">
-                {language === "en" ? "Background Music" : "பின்னணி இசை"}
-              </p>
-              <p className="text-xs text-gray-500 truncate">
-                {language === "en" ? "MP3 Audio" : "MP3 ஆடியோ"}
-              </p>
-            </div>
-          </div>
-
+        <>
           <button
             onClick={() => setIsMinimized(false)}
-            className="text-gray-400 hover:text-gray-600 text-sm md:text-base px-2 py-1 rounded hover:bg-gray-100 transition-colors"
-            aria-label="Expand audio player"
+            className="w-14 h-14 rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
+            aria-label="Open audio player"
           >
-            ↑
+            {language === "en" && <FileAudio className="w-6 h-6" />}
           </button>
-
           <audio
             ref={audioRef}
             loop
@@ -159,7 +132,7 @@ export function GlobalAudioPlayer() {
             <source src="/audio/background-music.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
-        </div>
+        </>
       ) : (
         <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-amber-200/40 p-4 w-full md:w-80">
           <div className="flex items-center justify-between mb-3">
