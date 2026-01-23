@@ -201,7 +201,7 @@ export function Navigation() {
             </div>
 
             {/* Mobile Menu Button - Right Side */}
-            <div className="lg:hidden flex items-center justify-end">
+            <div className="lg:hidden flex items-center ml-auto">
               <button
                 className="p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/20 transition-all duration-200"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

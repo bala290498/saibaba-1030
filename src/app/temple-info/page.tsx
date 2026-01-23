@@ -24,6 +24,18 @@ export default function TempleInfoPage() {
       timings: true,
     },
     {
+      id: 8,
+      heading: t.section8.heading,
+      layout: "center",
+      poojaDetails: true,
+    },
+    {
+      id: 9,
+      heading: t.section9.heading,
+      layout: "center",
+      festivals: true,
+    },
+    {
       id: 3,
       heading: t.section3.heading,
       copy: t.section3.copy,
@@ -95,51 +107,57 @@ export default function TempleInfoPage() {
             <div className="container mx-auto px-4">
               <div
                 className={`flex flex-col ${
-                  section.layout === "left-image" ? "lg:flex-row" : "lg:flex-row-reverse"
+                  section.layout === "center" 
+                    ? "items-center max-w-5xl mx-auto" 
+                    : section.layout === "left-image" 
+                    ? "lg:flex-row" 
+                    : "lg:flex-row-reverse"
                 } items-center gap-8 lg:gap-12 max-w-7xl mx-auto`}
               >
-                {/* Image */}
-                <div className="flex-shrink-0 lg:w-[30%] w-full lg:w-auto">
-                  <div 
-                    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
-                    style={{
-                      background: isEven
-                        ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
-                        : "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
-                    }}
-                  >
-                    <svg
-                      width="200"
-                      height="200"
-                      viewBox="0 0 200 200"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3/4 h-3/4 opacity-30"
+                {/* Image - Hidden for center layout */}
+                {section.layout !== "center" && (
+                  <div className="flex-shrink-0 lg:w-[30%] w-full lg:w-auto">
+                    <div 
+                      className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
+                      style={{
+                        background: isEven
+                          ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
+                          : "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+                      }}
                     >
-                      <path
-                        d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
-                        stroke={isEven ? "#d97706" : "#fef3c7"}
-                        strokeWidth="3"
+                      <svg
+                        width="200"
+                        height="200"
+                        viewBox="0 0 200 200"
                         fill="none"
-                      />
-                      <path
-                        d="M100 80L100 120M80 100L120 100"
-                        stroke={isEven ? "#d97706" : "#fef3c7"}
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="50" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="150" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="50" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="150" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                    </svg>
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3/4 h-3/4 opacity-30"
+                      >
+                        <path
+                          d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
+                          stroke={isEven ? "#d97706" : "#fef3c7"}
+                          strokeWidth="3"
+                          fill="none"
+                        />
+                        <path
+                          d="M100 80L100 120M80 100L120 100"
+                          stroke={isEven ? "#d97706" : "#fef3c7"}
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
+                        <circle cx="50" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                        <circle cx="150" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                        <circle cx="50" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                        <circle cx="150" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Content */}
-                <div className="flex-1 lg:w-[70%]">
+                <div className={section.layout === "center" ? "w-full" : "flex-1 lg:w-[70%]"}>
                   <h2
-                    className={`text-3xl md:text-4xl font-bold mb-6 ${headingColor}`}
+                    className={`text-3xl md:text-4xl font-bold mb-6 ${section.layout === "center" ? "text-center" : ""} ${headingColor}`}
                     style={{
                       fontFamily: "var(--font-playfair)",
                       fontWeight: 900,
@@ -241,6 +259,45 @@ export default function TempleInfoPage() {
                       <p className="text-lg md:text-xl">• {t.section6.silence}</p>
                       <p className="text-lg md:text-xl">• {t.section6.instructions}</p>
                       <p className="text-lg md:text-xl">• {t.section6.photography}</p>
+                    </div>
+                  )}
+
+                  {section.poojaDetails && (
+                    <div className="space-y-4">
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.dailyPooja}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.dailyPoojaTime}</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.weeklySpecialPooja}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.weeklySpecialPoojaTime}</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.thursdaySpecialPooja}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.thursdaySpecialPoojaTime}</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.abhishekam}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.abhishekamTime}</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.aartiTimings}</p>
+                        <p className="text-lg md:text-xl mb-1 text-divine-saffron">{t.section8.aartiMorning}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.aartiEvening}</p>
+                      </div>
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section8.annadhanam}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section8.annadhanamTime}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {section.festivals && (
+                    <div className="space-y-4">
+                      <div className="bg-white p-6 rounded-xl border-2 border-amber-200/40 shadow-md hover:shadow-lg transition-shadow">
+                        <p className="text-lg md:text-xl font-semibold mb-2 text-gray-900">{t.section9.monthlySpecial}</p>
+                        <p className="text-lg md:text-xl text-divine-saffron">{t.section9.monthlySpecialValue}</p>
+                      </div>
                     </div>
                   )}
                 </div>
