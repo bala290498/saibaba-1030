@@ -266,11 +266,15 @@ export const translations = {
           title: "Dhoop Aarti",
           time: "Evening",
           description: "Performed at sunset, Dhoop Aarti signifies the removal of darkness and negativity.",
+          listenAudio: "Listen Audio",
+          readLyrics: "Read Lyrics",
         },
         shej: {
           title: "Shej Aarti",
           time: "Night",
           description: "Shej Aarti is offered before rest, seeking protection and peaceful sleep under Sai Baba's grace.",
+          listenAudio: "Listen Audio",
+          readLyrics: "Read Lyrics",
         },
       },
       bhajans: {
@@ -576,11 +580,15 @@ export const translations = {
           title: "தூப் ஆர்த்தி",
           time: "மாலை",
           description: "சூரிய அஸ்தமனத்தில் செய்யப்படும் தூப் ஆர்த்தி இருளின் மற்றும் எதிர்மறையின் அகற்றலைக் குறிக்கிறது.",
+          listenAudio: "ஆடியோ கேட்க",
+          readLyrics: "பாடல் வரிகளைப் படிக்க",
         },
         shej: {
           title: "ஷேஜ் ஆர்த்தி",
           time: "இரவு",
           description: "ஷேஜ் ஆர்த்தி ஓய்வுக்கு முன் வழங்கப்படுகிறது, சாய் பாபாவின் கருணையின் கீழ் பாதுகாப்பு மற்றும் அமைதியான தூக்கத்தைத் தேடுகிறது.",
+          listenAudio: "ஆடியோ கேட்க",
+          readLyrics: "பாடல் வரிகளைப் படிக்க",
         },
       },
       bhajans: {

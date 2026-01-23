@@ -37,6 +37,8 @@ export default function AartiBhajansPage() {
       title: t.aartiDetails.dhoop.title,
       time: t.aartiDetails.dhoop.time,
       description: t.aartiDetails.dhoop.description,
+      listenAudio: t.aartiDetails.dhoop.listenAudio,
+      readLyrics: t.aartiDetails.dhoop.readLyrics,
       hasDownload: false,
     },
     {
@@ -44,6 +46,8 @@ export default function AartiBhajansPage() {
       title: t.aartiDetails.shej.title,
       time: t.aartiDetails.shej.time,
       description: t.aartiDetails.shej.description,
+      listenAudio: t.aartiDetails.shej.listenAudio,
+      readLyrics: t.aartiDetails.shej.readLyrics,
       hasDownload: false,
     },
   ];
