@@ -376,6 +376,44 @@ export const translations = {
         offerPrayers: "Offer Your Prayers",
       },
     },
+    // Gallery Page
+    gallery: {
+      hero: {
+        title: "Divine Moments Gallery",
+        subtitle: "Experience the sacred presence of Sai Baba through timeless photographs and devotional moments captured at Shirdi and beyond.",
+        quote: "Why fear when I am here?",
+      },
+      navigation: {
+        title: "Explore the Divine",
+        all: "All",
+        saiBaba: "Sai Baba",
+        templeShirdi: "Temple & Shirdi",
+        aartiRituals: "Aarti & Rituals",
+        festivals: "Festivals",
+        devoteeMoments: "Devotee Moments",
+      },
+      photos: {
+        morningAarti: "Morning Aarti at Shirdi",
+        devoteesSeeking: "Devotees seeking blessings",
+        festivalCelebrations: "Festival celebrations",
+        eveningAartiCaption: "Evening Aarti performed with devotion and reverence at the holy temple.",
+      },
+      videos: {
+        title: "Sacred Videos & Aarti",
+        description: "Watch devotional videos, aartis, and special occasions that bring you closer to Sai Baba's divine presence, wherever you are.",
+        aartiRecordings: "Aarti recordings",
+        bhajans: "Bhajans",
+        festivalCelebrations: "Festival celebrations",
+        templeMoments: "Temple moments",
+      },
+      cta: {
+        title: "Feel the Blessings, Share the Devotion",
+        copy: "May these divine moments fill your heart with peace, faith, and devotion. Share this gallery with fellow devotees and spread Sai Baba's message of love and compassion.",
+        viewAarti: "View Aarti",
+        visitShirdi: "Visit Shirdi",
+        makeDonation: "Make a Donation",
+      },
+    },
   },
   ta: {
     // Navigation
@@ -750,6 +788,44 @@ export const translations = {
         description: "பக்தி உங்கள் தினசரி நடைமுறையாகவும் சாய் பாபா உங்கள் நித்திய வழிகாட்டியாகவும் இருக்கட்டும்.",
         lightLamp: "மெய்நிகர் விளக்கை ஏற்றுங்கள்",
         offerPrayers: "உங்கள் பிரார்த்தனைகளை வழங்குங்கள்",
+      },
+    },
+    // Gallery Page
+    gallery: {
+      hero: {
+        title: "தெய்வீக தருணங்கள் கேலரி",
+        subtitle: "ஷிர்டி மற்றும் அதற்கு அப்பால் பிடிக்கப்பட்ட காலமற்ற புகைப்படங்கள் மற்றும் பக்தி தருணங்கள் மூலம் சாய் பாபாவின் புனித இருப்பை அனுபவிக்கவும்.",
+        quote: "நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?",
+      },
+      navigation: {
+        title: "தெய்வீகத்தை ஆராயுங்கள்",
+        all: "அனைத்தும்",
+        saiBaba: "சாய் பாபா",
+        templeShirdi: "கோயில் & ஷிர்டி",
+        aartiRituals: "ஆர்த்தி & சடங்குகள்",
+        festivals: "திருவிழாக்கள்",
+        devoteeMoments: "பக்தர் தருணங்கள்",
+      },
+      photos: {
+        morningAarti: "ஷிர்டியில் காலை ஆர்த்தி",
+        devoteesSeeking: "பக்தர்கள் ஆசீர்வாதம் தேடுகிறார்கள்",
+        festivalCelebrations: "திருவிழா கொண்டாட்டங்கள்",
+        eveningAartiCaption: "புனித கோயிலில் பக்தி மற்றும் மரியாதையுடன் செய்யப்படும் மாலை ஆர்த்தி.",
+      },
+      videos: {
+        title: "புனித வீடியோக்கள் & ஆர்த்தி",
+        description: "பக்தி வீடியோக்கள், ஆர்த்திகள் மற்றும் சிறப்பு சந்தர்ப்பங்களைப் பாருங்கள், அவை நீங்கள் எங்கிருந்தாலும் சாய் பாபாவின் தெய்வீக இருப்புக்கு நெருக்கமாக கொண்டு வருகின்றன.",
+        aartiRecordings: "ஆர்த்தி பதிவுகள்",
+        bhajans: "பஜனைகள்",
+        festivalCelebrations: "திருவிழா கொண்டாட்டங்கள்",
+        templeMoments: "கோயில் தருணங்கள்",
+      },
+      cta: {
+        title: "ஆசீர்வாதங்களை உணர்ந்து, பக்தியைப் பகிர்ந்து கொள்ளுங்கள்",
+        copy: "இந்த தெய்வீக தருணங்கள் உங்கள் இதயத்தை அமைதி, நம்பிக்கை மற்றும் பக்தியால் நிரப்பட்டும். இந்த கேலரியை சக பக்தர்களுடன் பகிர்ந்து கொண்டு சாய் பாபாவின் அன்பு மற்றும் இரக்க செய்தியை பரப்புங்கள்.",
+        viewAarti: "ஆர்த்தியைக் காண்க",
+        visitShirdi: "ஷிர்டியைப் பார்வையிடவும்",
+        makeDonation: "நன்கொடை அளிக்கவும்",
       },
     },
   },
