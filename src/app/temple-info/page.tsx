@@ -1,95 +1,315 @@
+"use client";
+
 import { GRADIENTS } from "@/lib/constants";
-import { MapPin, Clock, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
+import Link from "next/link";
+import { Calendar, ArrowRight, Heart } from "lucide-react";
 
 export default function TempleInfoPage() {
+  const { language } = useLanguage();
+  const t = translations[language].templeInfo;
+
+  const sections = [
+    {
+      id: 1,
+      heading: t.section1.heading,
+      copy: t.section1.copy,
+      layout: "left-image",
+    },
+    {
+      id: 2,
+      heading: t.section2.heading,
+      layout: "right-image",
+      timings: true,
+    },
+    {
+      id: 3,
+      heading: t.section3.heading,
+      copy: t.section3.copy,
+      layout: "left-image",
+      darshan: true,
+    },
+    {
+      id: 4,
+      heading: t.section4.heading,
+      layout: "right-image",
+      transport: true,
+    },
+    {
+      id: 5,
+      heading: t.section5.heading,
+      layout: "left-image",
+      facilities: true,
+    },
+    {
+      id: 6,
+      heading: t.section6.heading,
+      layout: "right-image",
+      guidelines: true,
+    },
+  ];
+
   return (
-    <div 
-      className="min-h-screen py-16"
-      style={{
-        background: GRADIENTS.dark
-      }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <MapPin className="w-16 h-16 text-white mx-auto mb-4" />
-          <h1 
-            className="text-5xl font-bold mb-4 text-white"
-            style={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 900,
-            }}
-          >
-            Temple Information
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Visit us and experience the divine presence
-          </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md">
-            <h2 className="text-2xl font-bold text-divine-saffron mb-4 flex items-center gap-2">
-              <Clock className="w-6 h-6" />
-              Timings
-            </h2>
-            <div className="space-y-3 text-gray-700">
-              <div>
-                <p className="font-semibold">Morning Aarti</p>
-                <p>6:00 AM - 7:00 AM</p>
-              </div>
-              <div>
-                <p className="font-semibold">Temple Hours</p>
-                <p>6:00 AM - 9:00 PM</p>
-              </div>
-              <div>
-                <p className="font-semibold">Evening Aarti</p>
-                <p>6:00 PM - 7:00 PM</p>
-              </div>
-              <div>
-                <p className="font-semibold">Bhajan Sessions</p>
-                <p>Every Thursday: 7:00 PM - 8:30 PM</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md">
-            <h2 className="text-2xl font-bold text-divine-saffron mb-4 flex items-center gap-2">
-              <MapPin className="w-6 h-6" />
-              Location
-            </h2>
-            <div className="space-y-3 text-gray-700">
-              <p className="font-semibold">Sai Baba Vedha Garden</p>
-              <p>Visit us for prayers and blessings</p>
-              <p className="text-divine-saffron font-medium mt-4">Om Sai Ram</p>
-            </div>
-          </div>
-
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md">
-            <h2 className="text-2xl font-bold text-divine-saffron mb-4 flex items-center gap-2">
-              <Phone className="w-6 h-6" />
-              Contact
-            </h2>
-            <div className="space-y-3 text-gray-700">
-              <p>For inquiries and information, please visit our Contact page.</p>
-            </div>
-          </div>
-
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md">
-            <h2 className="text-2xl font-bold text-divine-saffron mb-4 flex items-center gap-2">
-              <Mail className="w-6 h-6" />
-              Services
-            </h2>
-            <div className="space-y-2 text-gray-700">
-              <p>• Daily Aarti</p>
-              <p>• Weekly Bhajans</p>
-              <p>• Special Poojas</p>
-              <p>• Prasad Distribution</p>
-              <p>• Spiritual Guidance</p>
-            </div>
+    <div className="min-h-screen">
+      {/* Header */}
+      <div 
+        className="py-16"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h1 
+              className="text-4xl md:text-5xl font-bold mb-4 text-gray-800"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.title}
+            </h1>
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              {t.subtitle}
+            </p>
           </div>
         </div>
       </div>
+
+      {/* Sections */}
+      {sections.map((section, index) => {
+        const isEven = index % 2 === 1;
+        const bgGradient = isEven ? GRADIENTS.light : GRADIENTS.dark;
+        const textColor = isEven ? "text-gray-800" : "text-white";
+        const headingColor = isEven ? "text-divine-saffron" : "text-white";
+
+        return (
+          <section
+            key={section.id}
+            className="py-16 md:py-20"
+            style={{
+              background: bgGradient,
+            }}
+          >
+            <div className="container mx-auto px-4">
+              <div
+                className={`flex flex-col ${
+                  section.layout === "left-image" ? "lg:flex-row" : "lg:flex-row-reverse"
+                } items-center gap-8 lg:gap-12 max-w-7xl mx-auto`}
+              >
+                {/* Image */}
+                <div className="flex-shrink-0 lg:w-[30%] w-full lg:w-auto">
+                  <div 
+                    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
+                    style={{
+                      background: isEven
+                        ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
+                        : "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+                    }}
+                  >
+                    <svg
+                      width="200"
+                      height="200"
+                      viewBox="0 0 200 200"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-3/4 h-3/4 opacity-30"
+                    >
+                      <path
+                        d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
+                        stroke={isEven ? "#d97706" : "#fef3c7"}
+                        strokeWidth="3"
+                        fill="none"
+                      />
+                      <path
+                        d="M100 80L100 120M80 100L120 100"
+                        stroke={isEven ? "#d97706" : "#fef3c7"}
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="50" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                      <circle cx="150" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                      <circle cx="50" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                      <circle cx="150" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 lg:w-[70%]">
+                  <h2
+                    className={`text-3xl md:text-4xl font-bold mb-6 ${headingColor}`}
+                    style={{
+                      fontFamily: "var(--font-playfair)",
+                      fontWeight: 900,
+                    }}
+                  >
+                    {section.heading}
+                  </h2>
+
+                  {section.copy && (
+                    <p
+                      className={`text-lg md:text-xl leading-relaxed ${textColor} ${
+                        isEven ? "text-gray-700" : "text-white/90"
+                      }`}
+                    >
+                      {section.copy}
+                    </p>
+                  )}
+
+                  {section.timings && (
+                    <div className="w-full">
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse rounded-lg overflow-hidden shadow-md">
+                          <thead>
+                            <tr
+                              style={{
+                                background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+                              }}
+                            >
+                              <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                                {t.section2.activity}
+                              </th>
+                              <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                                {t.section2.time}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="bg-white/95">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.opening}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.openingTime}</td>
+                            </tr>
+                            <tr className="bg-white/90">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.kakadAarti}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.kakadAartiTime}</td>
+                            </tr>
+                            <tr className="bg-white/95">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.morningDarshan}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.morningDarshanTime}</td>
+                            </tr>
+                            <tr className="bg-white/90">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.madhyanAarti}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.madhyanAartiTime}</td>
+                            </tr>
+                            <tr className="bg-white/95">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.eveningDarshan}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.eveningDarshanTime}</td>
+                            </tr>
+                            <tr className="bg-white/90">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.dhoopAarti}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.dhoopAartiTime}</td>
+                            </tr>
+                            <tr className="bg-white/95">
+                              <td className="px-6 py-4 text-gray-800 font-medium">{t.section2.shejAarti}</td>
+                              <td className="px-6 py-4 text-divine-saffron font-semibold">{t.section2.shejAartiTime}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className={`text-base mt-4 ${isEven ? "text-gray-600" : "text-white/80"}`}>
+                        {t.section2.note}
+                      </p>
+                    </div>
+                  )}
+
+                  {section.darshan && (
+                    <div className={`space-y-4 ${textColor}`}>
+                      <p className="text-lg md:text-xl leading-relaxed">
+                        {t.section3.copy}
+                      </p>
+                      <div className="space-y-2 mt-4">
+                        <p className="text-lg font-semibold">• {t.section3.generalDarshan}</p>
+                        <p className="text-lg font-semibold">• {t.section3.specialDarshan}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {section.transport && (
+                    <div className={`space-y-3 ${textColor}`}>
+                      <p className="text-lg md:text-xl">{t.section4.road}</p>
+                      <p className="text-lg md:text-xl">{t.section4.rail}</p>
+                      <p className="text-lg md:text-xl">{t.section4.air}</p>
+                      <p className={`text-base mt-4 ${isEven ? "text-gray-600" : "text-white/80"}`}>
+                        {t.section4.note}
+                      </p>
+                    </div>
+                  )}
+
+                  {section.facilities && (
+                    <div className={`space-y-3 ${textColor}`}>
+                      <p className="text-lg md:text-xl">• {t.section5.queueHalls}</p>
+                      <p className="text-lg md:text-xl">• {t.section5.prasad}</p>
+                      <p className="text-lg md:text-xl">• {t.section5.wheelchair}</p>
+                      <p className="text-lg md:text-xl">• {t.section5.shoeStand}</p>
+                    </div>
+                  )}
+
+                  {section.guidelines && (
+                    <div className={`space-y-3 ${textColor}`}>
+                      <p className="text-lg md:text-xl">• {t.section6.dress}</p>
+                      <p className="text-lg md:text-xl">• {t.section6.silence}</p>
+                      <p className="text-lg md:text-xl">• {t.section6.instructions}</p>
+                      <p className="text-lg md:text-xl">• {t.section6.photography}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* Section 7: Visit CTA */}
+      <section
+        className="py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-800"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.section7.heading}
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 font-medium">
+              {t.section7.blessing}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                href="/aarti-bhajans"
+                className="group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" />
+                {t.section7.viewAarti}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/events"
+                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5" />
+                {t.section7.upcomingEvents}
+              </Link>
+              <Link
+                href="/donations"
+                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5" />
+                {t.section7.donations}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
