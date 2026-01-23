@@ -10,7 +10,7 @@ export function Hero() {
 
   return (
     <section 
-      className="hero-section relative min-h-[90vh] flex items-end justify-center overflow-hidden"
+      className="hero-section relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-end justify-center overflow-hidden"
     >
       {/* Hero Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -26,10 +26,10 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-[3] container mx-auto px-4 text-center pb-20 md:pb-32">
+      <div className="relative z-[3] container mx-auto px-4 text-center pb-12 sm:pb-16 md:pb-20">
         {/* Small Quote */}
         <p 
-          className="text-lg md:text-xl lg:text-2xl text-white font-medium"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-medium"
           style={{
             fontFamily: "var(--font-playfair)",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)"
@@ -38,7 +38,7 @@ export function Hero() {
           &ldquo;{t.smallQuote}&rdquo;
         </p>
         <p 
-          className="text-base md:text-lg text-white/90 font-semibold mt-4"
+          className="text-sm sm:text-base md:text-lg text-white/90 font-semibold mt-3 sm:mt-4"
           style={{
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8)"
           }}

@@ -11,7 +11,7 @@ export function DailyAartiTimings() {
 
   return (
     <section 
-      className="py-16 relative"
+      className="py-12 sm:py-16 relative"
       style={{
         background: GRADIENTS.light,
       }}
@@ -19,7 +19,7 @@ export function DailyAartiTimings() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-gray-800 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-gray-800 text-center"
             style={{
               fontFamily: "var(--font-playfair)",
               fontWeight: 900,
@@ -28,29 +28,29 @@ export function DailyAartiTimings() {
             {t.title}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-amber-200/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800">{t.morning}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800">{t.morning}</h3>
               </div>
-              <p className="text-2xl font-semibold text-divine-saffron">{t.morningTime}</p>
+              <p className="text-xl sm:text-2xl font-semibold text-divine-saffron">{t.morningTime}</p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-gold to-divine-gold-dark flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-white" />
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-amber-200/40">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-divine-gold to-divine-gold-dark flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800">{t.evening}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800">{t.evening}</h3>
               </div>
-              <p className="text-2xl font-semibold text-divine-saffron">{t.eveningTime}</p>
+              <p className="text-xl sm:text-2xl font-semibold text-divine-saffron">{t.eveningTime}</p>
             </div>
           </div>
 
-          <p className="text-center text-gray-700 mt-6 text-sm md:text-base">
+          <p className="text-center text-gray-700 mt-4 sm:mt-6 text-xs sm:text-sm md:text-base">
             {t.note}
           </p>
         </div>

@@ -10,16 +10,16 @@ export function TodaysMessage() {
 
   return (
     <section 
-      className="py-16 relative"
+      className="py-12 sm:py-16 relative"
       style={{
         background: GRADIENTS.dark,
       }}
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-center mb-8">
+          <div className="flex items-center justify-center mb-6 sm:mb-8">
             <h2 
-              className="text-3xl md:text-4xl font-bold text-white"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"
               style={{
                 fontFamily: "var(--font-playfair)",
                 fontWeight: 900,
@@ -29,16 +29,16 @@ export function TodaysMessage() {
             </h2>
           </div>
           
-          <div className="bg-white/95 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-lg border border-white/30">
+          <div className="bg-white/95 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg border border-white/30">
             <blockquote 
-              className="text-xl md:text-2xl text-gray-800 italic mb-6 leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-gray-800 italic mb-4 sm:mb-6 leading-relaxed"
               style={{
                 fontFamily: "var(--font-playfair)",
               }}
             >
               &ldquo;{t.message}&rdquo;
             </blockquote>
-            <p className="text-lg md:text-xl text-divine-saffron font-semibold text-right">
+            <p className="text-base sm:text-lg md:text-xl text-divine-saffron font-semibold text-right">
               {t.author}
             </p>
           </div>

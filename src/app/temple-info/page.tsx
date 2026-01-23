@@ -99,7 +99,7 @@ export default function TempleInfoPage() {
         return (
           <section
             key={section.id}
-            className="py-16 md:py-20"
+            className="py-12 sm:py-16 md:py-20"
             style={{
               background: bgGradient,
             }}
@@ -112,13 +112,13 @@ export default function TempleInfoPage() {
                     : section.layout === "left-image" 
                     ? "lg:flex-row" 
                     : "lg:flex-row-reverse"
-                } items-center gap-8 lg:gap-12 max-w-7xl mx-auto`}
+                } items-center gap-6 sm:gap-8 lg:gap-10 max-w-7xl mx-auto`}
               >
                 {/* Image - Hidden for center layout */}
                 {section.layout !== "center" && (
                   <div className="flex-shrink-0 lg:w-[30%] w-full lg:w-auto">
                     <div 
-                      className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
+                      className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
                       style={{
                         background: isEven
                           ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
@@ -157,7 +157,7 @@ export default function TempleInfoPage() {
                 {/* Content */}
                 <div className={section.layout === "center" ? "w-full" : "flex-1 lg:w-[70%]"}>
                   <h2
-                    className={`text-3xl md:text-4xl font-bold mb-6 ${section.layout === "center" ? "text-center" : ""} ${headingColor}`}
+                    className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 ${section.layout === "center" ? "text-center" : ""} ${headingColor}`}
                     style={{
                       fontFamily: "var(--font-playfair)",
                       fontWeight: 900,
@@ -168,7 +168,7 @@ export default function TempleInfoPage() {
 
                   {section.copy && (
                     <p
-                      className={`text-lg md:text-xl leading-relaxed ${textColor} ${
+                      className={`text-base sm:text-lg md:text-xl leading-relaxed ${textColor} ${
                         isEven ? "text-gray-700" : "text-white/90"
                       }`}
                     >
