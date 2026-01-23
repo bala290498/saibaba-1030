@@ -1,88 +1,378 @@
+"use client";
+
 import { GRADIENTS } from "@/lib/constants";
-import { Music, Calendar, Clock } from "lucide-react";
-
-const aartiSchedule = [
-  { time: "6:00 AM", name: "Morning Aarti", description: "Start your day with divine blessings" },
-  { time: "6:00 PM", name: "Evening Aarti", description: "Evening prayers and aarti ceremony" },
-];
-
-const bhajanSchedule = [
-  { day: "Every Thursday", time: "7:00 PM - 8:30 PM", description: "Weekly bhajan session with devotional songs" },
-  { day: "Special Occasions", time: "As Announced", description: "Special bhajan programs during festivals" },
-];
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
+import Link from "next/link";
+import { Music, Play, FileText, Download, Heart, Calendar, Repeat, Globe, Flame, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 export default function AartiBhajansPage() {
+  const { language } = useLanguage();
+  const t = translations[language].aartiBhajans;
+  const [expandedAarti, setExpandedAarti] = useState<string | null>(null);
+
+  const aartis = [
+    {
+      id: "kakad",
+      title: t.aartiDetails.kakad.title,
+      time: t.aartiDetails.kakad.time,
+      description: t.aartiDetails.kakad.description,
+      listenAudio: t.aartiDetails.kakad.listenAudio,
+      readLyrics: t.aartiDetails.kakad.readLyrics,
+      download: t.aartiDetails.kakad.download,
+      hasDownload: true,
+    },
+    {
+      id: "madhyan",
+      title: t.aartiDetails.madhyan.title,
+      time: t.aartiDetails.madhyan.time,
+      description: t.aartiDetails.madhyan.description,
+      listenAudio: t.aartiDetails.madhyan.listenAudio,
+      readLyrics: t.aartiDetails.madhyan.readLyrics,
+      hasDownload: false,
+    },
+    {
+      id: "dhoop",
+      title: t.aartiDetails.dhoop.title,
+      time: t.aartiDetails.dhoop.time,
+      description: t.aartiDetails.dhoop.description,
+      hasDownload: false,
+    },
+    {
+      id: "shej",
+      title: t.aartiDetails.shej.title,
+      time: t.aartiDetails.shej.time,
+      description: t.aartiDetails.shej.description,
+      hasDownload: false,
+    },
+  ];
+
+  const bhajans = [
+    {
+      title: t.bhajans.exampleTitle,
+      duration: t.bhajans.exampleDuration,
+      type: t.bhajans.exampleType,
+    },
+  ];
+
   return (
-    <div 
-      className="min-h-screen py-16"
-      style={{
-        background: GRADIENTS.light
-      }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Music className="w-16 h-16 text-divine-saffron mx-auto mb-4" />
-          <h1 
-            className="text-5xl font-bold mb-4 text-gray-800"
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section
+        className="py-20 md:py-32 relative overflow-hidden"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <div className="mb-6 inline-flex items-center justify-center">
+            <Music className="w-12 h-12 md:w-16 md:h-16 text-white mb-4" />
+          </div>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
             style={{
               fontFamily: "var(--font-playfair)",
               fontWeight: 900,
             }}
           >
-            Aarti & Bhajans
+            {t.hero.heading}
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Join us for daily aartis and soulful bhajan sessions
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            {t.hero.subheading}
           </p>
         </div>
+      </section>
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div>
-            <h2 className="text-3xl font-bold text-divine-saffron mb-6 text-center">Daily Aarti Schedule</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {aartiSchedule.map((aarti, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-md">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Clock className="w-6 h-6 text-divine-saffron" />
-                    <span className="text-xl font-bold text-gray-800">{aarti.time}</span>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-divine-saffron mb-2">{aarti.name}</h3>
-                  <p className="text-gray-600">{aarti.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-bold text-divine-saffron mb-6 text-center">Bhajan Schedule</h2>
-            <div className="space-y-4">
-              {bhajanSchedule.map((bhajan, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-md">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Calendar className="w-6 h-6 text-divine-saffron" />
-                    <span className="text-xl font-bold text-gray-800">{bhajan.day}</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-5 h-5 text-divine-saffron" />
-                    <span className="font-semibold text-gray-700">{bhajan.time}</span>
-                  </div>
-                  <p className="text-gray-600">{bhajan.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-md text-center">
-            <h3 className="text-2xl font-bold text-divine-saffron mb-4">Join Us</h3>
-            <p className="text-gray-700 mb-4">
-              Experience the divine energy through our daily aartis and weekly bhajan sessions. 
-              All devotees are welcome to participate and seek blessings.
+      {/* Daily Aarti Schedule Section */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 text-center"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.dailySchedule.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+              {t.dailySchedule.intro}
             </p>
-            <p className="text-divine-saffron font-semibold text-lg">Om Sai Ram</p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse rounded-lg overflow-hidden shadow-md">
+                <thead>
+                  <tr
+                    style={{
+                      background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+                    }}
+                  >
+                    <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                      {t.dailySchedule.aartiName}
+                    </th>
+                    <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                      {t.dailySchedule.time}
+                    </th>
+                    <th className="px-6 py-4 text-left text-white font-bold text-lg">
+                      {t.dailySchedule.description}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="bg-white/95">
+                    <td className="px-6 py-4 text-gray-800 font-medium">{t.dailySchedule.kakad}</td>
+                    <td className="px-6 py-4 text-divine-saffron font-semibold">{t.dailySchedule.kakadTime}</td>
+                    <td className="px-6 py-4 text-gray-700">{t.dailySchedule.kakadDesc}</td>
+                  </tr>
+                  <tr className="bg-white/90">
+                    <td className="px-6 py-4 text-gray-800 font-medium">{t.dailySchedule.madhyan}</td>
+                    <td className="px-6 py-4 text-divine-saffron font-semibold">{t.dailySchedule.madhyanTime}</td>
+                    <td className="px-6 py-4 text-gray-700">{t.dailySchedule.madhyanDesc}</td>
+                  </tr>
+                  <tr className="bg-white/95">
+                    <td className="px-6 py-4 text-gray-800 font-medium">{t.dailySchedule.dhoop}</td>
+                    <td className="px-6 py-4 text-divine-saffron font-semibold">{t.dailySchedule.dhoopTime}</td>
+                    <td className="px-6 py-4 text-gray-700">{t.dailySchedule.dhoopDesc}</td>
+                  </tr>
+                  <tr className="bg-white/90">
+                    <td className="px-6 py-4 text-gray-800 font-medium">{t.dailySchedule.shej}</td>
+                    <td className="px-6 py-4 text-divine-saffron font-semibold">{t.dailySchedule.shejTime}</td>
+                    <td className="px-6 py-4 text-gray-700">{t.dailySchedule.shejDesc}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-center text-gray-600 mt-4 text-sm md:text-base">
+              {t.dailySchedule.note}
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Aarti Sections (Accordion) */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-4">
+            {aartis.map((aarti) => (
+              <div
+                key={aarti.id}
+                className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 overflow-hidden"
+              >
+                <button
+                  onClick={() => setExpandedAarti(expandedAarti === aarti.id ? null : aarti.id)}
+                  className="w-full px-6 py-5 flex items-center justify-between hover:bg-white/50 transition-colors"
+                >
+                  <div className="flex items-center gap-4">
+                    <Music className="w-6 h-6 text-divine-saffron" />
+                    <div className="text-left">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800">{aarti.title}</h3>
+                      <p className="text-sm text-gray-600">{aarti.time}</p>
+                    </div>
+                  </div>
+                  <span className="text-2xl text-divine-saffron">
+                    {expandedAarti === aarti.id ? "−" : "+"}
+                  </span>
+                </button>
+                {expandedAarti === aarti.id && (
+                  <div className="px-6 pb-6 border-t border-gray-200">
+                    <p className="text-gray-700 mb-4 mt-4 leading-relaxed">{aarti.description}</p>
+                    <div className="flex flex-wrap gap-3">
+                      {"listenAudio" in aarti && (
+                        <button className="flex items-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors">
+                          <Play className="w-4 h-4" />
+                          {aarti.listenAudio}
+                        </button>
+                      )}
+                      {"readLyrics" in aarti && (
+                        <button className="flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors">
+                          <FileText className="w-4 h-4" />
+                          {aarti.readLyrics}
+                        </button>
+                      )}
+                      {aarti.hasDownload && "download" in aarti && (
+                        <button className="flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors">
+                          <Download className="w-4 h-4" />
+                          {aarti.download}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bhajans Section */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 text-center"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.bhajans.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+              {t.bhajans.intro}
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bhajans.map((bhajan, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{bhajan.title}</h3>
+                      <p className="text-sm text-gray-600 mb-1">
+                        {t.bhajans.exampleType} • {bhajan.duration}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors">
+                      <Play className="w-4 h-4" />
+                      {t.bhajans.play}
+                    </button>
+                    <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
+                      <Heart className="w-4 h-4" />
+                    </button>
+                    <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
+                      <Download className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Devotional Tools Section */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-8 text-white text-center"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.devotionalTools.title}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
+                <Repeat className="w-8 h-8 text-divine-saffron" />
+                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.loopAudio}</span>
+              </button>
+              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
+                <FileText className="w-8 h-8 text-divine-saffron" />
+                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.readAlong}</span>
+              </button>
+              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
+                <Globe className="w-8 h-8 text-divine-saffron" />
+                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.languageSelector}</span>
+              </button>
+              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
+                <Flame className="w-8 h-8 text-divine-saffron" />
+                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.virtualLamp}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section
+        className="py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-800"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.cta.heading}
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {t.cta.copy}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                href="/donations"
+                className="group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5" />
+                {t.cta.donateNow}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/events"
+                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" />
+                {t.cta.joinAarti}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Note */}
+      <section
+        className="py-12"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <p
+              className="text-xl md:text-2xl text-white italic font-medium"
+              style={{
+                fontFamily: "var(--font-playfair)",
+              }}
+            >
+              &ldquo;{t.footer.quote}&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
