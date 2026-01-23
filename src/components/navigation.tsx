@@ -7,53 +7,55 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { GRADIENTS } from "@/lib/constants";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 // Grouped navigation items for better organization
-const navGroups = [
+const getNavGroups = (lang: "en" | "ta") => [
   {
     id: "main",
     items: [
-      { href: "/", label: "Home" },
-      { href: "/about-sai-baba", label: "About Sai Baba" },
-      { href: "/temple-info", label: "Temple Info" },
+      { href: "/", label: translations[lang].nav.home },
+      { href: "/about-sai-baba", label: translations[lang].nav.aboutSaiBaba },
+      { href: "/temple-info", label: translations[lang].nav.templeInfo },
     ],
   },
   {
     id: "spiritual",
     items: [
-      { href: "/aarti-bhajans", label: "Aarti & Bhajans" },
-      { href: "/devotion", label: "Devotion" },
+      { href: "/aarti-bhajans", label: translations[lang].nav.aartiBhajans },
+      { href: "/devotion", label: translations[lang].nav.devotion },
     ],
   },
   {
     id: "community",
     items: [
-      { href: "/events", label: "Events" },
-      { href: "/gallery", label: "Gallery" },
+      { href: "/events", label: translations[lang].nav.events },
+      { href: "/gallery", label: translations[lang].nav.gallery },
     ],
   },
   {
     id: "support",
     items: [
-      { href: "/donations", label: "Donations" },
-      { href: "/contact", label: "Contact" },
+      { href: "/donations", label: translations[lang].nav.donations },
+      { href: "/contact", label: translations[lang].nav.contact },
     ],
   },
 ];
 
-// Flattened for mobile menu
-const allNavItems = navGroups.flatMap((group) => group.items);
-
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const { language, setLanguage } = useLanguage();
   const pathname = usePathname();
 
   const languages = [
-    { code: "en", label: "English" },
-    { code: "ta", label: "தமிழ்" },
+    { code: "en" as const, label: "English" },
+    { code: "ta" as const, label: "தமிழ்" },
   ];
+
+  const navGroups = getNavGroups(language);
+  const allNavItems = navGroups.flatMap((group) => group.items);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -126,7 +128,7 @@ export function Navigation() {
                 style={{ fontWeight: 500 }}
               >
                 <Globe className="w-4 h-4" />
-                <span>{selectedLanguage}</span>
+                <span>{languages.find(l => l.code === language)?.label || "English"}</span>
                 <ChevronDown className={cn(
                   "w-4 h-4 transition-transform duration-200",
                   languageOpen && "rotate-180"
@@ -140,13 +142,13 @@ export function Navigation() {
                     <button
                       key={lang.code}
                       onClick={() => {
-                        setSelectedLanguage(lang.label);
+                        setLanguage(lang.code);
                         setLanguageOpen(false);
                       }}
                       className={cn(
                         "w-full text-left px-4 py-2.5 text-sm font-medium transition-colors duration-200",
                         "hover:bg-divine-cream hover:text-divine-saffron",
-                        selectedLanguage === lang.label
+                        language === lang.code
                           ? "bg-divine-cream text-divine-saffron"
                           : "text-gray-700"
                       )}

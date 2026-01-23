@@ -1,7 +1,13 @@
+"use client";
+
 import { Quote as QuoteIcon } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 export function Quote() {
+  const { language } = useLanguage();
+  const t = translations[language].quote;
   return (
     <section 
       className="py-20 relative"
@@ -18,12 +24,10 @@ export function Quote() {
               fontFamily: "var(--font-playfair)",
             }}
           >
-            &ldquo;Love one another and help others to rise to the higher levels,
-            simply by pouring out love. Love is infectious and the greatest
-            healing energy.&rdquo;
+            &ldquo;{t.text}&rdquo;
           </blockquote>
           <p className="text-xl text-divine-saffron font-semibold">
-            — Sai Baba
+            {t.author}
           </p>
         </div>
       </div>

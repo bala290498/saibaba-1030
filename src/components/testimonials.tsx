@@ -1,28 +1,34 @@
+"use client";
+
 import { Star, Quote as QuoteIcon } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
-
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    location: "Mumbai",
-    text: "Visiting Sai Baba Vedha Garden has brought immense peace to my life. The divine atmosphere and the warmth of the community is truly special.",
-    rating: 5,
-  },
-  {
-    name: "Rajesh Kumar",
-    location: "Delhi",
-    text: "The weekly bhajan sessions are soul-stirring. I feel blessed to be part of this spiritual family. Om Sai Ram!",
-    rating: 5,
-  },
-  {
-    name: "Anita Patel",
-    location: "Ahmedabad",
-    text: "The pooja services here are conducted with such devotion. My family and I have found great solace in this sacred space.",
-    rating: 5,
-  },
-];
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 export function Testimonials() {
+  const { language } = useLanguage();
+  const t = translations[language].testimonials;
+
+  const testimonials = [
+    {
+      name: t.testimonial1.name,
+      location: t.testimonial1.location,
+      text: t.testimonial1.text,
+      rating: 5,
+    },
+    {
+      name: t.testimonial2.name,
+      location: t.testimonial2.location,
+      text: t.testimonial2.text,
+      rating: 5,
+    },
+    {
+      name: t.testimonial3.name,
+      location: t.testimonial3.location,
+      text: t.testimonial3.text,
+      rating: 5,
+    },
+  ];
   return (
     <section 
       className="py-20 relative"
@@ -33,10 +39,10 @@ export function Testimonials() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-divine-saffron mb-4">
-            Devotee Experiences
+            {t.title}
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Hear from our community of devotees
+            {t.subtitle}
           </p>
         </div>
 

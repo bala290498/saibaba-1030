@@ -1,43 +1,45 @@
+"use client";
+
 import Link from "next/link";
 import { Calendar, Heart, Sparkles, Users } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
-
-const features = [
-  {
-    icon: Calendar,
-    title: "Regular Events",
-    description:
-      "Join us for weekly prayers, bhajans, and special celebrations throughout the year.",
-    href: "/events",
-    color: "from-divine-saffron to-divine-saffron-dark",
-  },
-  {
-    icon: Heart,
-    title: "Support Us",
-    description:
-      "Your generous donations help us maintain the temple and serve the community.",
-    href: "/donations",
-    color: "from-divine-gold to-divine-gold-dark",
-  },
-  {
-    icon: Sparkles,
-    title: "Aarti & Bhajans",
-    description:
-      "Join us for daily aartis and soulful bhajan sessions to seek divine blessings.",
-    href: "/aarti-bhajans",
-    color: "from-divine-saffron-dark to-divine-saffron",
-  },
-  {
-    icon: Users,
-    title: "Community",
-    description:
-      "Connect with fellow devotees and be part of our growing spiritual family.",
-    href: "/events",
-    color: "from-divine-gold-dark to-divine-gold",
-  },
-];
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 export function Features() {
+  const { language } = useLanguage();
+  const t = translations[language].features;
+
+  const features = [
+    {
+      icon: Calendar,
+      title: t.regularEvents.title,
+      description: t.regularEvents.description,
+      href: "/events",
+      color: "from-divine-saffron to-divine-saffron-dark",
+    },
+    {
+      icon: Heart,
+      title: t.supportUs.title,
+      description: t.supportUs.description,
+      href: "/donations",
+      color: "from-divine-gold to-divine-gold-dark",
+    },
+    {
+      icon: Sparkles,
+      title: t.aartiBhajans.title,
+      description: t.aartiBhajans.description,
+      href: "/aarti-bhajans",
+      color: "from-divine-saffron-dark to-divine-saffron",
+    },
+    {
+      icon: Users,
+      title: t.community.title,
+      description: t.community.description,
+      href: "/events",
+      color: "from-divine-gold-dark to-divine-gold",
+    },
+  ];
   return (
     <section 
       className="py-20 relative overflow-hidden"
@@ -54,10 +56,10 @@ export function Features() {
               fontWeight: 900,
             }}
           >
-            Our Services
+            {t.title}
           </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Discover how you can be part of our divine journey
+            {t.subtitle}
           </p>
         </div>
 
