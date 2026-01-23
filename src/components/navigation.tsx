@@ -126,29 +126,27 @@ export function Navigation() {
             </Link>
 
             {/* Text Slider - Desktop Only (Top Bar) */}
-            <div className="hidden lg:flex flex-1 mx-4 overflow-hidden">
-              <div className="relative w-full flex items-center">
-                <div className="animate-scroll-text whitespace-nowrap text-sm text-gray-700 font-medium">
-                  {language === "en" ? (
-                    <>
-                      <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
-                      <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
-                      <span className="inline-block mr-8">Why fear when I am here?</span>
-                      <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
-                      <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
-                      <span className="inline-block mr-8">Why fear when I am here?</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
-                      <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
-                      <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
-                      <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
-                      <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
-                      <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
-                    </>
-                  )}
-                </div>
+            <div className="hidden lg:flex flex-1 mx-4 overflow-hidden relative">
+              <div className="animate-scroll-text whitespace-nowrap text-sm text-gray-700 font-medium flex items-center">
+                {language === "en" ? (
+                  <>
+                    <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
+                    <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
+                    <span className="inline-block mr-8">Why fear when I am here?</span>
+                    <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>
+                    <span className="inline-block mr-8">Shraddha aur Saburi - Faith and Patience</span>
+                    <span className="inline-block mr-8">Why fear when I am here?</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
+                    <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
+                    <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
+                    <span className="inline-block mr-8">ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்</span>
+                    <span className="inline-block mr-8">ஷ்ரத்தா அவுர் சபுரி - நம்பிக்கை மற்றும் பொறுமை</span>
+                    <span className="inline-block mr-8">நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்?</span>
+                  </>
+                )}
               </div>
             </div>
 

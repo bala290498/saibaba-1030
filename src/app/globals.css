@@ -98,5 +98,6 @@ body {
 
 .animate-scroll-text {
   animation: scroll-text 20s linear infinite;
+  display: inline-flex;
 }
 
