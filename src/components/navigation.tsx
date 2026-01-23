@@ -171,19 +171,19 @@ export function Navigation() {
           background: GRADIENTS.dark,
         }}
       >
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex items-center justify-between h-14">
+        <div className="w-full px-4 lg:px-6">
+          <div className="flex items-center justify-between lg:justify-center h-14 max-w-7xl mx-auto">
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center flex-1 justify-center gap-1">
+            <div className="hidden lg:flex items-center justify-center flex-1">
               {allNavItems.map((item, index) => (
                 <div key={item.href} className="flex items-center">
                   {index > 0 && (
-                    <div className="w-px h-4 bg-white/30 mx-4" />
+                    <div className="w-px h-4 bg-white/30 mx-2 lg:mx-3" />
                   )}
                   <Link
                     href={item.href}
                     className={cn(
-                      "relative px-4 py-1.5 text-sm font-medium transition-all duration-200 rounded-lg whitespace-nowrap",
+                      "relative px-2 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition-all duration-200 rounded-lg whitespace-nowrap",
                       "hover:bg-white/20 hover:text-white",
                       pathname === item.href
                         ? "text-white bg-white/15"
@@ -201,7 +201,7 @@ export function Navigation() {
             </div>
 
             {/* Mobile Menu Button - Right Side */}
-            <div className="lg:hidden flex items-center justify-end flex-1">
+            <div className="lg:hidden flex items-center justify-end">
               <button
                 className="p-2.5 rounded-lg text-white/90 hover:text-white hover:bg-white/20 transition-all duration-200"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
