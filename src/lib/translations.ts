@@ -279,9 +279,19 @@ export const translations = {
         play: "Play",
         favorite: "Favorite",
         download: "Download",
-        exampleTitle: "Sai Ram Sai Shyam",
-        exampleDuration: "6:12",
         exampleType: "Audio",
+        bhajan1: {
+          title: "Sai Ram Sai Shyam",
+          duration: "6:12",
+        },
+        bhajan2: {
+          title: "Om Sai Ram",
+          duration: "5:45",
+        },
+        bhajan3: {
+          title: "Sai Baba Aarti",
+          duration: "7:30",
+        },
       },
       devotionalTools: {
         title: "Enhance Your Devotion",
@@ -579,9 +589,19 @@ export const translations = {
         play: "இயக்க",
         favorite: "பிடித்தது",
         download: "பதிவிறக்க",
-        exampleTitle: "சாய் ராம் சாய் ஷ்யாம்",
-        exampleDuration: "6:12",
         exampleType: "ஆடியோ",
+        bhajan1: {
+          title: "சாய் ராம் சாய் ஷ்யாம்",
+          duration: "6:12",
+        },
+        bhajan2: {
+          title: "ஓம் சாய் ராம்",
+          duration: "5:45",
+        },
+        bhajan3: {
+          title: "சாய் பாபா ஆர்த்தி",
+          duration: "7:30",
+        },
       },
       devotionalTools: {
         title: "உங்கள் பக்தியை மேம்படுத்துங்கள்",

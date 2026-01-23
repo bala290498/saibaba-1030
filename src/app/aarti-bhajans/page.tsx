@@ -4,7 +4,7 @@ import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
-import { Music, Play, FileText, Download, Heart, Calendar, Repeat, Globe, Flame, ArrowRight } from "lucide-react";
+import { Music, Play, FileText, Download, Heart, Calendar, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 export default function AartiBhajansPage() {
@@ -50,8 +50,18 @@ export default function AartiBhajansPage() {
 
   const bhajans = [
     {
-      title: t.bhajans.exampleTitle,
-      duration: t.bhajans.exampleDuration,
+      title: t.bhajans.bhajan1.title,
+      duration: t.bhajans.bhajan1.duration,
+      type: t.bhajans.exampleType,
+    },
+    {
+      title: t.bhajans.bhajan2.title,
+      duration: t.bhajans.bhajan2.duration,
+      type: t.bhajans.exampleType,
+    },
+    {
+      title: t.bhajans.bhajan3.title,
+      duration: t.bhajans.bhajan3.duration,
       type: t.bhajans.exampleType,
     },
   ];
@@ -244,8 +254,8 @@ export default function AartiBhajansPage() {
                   key={index}
                   className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
+                  <div className="mb-4">
+                    <div className="text-center md:text-center">
                       <h3 className="text-xl font-bold text-gray-800 mb-2">{bhajan.title}</h3>
                       <p className="text-sm text-gray-600 mb-1">
                         {t.bhajans.exampleType} • {bhajan.duration}
@@ -266,46 +276,6 @@ export default function AartiBhajansPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Devotional Tools Section */}
-      <section
-        className="py-16 md:py-20"
-        style={{
-          background: GRADIENTS.dark,
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-white text-center"
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 900,
-              }}
-            >
-              {t.devotionalTools.title}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
-                <Repeat className="w-8 h-8 text-divine-saffron" />
-                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.loopAudio}</span>
-              </button>
-              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
-                <FileText className="w-8 h-8 text-divine-saffron" />
-                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.readAlong}</span>
-              </button>
-              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
-                <Globe className="w-8 h-8 text-divine-saffron" />
-                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.languageSelector}</span>
-              </button>
-              <button className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30 hover:shadow-lg transition-all flex items-center gap-4">
-                <Flame className="w-8 h-8 text-divine-saffron" />
-                <span className="text-lg font-semibold text-gray-800">{t.devotionalTools.virtualLamp}</span>
-              </button>
             </div>
           </div>
         </div>
