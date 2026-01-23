@@ -24,15 +24,9 @@ export function GlobalAudioPlayer() {
     if (savedMuted === "true") {
       setIsMuted(true);
     }
-    if (savedPlaying === "true" && audioRef.current) {
-      audioRef.current.play().catch(() => {
-        // Auto-play may be blocked by browser
-        setIsPlaying(false);
-      });
-    }
   }, []);
 
-  // Auto-play on mount (with user interaction fallback)
+  // Auto-play on mount (first time load)
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -40,24 +34,50 @@ export function GlobalAudioPlayer() {
     // Set volume
     audio.volume = isMuted ? 0 : volume;
 
-    // Try to auto-play
+    // Check if this is first visit (no saved playing state)
+    const savedPlaying = localStorage.getItem("audioPlaying");
+    const isFirstVisit = savedPlaying === null;
+
+    // Try to auto-play on first visit or if previously playing
     const tryAutoPlay = async () => {
       try {
+        // Set volume before playing
+        audio.volume = isMuted ? 0 : volume;
+        
+        // Attempt to play
         await audio.play();
         setIsPlaying(true);
         localStorage.setItem("audioPlaying", "true");
       } catch (error) {
-        // Auto-play was prevented, user needs to interact first
+        // Auto-play was prevented by browser policy
+        // This is normal - browsers require user interaction for audio
         setIsPlaying(false);
+        if (isFirstVisit) {
+          localStorage.setItem("audioPlaying", "false");
+        }
       }
     };
 
-    // Small delay to ensure audio is loaded
-    const timer = setTimeout(() => {
-      tryAutoPlay();
-    }, 500);
+    // Wait for audio to be ready
+    const handleCanPlay = () => {
+      if (isFirstVisit || savedPlaying === "true") {
+        tryAutoPlay();
+      }
+    };
 
-    return () => clearTimeout(timer);
+    // If audio is already loaded, try immediately
+    if (audio.readyState >= 2) {
+      if (isFirstVisit || savedPlaying === "true") {
+        tryAutoPlay();
+      }
+    } else {
+      // Wait for audio to be ready
+      audio.addEventListener("canplaythrough", handleCanPlay, { once: true });
+    }
+
+    return () => {
+      audio.removeEventListener("canplaythrough", handleCanPlay);
+    };
   }, []);
 
   // Update volume when changed
@@ -126,6 +146,7 @@ export function GlobalAudioPlayer() {
           <audio
             ref={audioRef}
             loop
+            autoPlay
             onEnded={handleEnded}
             preload="auto"
           >
@@ -156,6 +177,7 @@ export function GlobalAudioPlayer() {
           <audio
             ref={audioRef}
             loop
+            autoPlay
             onEnded={handleEnded}
             preload="auto"
           >

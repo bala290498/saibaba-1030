@@ -231,25 +231,14 @@ export function Navigation() {
             <div className="flex flex-col h-screen">
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-4 border-b border-white/20">
-                <div className="flex items-center gap-2">
-                  <div className="relative w-8 h-8 flex items-center justify-center">
-                    <Image
-                      src="/home/logo.png"
-                      alt="Om Logo"
-                      width={32}
-                      height={32}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span 
-                    className="text-lg font-serif font-extrabold text-white"
-                    style={{
-                      fontFamily: "var(--font-playfair)",
-                    }}
-                  >
-                    Menu
-                  </span>
-                </div>
+                <span 
+                  className="text-lg font-serif font-extrabold text-white"
+                  style={{
+                    fontFamily: "var(--font-playfair)",
+                  }}
+                >
+                  Menu
+                </span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/20 transition-all duration-200"
