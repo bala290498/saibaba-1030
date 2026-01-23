@@ -18,9 +18,9 @@ export function Quote() {
               fontFamily: "var(--font-playfair)",
             }}
           >
-            "Love one another and help others to rise to the higher levels,
+            &ldquo;Love one another and help others to rise to the higher levels,
             simply by pouring out love. Love is infectious and the greatest
-            healing energy."
+            healing energy.&rdquo;
           </blockquote>
           <p className="text-xl text-divine-saffron font-semibold">
             — Sai Baba

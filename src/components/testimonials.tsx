@@ -56,7 +56,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="text-gray-700 mb-6 leading-relaxed italic">
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
               <div className="border-t border-divine-cream pt-4">
                 <p className="font-semibold text-gray-800">{testimonial.name}</p>

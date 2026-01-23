@@ -54,7 +54,7 @@ export function CTASection() {
 
           <div className="mt-12 pt-8 border-t border-amber-200">
             <p className="text-lg text-gray-700 font-medium">
-              "All that we are is the result of what we have thought."
+              &ldquo;All that we are is the result of what we have thought.&rdquo;
             </p>
             <p className="text-divine-saffron font-semibold mt-2">— Sai Baba</p>
           </div>
