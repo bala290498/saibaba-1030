@@ -98,7 +98,7 @@ export function Navigation() {
             {/* Logo & Text - Left */}
             <Link 
               href="/" 
-              className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-200"
+              className="flex items-center gap-2 lg:gap-3 hover:opacity-90 transition-opacity duration-200"
             >
               <div className="relative w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center flex-shrink-0">
                 <Image
@@ -111,12 +111,17 @@ export function Navigation() {
                 />
               </div>
               <span 
-                className="text-lg lg:text-2xl font-serif font-extrabold text-divine-saffron leading-tight"
+                className="text-xs lg:text-lg font-serif font-extrabold text-divine-saffron leading-tight"
                 style={{
                   fontFamily: "var(--font-playfair)",
                 }}
               >
-                Sai Baba Vedha Garden
+                <span className="lg:hidden block">
+                  Shri Shirdi Vijayasai Natha<br />Gurumoorthy temple
+                </span>
+                <span className="hidden lg:block whitespace-nowrap">
+                  Shri Shirdi Vijayasai Natha Gurumoorthy temple
+                </span>
               </span>
             </Link>
 
