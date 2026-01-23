@@ -1,0 +1,90 @@
+"use client";
+
+import Link from "next/link";
+import { Calendar, ArrowRight } from "lucide-react";
+import { GRADIENTS } from "@/lib/constants";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
+
+export function UpcomingEvents() {
+  const { language } = useLanguage();
+  const t = translations[language].upcomingEvents;
+
+  // Sample events - in a real app, this would come from a database
+  const events = [
+    {
+      title: "Weekly Bhajan Session",
+      date: "Every Sunday",
+      time: "6:00 PM",
+    },
+    {
+      title: "Special Aarti",
+      date: "Coming Soon",
+      time: "TBA",
+    },
+  ];
+
+  return (
+    <section 
+      className="py-16 relative"
+      style={{
+        background: GRADIENTS.dark,
+      }}
+    >
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 
+            className="text-3xl md:text-4xl font-bold mb-12 text-white text-center"
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontWeight: 900,
+            }}
+          >
+            {t.title}
+          </h2>
+          
+          {events.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {events.map((event, index) => (
+                <div
+                  key={index}
+                  className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{event.title}</h3>
+                      <p className="text-gray-600 mb-1">
+                        <span className="font-medium">Date:</span> {event.date}
+                      </p>
+                      <p className="text-gray-600">
+                        <span className="font-medium">Time:</span> {event.time}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md border border-white/30 text-center">
+              <p className="text-gray-700 text-lg">{t.noEvents}</p>
+            </div>
+          )}
+
+          <div className="text-center">
+            <Link
+              href="/events"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              {t.viewAll}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

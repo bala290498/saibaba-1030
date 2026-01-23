@@ -11,7 +11,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 
 // Grouped navigation items for better organization
-const getNavGroups = (lang: "en" | "ta") => [
+const getNavGroups = (lang: "en" | "ta"): Array<{ id: string; items: Array<{ href: string; label: string }> }> => [
   {
     id: "main",
     items: [

@@ -19,8 +19,46 @@ export const translations = {
       divineBlessings: "Divine Blessings",
       title: "Sai Baba Vedha Garden",
       subtitle: "Experience the divine presence, find inner peace, and receive the blessings of Sai Baba in our sacred space.",
+      blessingQuote: "Love one another and help others to rise to the higher levels, simply by pouring out love. Love is infectious and the greatest healing energy.",
+      blessingAuthor: "— Sai Baba",
       viewEvents: "View Events",
       makeDonation: "Make a Donation",
+    },
+    // Daily Aarti Timings
+    aartiTimings: {
+      title: "Daily Aarti Timings",
+      morning: "Morning Aarti",
+      evening: "Evening Aarti",
+      morningTime: "6:00 AM",
+      eveningTime: "7:00 PM",
+      note: "All devotees are welcome to join us for daily prayers",
+    },
+    // Today's Message
+    todaysMessage: {
+      title: "Today's Message",
+      message: "Why fear when I am here? Trust in the divine and remain patient in all circumstances. Your faith will guide you through all challenges.",
+      author: "— Sai Baba",
+    },
+    // Quick Devotional Links
+    devotionalLinks: {
+      title: "Quick Devotional Links",
+      aartiBhajans: "Aarti & Bhajans",
+      devotion: "Devotion",
+      templeInfo: "Temple Info",
+      aboutSaiBaba: "About Sai Baba",
+    },
+    // Upcoming Events
+    upcomingEvents: {
+      title: "Upcoming Events",
+      viewAll: "View All Events",
+      noEvents: "No upcoming events at this time",
+    },
+    // Donation CTA
+    donationCTA: {
+      title: "Support Our Mission",
+      description: "Your generous donations help us maintain the temple and serve the community with love and devotion.",
+      donateNow: "Donate Now",
+      learnMore: "Learn More",
     },
     // Quote Section
     quote: {
@@ -125,8 +163,46 @@ export const translations = {
       divineBlessings: "தெய்வீக ஆசீர்வாதங்கள்",
       title: "சாய் பாபா வேதா கார்டன்",
       subtitle: "தெய்வீக இருப்பை அனுபவிக்கவும், உள் அமைதியைக் கண்டறியவும், எங்கள் புனித இடத்தில் சாய் பாபாவின் ஆசீர்வாதங்களைப் பெறவும்.",
+      blessingQuote: "ஒருவரையொருவர் நேசித்து, அன்பை ஊற்றுவதன் மூலம் மற்றவர்களை உயர்ந்த நிலைகளுக்கு உயர்த்த உதவுங்கள். அன்பு தொற்றுநோயாகும் மற்றும் மிகப்பெரிய குணப்படுத்தும் ஆற்றல்.",
+      blessingAuthor: "— சாய் பாபா",
       viewEvents: "நிகழ்வுகளைக் காண்க",
       makeDonation: "நன்கொடை அளிக்கவும்",
+    },
+    // Daily Aarti Timings
+    aartiTimings: {
+      title: "தினசரி ஆர்த்தி நேரங்கள்",
+      morning: "காலை ஆர்த்தி",
+      evening: "மாலை ஆர்த்தி",
+      morningTime: "காலை 6:00",
+      eveningTime: "மாலை 7:00",
+      note: "அனைத்து பக்தர்களும் தினசரி பிரார்த்தனைகளில் எங்களுடன் சேர வரவேற்கப்படுகிறார்கள்",
+    },
+    // Today's Message
+    todaysMessage: {
+      title: "இன்றைய செய்தி",
+      message: "நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்? தெய்வத்தில் நம்பிக்கை வைத்து அனைத்து சூழ்நிலைகளிலும் பொறுமையாக இருங்கள். உங்கள் நம்பிக்கை அனைத்து சவால்களையும் வழிநடத்தும்.",
+      author: "— சாய் பாபா",
+    },
+    // Quick Devotional Links
+    devotionalLinks: {
+      title: "விரைவு பக்தி இணைப்புகள்",
+      aartiBhajans: "ஆர்த்தி & பஜனை",
+      devotion: "பக்தி",
+      templeInfo: "கோயில் தகவல்",
+      aboutSaiBaba: "சாய் பாபா பற்றி",
+    },
+    // Upcoming Events
+    upcomingEvents: {
+      title: "வரவிருக்கும் நிகழ்வுகள்",
+      viewAll: "அனைத்து நிகழ்வுகளையும் காண்க",
+      noEvents: "இந்த நேரத்தில் வரவிருக்கும் நிகழ்வுகள் இல்லை",
+    },
+    // Donation CTA
+    donationCTA: {
+      title: "எங்கள் பணியை ஆதரிக்கவும்",
+      description: "உங்கள் தாராளமான நன்கொடைகள் கோயிலை பராமரிக்கவும் அன்பு மற்றும் பக்தியுடன் சமூகத்திற்கு சேவை செய்யவும் உதவுகின்றன.",
+      donateNow: "இப்போது நன்கொடை அளிக்கவும்",
+      learnMore: "மேலும் அறிக",
     },
     // Quote Section
     quote: {
