@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 import { GRADIENTS } from "@/lib/constants";
 
 export function Hero() {
@@ -32,13 +33,31 @@ export function Hero() {
   return (
     <section 
       className="hero-section relative min-h-[90vh] flex items-center justify-center overflow-hidden"
-      style={{
-        background: GRADIENTS.dark
-      }}
     >
+      {/* Hero Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/home/hero-image/hero.jpg"
+          alt="Sai Baba Vedha Garden"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+      </div>
+      
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: GRADIENTS.dark,
+          opacity: 0.4
+        }}
+      />
+      
       {/* SVG Grain Pattern Overlay */}
       <div 
-        className="hero-grain-overlay absolute inset-0 opacity-30"
+        className="hero-grain-overlay absolute inset-0 z-[2] opacity-20"
         style={{
           backgroundImage: `url("${grainPattern}")`,
           backgroundRepeat: "repeat"
@@ -46,10 +65,10 @@ export function Hero() {
       />
       
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl z-[2]" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl z-[2]" />
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-[3] container mx-auto px-4 text-center">
         <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-white/30 shadow-sm">
           <Sparkles className="w-4 h-4 text-divine-saffron" />
           <span className="text-sm font-medium text-gray-700">
@@ -83,7 +102,7 @@ export function Hero() {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
-            href="/donation"
+            href="/donations"
             className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-semibold text-lg hover:bg-white/20 transition-colors duration-300"
           >
             Make a Donation

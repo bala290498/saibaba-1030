@@ -16,15 +16,15 @@ const features = [
     title: "Support Us",
     description:
       "Your generous donations help us maintain the temple and serve the community.",
-    href: "/donation",
+    href: "/donations",
     color: "from-divine-gold to-divine-gold-dark",
   },
   {
     icon: Sparkles,
-    title: "Pooja Services",
+    title: "Aarti & Bhajans",
     description:
-      "Book special poojas and seek divine blessings for your family and loved ones.",
-    href: "/poja",
+      "Join us for daily aartis and soulful bhajan sessions to seek divine blessings.",
+    href: "/aarti-bhajans",
     color: "from-divine-saffron-dark to-divine-saffron",
   },
   {

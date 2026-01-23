@@ -20,7 +20,6 @@ body {
 
 body {
   color: #1a1a1a;
-  background: linear-gradient(to bottom, #FFF8E7, #FFFFFF);
   font-family: var(--font-inter);
 }
 
