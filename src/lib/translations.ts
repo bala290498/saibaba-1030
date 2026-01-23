@@ -314,6 +314,68 @@ export const translations = {
         quote: "Shraddha (Faith) and Saburi (Patience) lead the way to Sai Baba's blessings.",
       },
     },
+    // Devotion Page
+    devotion: {
+      hero: {
+        heading: "Devotion to Sai Baba",
+        subheading: "A sacred space to connect your heart and soul with the divine presence of Sai Baba",
+        quote: "Shraddha (faith) and Saburi (patience) lead to inner peace.",
+        cta: "Begin Your Devotion",
+      },
+      dailyPractices: {
+        title: "Daily Devotional Practices",
+        dailyAarti: {
+          title: "Daily Aarti",
+          description: "Participate in sacred aartis that awaken devotion and gratitude.",
+        },
+        saiSatcharitra: {
+          title: "Sai Satcharitra",
+          description: "Read divine chapters that illuminate Sai Baba's life and teachings.",
+        },
+        mantrasStotrams: {
+          title: "Mantras & Stotrams",
+          description: "Chant powerful verses to calm the mind and purify the soul.",
+        },
+        naamJap: {
+          title: "Naam Jap",
+          description: "Repeat Sai Baba's holy name to deepen spiritual awareness.",
+        },
+      },
+      mantras: {
+        title: "Sacred Mantras",
+        description: "Chanting Sai Baba's mantras brings peace, clarity, and divine blessings.",
+        mantra1: "Om Sai Namo Namah",
+        mantra2: "Shri Sai Devaya Namah",
+        mantra3: "Om Shri Sai Nathaya Namah",
+        readAll: "Read All Mantras",
+        listenChanting: "Listen to Chanting",
+      },
+      parayanam: {
+        title: "Sai Satcharitra Parayanam",
+        description: "Regular reading of the Sai Satcharitra nurtures faith, removes obstacles, and guides devotees toward righteousness and inner peace.",
+        startReading: "Start Today's Reading",
+        viewIndex: "View Chapter Index",
+      },
+      audio: {
+        title: "Bhajans & Aartis",
+        description: "Immerse yourself in soulful music that elevates devotion and surrender.",
+        kakad: "Kakad Aarti",
+        madhyan: "Madhyan Aarti",
+        dhoop: "Dhoop Aarti",
+        shej: "Shej Aarti",
+        play: "Play",
+      },
+      dailyMessage: {
+        title: "Today's Sai Message",
+        quote: "Why fear when I am here? Cast all your burdens on me and walk freely.",
+      },
+      cta: {
+        heading: "Walk the Path of Faith",
+        description: "Let devotion become your daily practice and Sai Baba your eternal guide.",
+        lightLamp: "Light a Virtual Lamp",
+        offerPrayers: "Offer Your Prayers",
+      },
+    },
   },
   ta: {
     // Navigation
@@ -626,6 +688,68 @@ export const translations = {
       },
       footer: {
         quote: "ஷ்ரத்தா (நம்பிக்கை) மற்றும் சபுரி (பொறுமை) சாய் பாபாவின் ஆசீர்வாதங்களுக்கு வழி வகுக்கின்றன.",
+      },
+    },
+    // Devotion Page
+    devotion: {
+      hero: {
+        heading: "சாய் பாபாவுக்கு பக்தி",
+        subheading: "சாய் பாபாவின் தெய்வீக இருப்புடன் உங்கள் இதயம் மற்றும் ஆன்மாவை இணைக்க புனித இடம்",
+        quote: "ஷ்ரத்தா (நம்பிக்கை) மற்றும் சபுரி (பொறுமை) உள் அமைதிக்கு வழிவகுக்கின்றன.",
+        cta: "உங்கள் பக்தியைத் தொடங்குங்கள்",
+      },
+      dailyPractices: {
+        title: "தினசரி பக்தி நடைமுறைகள்",
+        dailyAarti: {
+          title: "தினசரி ஆர்த்தி",
+          description: "பக்தி மற்றும் நன்றியை எழுப்பும் புனித ஆர்த்திகளில் பங்கேற்கவும்.",
+        },
+        saiSatcharitra: {
+          title: "சாய் சத்சரித்ரா",
+          description: "சாய் பாபாவின் வாழ்க்கை மற்றும் போதனைகளை வெளிச்சமிடும் தெய்வீக அத்தியாயங்களைப் படிக்கவும்.",
+        },
+        mantrasStotrams: {
+          title: "மந்திரங்கள் & ஸ்தோத்ரங்கள்",
+          description: "மனதை அமைதிப்படுத்தவும் ஆன்மாவை சுத்தப்படுத்தவும் சக்திவாய்ந்த வசனங்களை ஜெபிக்கவும்.",
+        },
+        naamJap: {
+          title: "நாம் ஜாப்",
+          description: "ஆன்மீக விழிப்புணர்வை ஆழப்படுத்த சாய் பாபாவின் புனித பெயரை மீண்டும் மீண்டும் சொல்லுங்கள்.",
+        },
+      },
+      mantras: {
+        title: "புனித மந்திரங்கள்",
+        description: "சாய் பாபாவின் மந்திரங்களை ஜெபிப்பது அமைதி, தெளிவு மற்றும் தெய்வீக ஆசீர்வாதங்களைக் கொண்டுவருகிறது.",
+        mantra1: "ஓம் சாய் நமோ நமஹ",
+        mantra2: "ஸ்ரீ சாய் தேவாய நமஹ",
+        mantra3: "ஓம் ஸ்ரீ சாய் நாதாய நமஹ",
+        readAll: "அனைத்து மந்திரங்களையும் படிக்க",
+        listenChanting: "ஜெபத்தைக் கேட்க",
+      },
+      parayanam: {
+        title: "சாய் சத்சரித்ரா பாராயணம்",
+        description: "சாய் சத்சரித்ராவின் வழக்கமான வாசிப்பு நம்பிக்கையை வளர்க்கிறது, தடைகளை அகற்றுகிறது, மற்றும் பக்தர்களை நீதி மற்றும் உள் அமைதியை நோக்கி வழிநடத்துகிறது.",
+        startReading: "இன்றைய வாசிப்பைத் தொடங்குங்கள்",
+        viewIndex: "அத்தியாய குறியீட்டைக் காண்க",
+      },
+      audio: {
+        title: "பஜனைகள் & ஆர்த்திகள்",
+        description: "பக்தி மற்றும் சரணடைதலை உயர்த்தும் ஆன்மீக இசையில் மூழ்குங்கள்.",
+        kakad: "காகட் ஆர்த்தி",
+        madhyan: "மத்யான் ஆர்த்தி",
+        dhoop: "தூப் ஆர்த்தி",
+        shej: "ஷேஜ் ஆர்த்தி",
+        play: "இயக்க",
+      },
+      dailyMessage: {
+        title: "இன்றைய சாய் செய்தி",
+        quote: "நான் இங்கே இருக்கும்போது ஏன் பயப்பட வேண்டும்? உங்கள் அனைத்து சுமைகளையும் என்மீது போடுங்கள் மற்றும் சுதந்திரமாக நடக்கவும்.",
+      },
+      cta: {
+        heading: "நம்பிக்கையின் பாதையில் நடக்கவும்",
+        description: "பக்தி உங்கள் தினசரி நடைமுறையாகவும் சாய் பாபா உங்கள் நித்திய வழிகாட்டியாகவும் இருக்கட்டும்.",
+        lightLamp: "மெய்நிகர் விளக்கை ஏற்றுங்கள்",
+        offerPrayers: "உங்கள் பிரார்த்தனைகளை வழங்குங்கள்",
       },
     },
   },

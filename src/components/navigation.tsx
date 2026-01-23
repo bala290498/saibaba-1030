@@ -174,16 +174,16 @@ export function Navigation() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex items-center justify-between h-14">
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center flex-1 justify-center">
+            <div className="hidden lg:flex items-center flex-1 justify-center gap-1">
               {allNavItems.map((item, index) => (
                 <div key={item.href} className="flex items-center">
                   {index > 0 && (
-                    <div className="w-px h-4 bg-white/30 mx-3" />
+                    <div className="w-px h-4 bg-white/30 mx-4" />
                   )}
                   <Link
                     href={item.href}
                     className={cn(
-                      "relative px-3 py-1.5 text-sm font-medium transition-all duration-200 rounded-lg whitespace-nowrap",
+                      "relative px-4 py-1.5 text-sm font-medium transition-all duration-200 rounded-lg whitespace-nowrap",
                       "hover:bg-white/20 hover:text-white",
                       pathname === item.href
                         ? "text-white bg-white/15"

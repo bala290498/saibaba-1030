@@ -1,86 +1,377 @@
-import { GRADIENTS } from "@/lib/constants";
-import { Heart, BookOpen, Sparkles } from "lucide-react";
+"use client";
 
-const devotionPractices = [
-  {
-    title: "Daily Prayers",
-    description: "Start and end your day with prayers to Sai Baba for guidance and protection.",
-    icon: Heart,
-  },
-  {
-    title: "Chanting",
-    description: "Chant &ldquo;Om Sai Ram&rdquo; with devotion to feel the divine presence.",
-    icon: Sparkles,
-  },
-  {
-    title: "Reading Sai Satcharitra",
-    description: "Read the life and teachings of Sai Baba to deepen your understanding.",
-    icon: BookOpen,
-  },
-  {
-    title: "Service to Others",
-    description: "Practice selfless service (seva) as taught by Sai Baba.",
-    icon: Heart,
-  },
-];
+import { GRADIENTS } from "@/lib/constants";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
+import Link from "next/link";
+import Image from "next/image";
+import { Heart, BookOpen, Music, Sparkles, Play, ArrowRight, Flame, FileText } from "lucide-react";
 
 export default function DevotionPage() {
+  const { language } = useLanguage();
+  const t = translations[language].devotion;
+
+  const practices = [
+    {
+      icon: Sparkles,
+      title: t.dailyPractices.dailyAarti.title,
+      description: t.dailyPractices.dailyAarti.description,
+    },
+    {
+      icon: BookOpen,
+      title: t.dailyPractices.saiSatcharitra.title,
+      description: t.dailyPractices.saiSatcharitra.description,
+    },
+    {
+      icon: Music,
+      title: t.dailyPractices.mantrasStotrams.title,
+      description: t.dailyPractices.mantrasStotrams.description,
+    },
+    {
+      icon: Heart,
+      title: t.dailyPractices.naamJap.title,
+      description: t.dailyPractices.naamJap.description,
+    },
+  ];
+
+  const mantras = [
+    t.mantras.mantra1,
+    t.mantras.mantra2,
+    t.mantras.mantra3,
+  ];
+
+  const audioItems = [
+    { name: t.audio.kakad, duration: "4:30" },
+    { name: t.audio.madhyan, duration: "3:45" },
+    { name: t.audio.dhoop, duration: "5:20" },
+    { name: t.audio.shej, duration: "4:15" },
+  ];
+
   return (
-    <div 
-      className="min-h-screen py-16"
-      style={{
-        background: GRADIENTS.dark
-      }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Heart className="w-16 h-16 text-white mx-auto mb-4" />
-          <h1 
-            className="text-5xl font-bold mb-4 text-white"
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section
+        className="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/20" />
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              background: GRADIENTS.dark,
+            }}
+          />
+        </div>
+
+        <div className="relative z-[3] container mx-auto px-4 text-center">
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
             style={{
               fontFamily: "var(--font-playfair)",
               fontWeight: 900,
             }}
           >
-            Devotion
+            {t.hero.heading}
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Ways to deepen your devotion to Sai Baba
+          <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
+            {t.hero.subheading}
           </p>
+          <blockquote
+            className="text-lg md:text-xl text-white/95 italic mb-8 max-w-2xl mx-auto"
+            style={{
+              fontFamily: "var(--font-playfair)",
+            }}
+          >
+            &ldquo;{t.hero.quote}&rdquo;
+          </blockquote>
+          <Link
+            href="/aarti-bhajans"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            {t.hero.cta}
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
+      </section>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {devotionPractices.map((practice, index) => {
+      {/* Daily Devotional Practices */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-12 text-gray-800 text-center"
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontWeight: 900,
+            }}
+          >
+            {t.dailyPractices.title}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {practices.map((practice, index) => {
               const Icon = practice.icon;
               return (
-                <div key={index} className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Icon className="w-8 h-8 text-divine-saffron" />
-                    <h3 className="text-xl font-bold text-gray-800">{practice.title}</h3>
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow"
+                >
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center mb-4">
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <p className="text-gray-600">{practice.description}</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{practice.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{practice.description}</p>
                 </div>
               );
             })}
           </div>
+        </div>
+      </section>
 
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-md">
-            <h2 className="text-3xl font-bold text-divine-saffron mb-4">Message of Devotion</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Devotion to Sai Baba is not just about rituals, but about living his teachings every day. 
-              True devotion means showing love and compassion to all, helping those in need, and maintaining 
-              faith even in difficult times.
+      {/* Sai Baba Mantras Section */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 text-center"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.mantras.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8 text-center max-w-2xl mx-auto">
+              {t.mantras.description}
             </p>
-            <blockquote className="text-xl text-gray-700 italic border-l-4 border-divine-saffron pl-4">
-              &ldquo;If you look to me, I look to you. If you burden me with your cares, I will surely lighten them. 
-              If you seek my advice and help, it shall be given to you at once.&rdquo;
-            </blockquote>
-            <p className="text-divine-saffron font-semibold mt-4 text-right">— Sai Baba</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              {mantras.map((mantra, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 text-center"
+                >
+                  <p className="text-lg md:text-xl font-semibold text-divine-saffron">{mantra}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-6 py-3 bg-divine-saffron text-white rounded-full font-semibold hover:bg-divine-saffron-dark transition-colors flex items-center justify-center gap-2">
+                <FileText className="w-5 h-5" />
+                {t.mantras.readAll}
+              </button>
+              <button className="px-6 py-3 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2">
+                <Play className="w-5 h-5" />
+                {t.mantras.listenChanting}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Devotional Reading (Parayanam) */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+              {/* Content */}
+              <div className="flex-1 lg:w-[60%]">
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-6 text-white"
+                  style={{
+                    fontFamily: "var(--font-playfair)",
+                    fontWeight: 900,
+                  }}
+                >
+                  {t.parayanam.title}
+                </h2>
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-6">
+                  {t.parayanam.description}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="px-6 py-3 bg-white text-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2">
+                    <BookOpen className="w-5 h-5" />
+                    {t.parayanam.startReading}
+                  </button>
+                  <button className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    {t.parayanam.viewIndex}
+                  </button>
+                </div>
+              </div>
+
+              {/* Image */}
+              <div className="flex-shrink-0 lg:w-[40%] w-full">
+                <div
+                  className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
+                  }}
+                >
+                  <svg
+                    width="200"
+                    height="200"
+                    viewBox="0 0 200 200"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-3/4 h-3/4 opacity-30"
+                  >
+                    <path
+                      d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
+                      stroke="#d97706"
+                      strokeWidth="3"
+                      fill="none"
+                    />
+                    <path
+                      d="M100 80L100 120M80 100L120 100"
+                      stroke="#d97706"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="50" cy="50" r="8" fill="#d97706" opacity="0.5" />
+                    <circle cx="150" cy="50" r="8" fill="#d97706" opacity="0.5" />
+                    <circle cx="50" cy="150" r="8" fill="#d97706" opacity="0.5" />
+                    <circle cx="150" cy="150" r="8" fill="#d97706" opacity="0.5" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bhajans & Aarti Audio */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 text-center"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.audio.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8 text-center max-w-2xl mx-auto">
+              {t.audio.description}
+            </p>
+
+            <div className="space-y-4">
+              {audioItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center">
+                      <Music className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
+                      <p className="text-sm text-gray-600">{item.duration}</p>
+                    </div>
+                  </div>
+                  <button className="px-6 py-2 bg-divine-saffron text-white rounded-full font-medium hover:bg-divine-saffron-dark transition-colors flex items-center gap-2">
+                    <Play className="w-4 h-4" />
+                    {t.audio.play}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Sai Message */}
+      <section
+        className="py-16 md:py-20"
+        style={{
+          background: GRADIENTS.dark,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-lg border border-white/30">
+              <h2
+                className="text-2xl md:text-3xl font-bold mb-6 text-divine-saffron text-center"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontWeight: 900,
+                }}
+              >
+                {t.dailyMessage.title}
+              </h2>
+              <blockquote
+                className="text-xl md:text-2xl text-gray-800 italic text-center leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                }}
+              >
+                &ldquo;{t.dailyMessage.quote}&rdquo;
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Devotion Call-to-Action */}
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: GRADIENTS.light,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-800"
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontWeight: 900,
+              }}
+            >
+              {t.cta.heading}
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {t.cta.description}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                <Flame className="w-5 h-5" />
+                {t.cta.lightLamp}
+              </button>
+              <button className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2">
+                <Heart className="w-5 h-5" />
+                {t.cta.offerPrayers}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
