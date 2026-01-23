@@ -13,15 +13,17 @@ export function Hero() {
       className="hero-section relative min-h-[90vh] flex items-end justify-center overflow-hidden"
     >
       {/* Hero Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/home/hero-image/hero.jpg"
-          alt="Sai Baba Vedha Garden"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0" style={{ bottom: "-20%" }}>
+          <Image
+            src="/home/hero-image/hero.jpg"
+            alt="Sai Baba Vedha Garden"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+        </div>
       </div>
 
       <div className="relative z-[3] container mx-auto px-4 text-center pb-20 md:pb-32">
