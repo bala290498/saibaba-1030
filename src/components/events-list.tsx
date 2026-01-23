@@ -57,11 +57,7 @@ export function EventsList() {
                   {event.title}
                 </h3>
                 <span
-                  className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
-                    event.type === "Special" || event.type === "Festival"
-                      ? "bg-divine-saffron text-white"
-                      : "bg-divine-cream text-divine-saffron"
-                  }`}
+                  className="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-divine-saffron text-white"
                 >
                   {event.type}
                 </span>
