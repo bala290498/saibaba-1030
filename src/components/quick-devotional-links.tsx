@@ -64,11 +64,13 @@ export function QuickDevotionalLinks() {
                 href={link.href}
                 className="group bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div
-                  className={`w-16 h-16 rounded-full bg-gradient-to-br ${link.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
+                {language === "en" && (
+                  <div
+                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${link.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                )}
                 <h3 className="text-lg font-bold text-gray-800 group-hover:text-divine-saffron transition-colors">
                   {link.label}
                 </h3>

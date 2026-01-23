@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 const donationAmounts = [500, 1000, 2000, 5000, 10000];
 
 export function DonationForm() {
+  const { language } = useLanguage();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [formData, setFormData] = useState({
@@ -26,7 +28,7 @@ export function DonationForm() {
   return (
     <Card className="p-8">
       <div className="text-center mb-8">
-        <Heart className="w-12 h-12 text-divine-saffron mx-auto mb-4" />
+        {language === "en" && <Heart className="w-12 h-12 text-divine-saffron mx-auto mb-4" />}
         <h2 className="text-3xl font-bold text-gray-800 mb-2">
           Make a Donation
         </h2>

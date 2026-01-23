@@ -19,7 +19,7 @@ export function DonationCTA() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <Heart className="w-16 h-16 text-divine-saffron mx-auto mb-6" />
+          {language === "en" && <Heart className="w-16 h-16 text-divine-saffron mx-auto mb-6" />}
           <h2
             className="text-4xl md:text-5xl font-bold mb-6 text-gray-800"
             style={{
@@ -36,11 +36,11 @@ export function DonationCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/donations"
-              className="group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+              className={`group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
             >
-              <Heart className="w-5 h-5" />
+              {language === "en" && <Heart className="w-5 h-5" />}
               {t.donateNow}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              {language === "en" && <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
             </Link>
             <Link
               href="/donations"

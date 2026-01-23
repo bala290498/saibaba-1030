@@ -51,9 +51,11 @@ export function UpcomingEvents() {
                   className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-white/30"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-6 h-6 text-white" />
-                    </div>
+                    {language === "en" && (
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center flex-shrink-0">
+                        <Calendar className="w-6 h-6 text-white" />
+                      </div>
+                    )}
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-800 mb-2">{event.title}</h3>
                       <p className="text-gray-600 mb-1">
@@ -76,10 +78,10 @@ export function UpcomingEvents() {
           <div className="text-center">
             <Link
               href="/events"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className={`inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ${language === "ta" ? "gap-0" : ""}`}
             >
               {t.viewAll}
-              <ArrowRight className="w-5 h-5" />
+              {language === "en" && <ArrowRight className="w-5 h-5" />}
             </Link>
           </div>
         </div>

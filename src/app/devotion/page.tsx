@@ -90,10 +90,10 @@ export default function DevotionPage() {
           </blockquote>
           <Link
             href="/aarti-bhajans"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className={`inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ${language === "ta" ? "gap-0" : ""}`}
           >
             {t.hero.cta}
-            <ArrowRight className="w-5 h-5" />
+            {language === "en" && <ArrowRight className="w-5 h-5" />}
           </Link>
         </div>
       </section>
@@ -123,9 +123,11 @@ export default function DevotionPage() {
                   key={index}
                   className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow"
                 >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center mb-4">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
+                  {language === "en" && (
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center mb-4">
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                  )}
                   <h3 className="text-xl font-bold text-gray-800 mb-3">{practice.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{practice.description}</p>
                 </div>
@@ -169,12 +171,12 @@ export default function DevotionPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-6 py-3 bg-divine-saffron text-white rounded-full font-semibold hover:bg-divine-saffron-dark transition-colors flex items-center justify-center gap-2">
-                <FileText className="w-5 h-5" />
+              <button className={`px-6 py-3 bg-divine-saffron text-white rounded-full font-semibold hover:bg-divine-saffron-dark transition-colors flex items-center justify-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                {language === "en" && <FileText className="w-5 h-5" />}
                 {t.mantras.readAll}
               </button>
-              <button className="px-6 py-3 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2">
-                <Play className="w-5 h-5" />
+              <button className={`px-6 py-3 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                {language === "en" && <Play className="w-5 h-5" />}
                 {t.mantras.listenChanting}
               </button>
             </div>
@@ -207,12 +209,12 @@ export default function DevotionPage() {
                   {t.parayanam.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="px-6 py-3 bg-white text-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2">
-                    <BookOpen className="w-5 h-5" />
+                  <button className={`px-6 py-3 bg-white text-divine-saffron rounded-full font-semibold hover:bg-divine-cream transition-colors flex items-center justify-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                    {language === "en" && <BookOpen className="w-5 h-5" />}
                     {t.parayanam.startReading}
                   </button>
-                  <button className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
-                    <FileText className="w-5 h-5" />
+                  <button className={`px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                    {language === "en" && <FileText className="w-5 h-5" />}
                     {t.parayanam.viewIndex}
                   </button>
                 </div>
@@ -287,16 +289,18 @@ export default function DevotionPage() {
                   className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40 hover:shadow-lg transition-shadow flex items-center justify-between"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center">
-                      <Music className="w-6 h-6 text-white" />
-                    </div>
+                    {language === "en" && (
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-divine-saffron to-divine-saffron-dark flex items-center justify-center">
+                        <Music className="w-6 h-6 text-white" />
+                      </div>
+                    )}
                     <div>
                       <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
                       <p className="text-sm text-gray-600">{item.duration}</p>
                     </div>
                   </div>
-                  <button className="px-6 py-2 bg-divine-saffron text-white rounded-full font-medium hover:bg-divine-saffron-dark transition-colors flex items-center gap-2">
-                    <Play className="w-4 h-4" />
+                  <button className={`px-6 py-2 bg-divine-saffron text-white rounded-full font-medium hover:bg-divine-saffron-dark transition-colors flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                    {language === "en" && <Play className="w-4 h-4" />}
                     {t.audio.play}
                   </button>
                 </div>
@@ -360,12 +364,12 @@ export default function DevotionPage() {
               {t.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                <Flame className="w-5 h-5" />
+              <button className={`px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                {language === "en" && <Flame className="w-5 h-5" />}
                 {t.cta.lightLamp}
               </button>
-              <button className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2">
-                <Heart className="w-5 h-5" />
+              <button className={`px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}>
+                {language === "en" && <Heart className="w-5 h-5" />}
                 {t.cta.offerPrayers}
               </button>
             </div>

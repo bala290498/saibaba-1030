@@ -80,9 +80,11 @@ export default function AartiBhajansPage() {
         }}
       >
         <div className="container mx-auto px-4 text-center">
-          <div className="mb-6 inline-flex items-center justify-center">
-            <Music className="w-12 h-12 md:w-16 md:h-16 text-white mb-4" />
-          </div>
+          {language === "en" && (
+            <div className="mb-6 inline-flex items-center justify-center">
+              <Music className="w-12 h-12 md:w-16 md:h-16 text-white mb-4" />
+            </div>
+          )}
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
             style={{
@@ -189,7 +191,7 @@ export default function AartiBhajansPage() {
                   className="w-full px-6 py-5 flex items-center justify-between hover:bg-white/50 transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    <Music className="w-6 h-6 text-divine-saffron" />
+                    {language === "en" && <Music className="w-6 h-6 text-divine-saffron" />}
                     <div className="text-left">
                       <h3 className="text-xl md:text-2xl font-bold text-gray-800">{aarti.title}</h3>
                       <p className="text-sm text-gray-600">{aarti.time}</p>
@@ -204,20 +206,20 @@ export default function AartiBhajansPage() {
                     <p className="text-gray-700 mb-4 mt-4 leading-relaxed">{aarti.description}</p>
                     <div className="flex flex-wrap gap-3">
                       {"listenAudio" in aarti && (
-                        <button className="flex items-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors">
-                          <Play className="w-4 h-4" />
+                        <button className={`flex items-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors ${language === "ta" ? "gap-0" : ""}`}>
+                          {language === "en" && <Play className="w-4 h-4" />}
                           {aarti.listenAudio}
                         </button>
                       )}
                       {"readLyrics" in aarti && (
-                        <button className="flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors">
-                          <FileText className="w-4 h-4" />
+                        <button className={`flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors ${language === "ta" ? "gap-0" : ""}`}>
+                          {language === "en" && <FileText className="w-4 h-4" />}
                           {aarti.readLyrics}
                         </button>
                       )}
                       {aarti.hasDownload && "download" in aarti && (
-                        <button className="flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors">
-                          <Download className="w-4 h-4" />
+                        <button className={`flex items-center gap-2 px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg font-medium hover:bg-divine-cream transition-colors ${language === "ta" ? "gap-0" : ""}`}>
+                          {language === "en" && <Download className="w-4 h-4" />}
                           {aarti.download}
                         </button>
                       )}
@@ -267,16 +269,20 @@ export default function AartiBhajansPage() {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors">
-                      <Play className="w-4 h-4" />
+                    <button className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-divine-saffron text-white rounded-lg font-medium hover:bg-divine-saffron-dark transition-colors ${language === "ta" ? "gap-0" : ""}`}>
+                      {language === "en" && <Play className="w-4 h-4" />}
                       {t.bhajans.play}
                     </button>
-                    <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
-                      <Heart className="w-4 h-4" />
-                    </button>
-                    <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
-                      <Download className="w-4 h-4" />
-                    </button>
+                    {language === "en" && (
+                      <>
+                        <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
+                          <Heart className="w-4 h-4" />
+                        </button>
+                        <button className="px-4 py-2 bg-white text-divine-saffron border-2 border-divine-saffron rounded-lg hover:bg-divine-cream transition-colors">
+                          <Download className="w-4 h-4" />
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
@@ -309,17 +315,17 @@ export default function AartiBhajansPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/donations"
-                className="group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                className={`group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
               >
-                <Heart className="w-5 h-5" />
+                {language === "en" && <Heart className="w-5 h-5" />}
                 {t.cta.donateNow}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {language === "en" && <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
               </Link>
               <Link
                 href="/events"
-                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+                className={`px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
               >
-                <Calendar className="w-5 h-5" />
+                {language === "en" && <Calendar className="w-5 h-5" />}
                 {t.cta.joinAarti}
               </Link>
             </div>

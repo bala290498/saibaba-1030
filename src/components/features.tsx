@@ -72,11 +72,13 @@ export function Features() {
                 href={feature.href}
                 className="group p-8 bg-white/95 backdrop-blur-sm rounded-2xl border border-white/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div
-                  className={`w-16 h-16 rounded-full bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
+                {language === "en" && (
+                  <div
+                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                )}
                 <h3 className="text-2xl font-bold text-gray-800 mb-3">
                   {feature.title}
                 </h3>

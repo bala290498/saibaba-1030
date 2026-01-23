@@ -286,24 +286,24 @@ export default function TempleInfoPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/aarti-bhajans"
-                className="group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                className={`group px-8 py-4 bg-divine-saffron text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
               >
-                <Calendar className="w-5 h-5" />
+                {language === "en" && <Calendar className="w-5 h-5" />}
                 {t.section7.viewAarti}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {language === "en" && <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
               </Link>
               <Link
                 href="/events"
-                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+                className={`px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
               >
-                <Heart className="w-5 h-5" />
+                {language === "en" && <Heart className="w-5 h-5" />}
                 {t.section7.upcomingEvents}
               </Link>
               <Link
                 href="/donations"
-                className="px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2"
+                className={`px-8 py-4 bg-white text-divine-saffron border-2 border-divine-saffron rounded-full font-semibold text-lg hover:bg-divine-cream transition-colors duration-300 flex items-center gap-2 ${language === "ta" ? "gap-0" : ""}`}
               >
-                <Heart className="w-5 h-5" />
+                {language === "en" && <Heart className="w-5 h-5" />}
                 {t.section7.donations}
               </Link>
             </div>
