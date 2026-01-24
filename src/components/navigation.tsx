@@ -88,13 +88,13 @@ export function Navigation() {
       >
       {/* Top Bar - Language Selector & Logo */}
       <div 
-        className="border-b border-amber-300/50"
+        className="border-b border-amber-300/50 w-full"
         style={{
           background: GRADIENTS.light,
         }}
       >
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex items-center justify-between h-16">
+        <div className="w-full px-4 lg:px-6">
+          <div className="flex items-center justify-between h-16 max-w-7xl mx-auto">
             {/* Logo & Text - Left */}
             <Link 
               href="/" 
