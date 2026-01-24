@@ -37,14 +37,6 @@ export function Hero() {
         >
           &ldquo;{t.smallQuote}&rdquo;
         </p>
-        <p 
-          className="text-base md:text-lg text-white/90 font-semibold mt-4"
-          style={{
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8)"
-          }}
-        >
-          {t.blessingAuthor}
-        </p>
       </div>
     </section>
   );
