@@ -117,33 +117,33 @@ export function Footer() {
               <p className="text-gray-600 text-sm mb-3">
                 {footerT.socialMedia}
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <a
                   href="https://www.facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-[#1877F2] transition-colors"
+                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#1877F2] text-divine-saffron hover:text-[#1877F2] transition-all duration-300"
                   aria-label="Facebook"
                 >
-                  <Facebook className="w-6 h-6" />
+                  <Facebook className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-[#E4405F] transition-colors"
+                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#E4405F] text-divine-saffron hover:text-[#E4405F] transition-all duration-300"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-6 h-6" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-[#FF0000] transition-colors"
+                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#FF0000] text-divine-saffron hover:text-[#FF0000] transition-all duration-300"
                   aria-label="YouTube"
                 >
-                  <Youtube className="w-6 h-6" />
+                  <Youtube className="w-5 h-5" />
                 </a>
               </div>
             </div>
