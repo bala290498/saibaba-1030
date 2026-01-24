@@ -4,3 +4,4 @@ export const GRADIENTS = {
   dark: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)", // Amber/Orange gradient
 } as const;
 
+

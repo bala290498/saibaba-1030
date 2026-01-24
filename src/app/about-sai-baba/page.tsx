@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -14,28 +15,28 @@ export default function AboutSaiBabaPage() {
       heading: t.section1.heading,
       copy: t.section1.copy,
       layout: "left-content",
-      image: "/about/sai-baba-1.jpg",
+      image: "/saibaba.webp",
     },
     {
       id: 2,
       heading: t.section2.heading,
       copy: t.section2.copy,
       layout: "right-content",
-      image: "/about/sai-baba-2.jpg",
+      image: "/saibaba.webp",
     },
     {
       id: 3,
       heading: t.section3.heading,
       copy: t.section3.copy,
       layout: "left-content",
-      image: "/about/sai-baba-3.jpg",
+      image: "/saibaba.webp",
     },
     {
       id: 4,
       heading: t.section4.heading,
       copy: t.section4.copy,
       layout: "right-content",
-      image: "/about/sai-baba-4.jpg",
+      image: "/saibaba.webp",
     },
     {
       id: 5,
@@ -43,14 +44,14 @@ export default function AboutSaiBabaPage() {
       quote: t.section5.quote,
       copy: t.section5.copy,
       layout: "left-content",
-      image: "/about/sai-baba-5.jpg",
+      image: "/saibaba.webp",
     },
     {
       id: 6,
       heading: t.section6.heading,
       copy: t.section6.copy,
       layout: "right-content",
-      image: "/about/sai-baba-6.jpg",
+      image: "/saibaba.webp",
     },
   ];
 
@@ -140,45 +141,18 @@ export default function AboutSaiBabaPage() {
 
                 {/* Image */}
                 <div
-                  className={`flex-shrink-0 ${
-                    section.layout === "left-content" ? "lg:w-[30%]" : "lg:w-[30%]"
-                  } w-full lg:w-auto`}
+                  className="flex-shrink-0 w-full lg:w-[30%] max-w-md mx-auto lg:mx-0"
                 >
-                  <div 
-                    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
-                    style={{
-                      background: isEven
-                        ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
-                        : "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
-                    }}
-                  >
-                    <svg
-                      width="200"
-                      height="200"
-                      viewBox="0 0 200 200"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3/4 h-3/4 opacity-30"
-                    >
-                      {/* Om Symbol */}
-                      <path
-                        d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
-                        stroke={isEven ? "#d97706" : "#fef3c7"}
-                        strokeWidth="3"
-                        fill="none"
-                      />
-                      <path
-                        d="M100 80L100 120M80 100L120 100"
-                        stroke={isEven ? "#d97706" : "#fef3c7"}
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                      {/* Decorative circles */}
-                      <circle cx="50" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="150" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="50" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      <circle cx="150" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                    </svg>
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg bg-gray-200">
+                    <img
+                      src={encodeURI(section.image)}
+                      alt={section.heading}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.error("Image failed to load:", section.image);
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
                   </div>
                 </div>
               </div>

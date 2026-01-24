@@ -1,94 +1,69 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { Play, Pause, Volume2, VolumeX, Music } from "lucide-react";
-import { useLanguage } from "@/contexts/language-context";
+import { useState, useRef, useEffect } from "react";
+import { Play, Pause } from "lucide-react";
 
 export function GlobalAudioPlayer() {
-  const { language } = useLanguage();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(true);
 
-  // Load preferences from localStorage
-  useEffect(() => {
-    const savedVolume = localStorage.getItem("audioVolume");
-    const savedMuted = localStorage.getItem("audioMuted");
-    const savedPlaying = localStorage.getItem("audioPlaying");
-
-    if (savedVolume) {
-      setVolume(parseFloat(savedVolume));
-    }
-    if (savedMuted === "true") {
-      setIsMuted(true);
-    }
-  }, []);
-
-  // Auto-play on mount (first time load)
+  // Auto-play on first page load
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume
-    audio.volume = isMuted ? 0 : volume;
+    // Check if this is the first visit
+    const hasVisited = localStorage.getItem("audioHasVisited");
+    const isFirstVisit = !hasVisited;
 
-    // Check if this is first visit (no saved playing state)
-    const savedPlaying = localStorage.getItem("audioPlaying");
-    const isFirstVisit = savedPlaying === null;
-
-    // Try to auto-play on first visit or if previously playing
     const tryAutoPlay = async () => {
       try {
-        // Set volume before playing
-        audio.volume = isMuted ? 0 : volume;
-        
-        // Attempt to play
+        // Set volume to a reasonable level
+        audio.volume = 0.5;
         await audio.play();
         setIsPlaying(true);
-        localStorage.setItem("audioPlaying", "true");
+        if (isFirstVisit) {
+          localStorage.setItem("audioHasVisited", "true");
+        }
       } catch (error) {
         // Auto-play was prevented by browser policy
         // This is normal - browsers require user interaction for audio
         setIsPlaying(false);
-        if (isFirstVisit) {
-          localStorage.setItem("audioPlaying", "false");
-        }
       }
     };
 
-    // Wait for audio to be ready
-    const handleCanPlay = () => {
-      if (isFirstVisit || savedPlaying === "true") {
-        tryAutoPlay();
-      }
-    };
-
-    // If audio is already loaded, try immediately
-    if (audio.readyState >= 2) {
-      if (isFirstVisit || savedPlaying === "true") {
-        tryAutoPlay();
-      }
-    } else {
+    // Try to autoplay on first visit
+    if (isFirstVisit) {
       // Wait for audio to be ready
-      audio.addEventListener("canplaythrough", handleCanPlay, { once: true });
+      const handleCanPlay = () => {
+        tryAutoPlay();
+      };
+
+      if (audio.readyState >= 2) {
+        // Audio is already loaded
+        tryAutoPlay();
+      } else {
+        // Wait for audio to be ready
+        audio.addEventListener("canplaythrough", handleCanPlay, { once: true });
+        audio.addEventListener("loadeddata", handleCanPlay, { once: true });
+      }
     }
 
+    // Track playing state from user interactions
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+
     return () => {
-      audio.removeEventListener("canplaythrough", handleCanPlay);
+      audio.removeEventListener("canplaythrough", tryAutoPlay);
+      audio.removeEventListener("loadeddata", tryAutoPlay);
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
     };
   }, []);
 
-  // Update volume when changed
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : volume;
-      localStorage.setItem("audioVolume", volume.toString());
-    }
-  }, [volume, isMuted]);
-
-  // Handle play/pause
   const togglePlayPause = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -97,139 +72,38 @@ export function GlobalAudioPlayer() {
       if (isPlaying) {
         audio.pause();
         setIsPlaying(false);
-        localStorage.setItem("audioPlaying", "false");
       } else {
         await audio.play();
         setIsPlaying(true);
-        localStorage.setItem("audioPlaying", "true");
       }
     } catch (error) {
       console.error("Error toggling audio:", error);
     }
   };
 
-  // Handle mute/unmute
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
-    localStorage.setItem("audioMuted", (!isMuted).toString());
-  };
-
-  // Handle volume change
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (newVolume > 0) {
-      setIsMuted(false);
-      localStorage.setItem("audioMuted", "false");
-    }
-  };
-
-  // Handle audio ended (loop)
-  const handleEnded = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
-  };
-
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {isMinimized ? (
-        <>
-          <button
-            onClick={() => setIsMinimized(false)}
-            className="w-14 h-14 rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
-            aria-label="Open audio player"
-          >
-            <Music className="w-6 h-6" />
-          </button>
-          <audio
-            ref={audioRef}
-            loop
-            autoPlay
-            onEnded={handleEnded}
-            preload="auto"
-          >
-            <source src="/audio/background-music.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-        </>
-      ) : (
-        <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-amber-200/40 p-4 w-full md:w-80">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-divine-cream flex items-center justify-center">
-                {language === "en" && <Music className="w-5 h-5 text-divine-saffron" />}
-              </div>
-              <h3 className="text-sm font-semibold text-gray-800">
-                {language === "en" ? "Background Music" : "பின்னணி இசை"}
-              </h3>
-            </div>
-            <button
-              onClick={() => setIsMinimized(true)}
-              className="text-gray-400 hover:text-gray-600 text-sm md:text-base px-2 py-1 rounded hover:bg-gray-100 transition-colors"
-              aria-label="Minimize"
-            >
-              ↓
-            </button>
-          </div>
-
-          <audio
-            ref={audioRef}
-            loop
-            autoPlay
-            onEnded={handleEnded}
-            preload="auto"
-          >
-            <source src="/audio/background-music.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-
-          <div className="flex items-center gap-3 mb-3">
-            <button
-              onClick={togglePlayPause}
-              className="w-10 h-10 rounded-full bg-divine-saffron text-white flex items-center justify-center hover:bg-divine-saffron-dark transition-colors"
-              aria-label={isPlaying ? "Pause" : "Play"}
-            >
-              {isPlaying ? (
-                <Pause className="w-5 h-5" />
-              ) : (
-                <Play className="w-5 h-5" />
-              )}
-            </button>
-
-            <button
-              onClick={toggleMute}
-              className="w-10 h-10 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition-colors"
-              aria-label={isMuted ? "Unmute" : "Mute"}
-            >
-              {isMuted ? (
-                <VolumeX className="w-5 h-5" />
-              ) : (
-                <Volume2 className="w-5 h-5" />
-              )}
-            </button>
-
-            <div className="flex-1">
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={isMuted ? 0 : volume}
-                onChange={handleVolumeChange}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-divine-saffron"
-              />
-            </div>
-          </div>
-
-          <p className="text-xs text-gray-500 text-center">
-            {language === "en" 
-              ? "Om Sai Ram - Divine Blessings" 
-              : "ஓம் சாய் ராம் - தெய்வீக ஆசீர்வாதங்கள்"}
-          </p>
-        </div>
-      )}
+      <button
+        onClick={togglePlayPause}
+        className="w-14 h-14 rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
+        aria-label={isPlaying ? "Pause" : "Play"}
+      >
+        {isPlaying ? (
+          <Pause className="w-6 h-6" />
+        ) : (
+          <Play className="w-6 h-6" />
+        )}
+      </button>
+      <audio
+        ref={audioRef}
+        loop
+        autoPlay
+        preload="auto"
+        className="hidden"
+      >
+        <source src="/audio/background-music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 }

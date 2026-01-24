@@ -28,3 +28,4 @@ public/
 - Do not put sensitive files here as they are publicly accessible
 - Optimize images before adding them to improve performance
 
+

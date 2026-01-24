@@ -116,42 +116,19 @@ export default function TempleInfoPage() {
               >
                 {/* Image - Hidden for center layout */}
                 {section.layout !== "center" && (
-                  <div className="flex-shrink-0 lg:w-[30%] w-full lg:w-auto">
-                    <div 
-                      className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-lg flex items-center justify-center"
-                      style={{
-                        background: isEven
-                          ? "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)"
-                          : "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+                <div className="flex-shrink-0 w-full lg:w-[30%] max-w-md mx-auto lg:mx-0">
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg bg-gray-200">
+                    <img
+                      src="/saibaba.webp"
+                      alt={section.heading}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.error("Image failed to load:", "/saibaba.webp");
+                        e.currentTarget.style.display = "none";
                       }}
-                    >
-                      <svg
-                        width="200"
-                        height="200"
-                        viewBox="0 0 200 200"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-3/4 h-3/4 opacity-30"
-                      >
-                        <path
-                          d="M100 40C120 40 140 50 150 70C160 90 160 110 150 130C140 150 120 160 100 160C80 160 60 150 50 130C40 110 40 90 50 70C60 50 80 40 100 40Z"
-                          stroke={isEven ? "#d97706" : "#fef3c7"}
-                          strokeWidth="3"
-                          fill="none"
-                        />
-                        <path
-                          d="M100 80L100 120M80 100L120 100"
-                          stroke={isEven ? "#d97706" : "#fef3c7"}
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                        <circle cx="50" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                        <circle cx="150" cy="50" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                        <circle cx="50" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                        <circle cx="150" cy="150" r="8" fill={isEven ? "#d97706" : "#fef3c7"} opacity="0.5" />
-                      </svg>
-                    </div>
+                    />
                   </div>
+                </div>
                 )}
 
                 {/* Content */}

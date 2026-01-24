@@ -233,7 +233,7 @@ export function Navigation() {
             {/* Text Slider - Mobile Only */}
             <div className="flex-1 mx-2 lg:hidden overflow-hidden">
               <div className="relative h-full flex items-center">
-                <div className="animate-scroll-text whitespace-nowrap text-xs text-white/90 font-medium">
+                <div className="animate-scroll-text whitespace-nowrap text-sm text-white/90 font-medium">
                   {language === "en" ? (
                     <>
                       <span className="inline-block mr-8">Om Sai Ram - Divine Blessings</span>

@@ -41,10 +41,10 @@ export default function GalleryPage() {
   ];
 
   const videoItems = [
-    { id: 1, title: t.videos.aartiRecordings, category: "aartiRituals" },
-    { id: 2, title: t.videos.bhajans, category: "devoteeMoments" },
-    { id: 3, title: t.videos.festivalCelebrations, category: "festivals" },
-    { id: 4, title: t.videos.templeMoments, category: "templeShirdi" },
+    { id: 1, title: t.videos.aartiRecordings, category: "aartiRituals", videoId: "k369IoS2LN0" },
+    { id: 2, title: t.videos.bhajans, category: "devoteeMoments", videoId: "k369IoS2LN0" },
+    { id: 3, title: t.videos.festivalCelebrations, category: "festivals", videoId: "k369IoS2LN0" },
+    { id: 4, title: t.videos.templeMoments, category: "templeShirdi", videoId: "k369IoS2LN0" },
   ];
 
   const filteredItems = activeFilter === "all" 
@@ -136,19 +136,17 @@ export default function GalleryPage() {
                   key={item.id}
                   className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 aspect-square"
                 >
-                  {/* Placeholder for image - in real app, use actual images */}
-                  <div
-                    className="w-full h-full flex items-center justify-center"
-                    style={{
-                      background: "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
-                    }}
-                  >
-                    <div className="text-center p-4">
-                      <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-divine-saffron/20 flex items-center justify-center">
-                        <Heart className="w-8 h-8 text-divine-saffron" />
-                      </div>
-                      <p className="text-sm text-gray-700 font-medium">{item.title}</p>
-                    </div>
+                  {/* Image */}
+                  <div className="relative w-full h-full">
+                    <img
+                      src="/saibaba.webp"
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.error("Image failed to load:", "/saibaba.webp");
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
                   </div>
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -192,17 +190,16 @@ export default function GalleryPage() {
               {videoItems.map((video) => (
                 <div
                   key={video.id}
-                  className="group relative bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video"
+                  className="relative bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video"
                 >
-                  {/* Placeholder for video thumbnail */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-divine-saffron/20 to-divine-saffron-dark/20">
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Play className="w-10 h-10 text-white" />
-                      </div>
-                      <p className="text-white font-semibold text-lg px-4">{video.title}</p>
-                    </div>
-                  </div>
+                  {/* YouTube Video Embed */}
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${video.videoId}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
                 </div>
               ))}
             </div>
