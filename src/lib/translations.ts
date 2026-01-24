@@ -51,6 +51,7 @@ export const translations = {
     // Upcoming Events
     upcomingEvents: {
       title: "Upcoming Events",
+      subtitle: "Join us for divine celebrations and spiritual gatherings",
       viewAll: "View All Events",
       noEvents: "No upcoming events at this time",
     },
@@ -651,6 +652,7 @@ export const translations = {
     // Upcoming Events
     upcomingEvents: {
       title: "வரவிருக்கும் நிகழ்வுகள்",
+      subtitle: "தெய்வீக கொண்டாட்டங்கள் மற்றும் ஆன்மீக கூட்டங்களில் எங்களுடன் சேரவும்",
       viewAll: "அனைத்து நிகழ்வுகளையும் காண்க",
       noEvents: "இந்த நேரத்தில் வரவிருக்கும் நிகழ்வுகள் இல்லை",
     },
@@ -1150,7 +1152,7 @@ export const translations = {
         bankName: "வங்கி பெயர்",
         bankNameValue: "HDFC",
         accountName: "கணக்கு பெயர்",
-        accountNameValue: "ஸ்ரீ ஷிர்டி சாய்பாபா ரிலிஜியஸ் டிரஸ்ட்",
+        accountNameValue: "SRI SHIRDI SAIBABA RELIGIOUS TRUST",
         accountNumber: "கணக்கு எண்",
         accountNumberValue: "50200023538473",
         ifscCode: "IFSC குறியீடு",

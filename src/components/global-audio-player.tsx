@@ -6,59 +6,75 @@ import { Play, Pause } from "lucide-react";
 export function GlobalAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const manuallyPausedRef = useRef(false);
 
-  // Auto-play on first page load
+  // Auto-play on page load and continue across page navigations unless manually stopped
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Check if this is the first visit
-    const hasVisited = localStorage.getItem("audioHasVisited");
-    const isFirstVisit = !hasVisited;
+    // Check if user manually paused in this session
+    const wasManuallyPaused = sessionStorage.getItem("audioManuallyPaused") === "true";
+    // Check if audio was playing before navigation
+    const wasPlaying = sessionStorage.getItem("audioPlaying") === "true";
 
     const tryAutoPlay = async () => {
-      try {
-        // Set volume to a reasonable level
-        audio.volume = 0.5;
-        await audio.play();
-        setIsPlaying(true);
-        if (isFirstVisit) {
-          localStorage.setItem("audioHasVisited", "true");
-        }
-      } catch (error) {
-        // Auto-play was prevented by browser policy
-        // This is normal - browsers require user interaction for audio
+      // Don't auto-play if user manually paused
+      if (wasManuallyPaused) {
         setIsPlaying(false);
+        return;
+      }
+
+      // If was playing before, continue playing
+      if (wasPlaying || !wasManuallyPaused) {
+        try {
+          // Set volume to a reasonable level
+          audio.volume = 0.5;
+          await audio.play();
+          setIsPlaying(true);
+          sessionStorage.setItem("audioPlaying", "true");
+        } catch (error) {
+          // Auto-play was prevented by browser policy
+          // This is normal - browsers require user interaction for audio
+          setIsPlaying(false);
+          sessionStorage.setItem("audioPlaying", "false");
+        }
       }
     };
 
-    // Try to autoplay on first visit
-    if (isFirstVisit) {
-      // Wait for audio to be ready
-      const handleCanPlay = () => {
-        tryAutoPlay();
-      };
+    // Wait for audio to be ready
+    const handleCanPlay = () => {
+      tryAutoPlay();
+    };
 
-      if (audio.readyState >= 2) {
-        // Audio is already loaded
-        tryAutoPlay();
-      } else {
-        // Wait for audio to be ready
-        audio.addEventListener("canplaythrough", handleCanPlay, { once: true });
-        audio.addEventListener("loadeddata", handleCanPlay, { once: true });
-      }
+    if (audio.readyState >= 2) {
+      // Audio is already loaded
+      tryAutoPlay();
+    } else {
+      // Wait for audio to be ready
+      audio.addEventListener("canplaythrough", handleCanPlay, { once: true });
+      audio.addEventListener("loadeddata", handleCanPlay, { once: true });
     }
 
     // Track playing state from user interactions
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
+    const handlePlay = () => {
+      setIsPlaying(true);
+      sessionStorage.setItem("audioPlaying", "true");
+      sessionStorage.removeItem("audioManuallyPaused");
+      manuallyPausedRef.current = false;
+    };
+    
+    const handlePause = () => {
+      setIsPlaying(false);
+      sessionStorage.setItem("audioPlaying", "false");
+    };
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
 
     return () => {
-      audio.removeEventListener("canplaythrough", tryAutoPlay);
-      audio.removeEventListener("loadeddata", tryAutoPlay);
+      audio.removeEventListener("canplaythrough", handleCanPlay);
+      audio.removeEventListener("loadeddata", handleCanPlay);
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
     };
@@ -72,9 +88,17 @@ export function GlobalAudioPlayer() {
       if (isPlaying) {
         audio.pause();
         setIsPlaying(false);
+        // Mark as manually paused
+        manuallyPausedRef.current = true;
+        sessionStorage.setItem("audioManuallyPaused", "true");
+        sessionStorage.setItem("audioPlaying", "false");
       } else {
         await audio.play();
         setIsPlaying(true);
+        // Clear manual pause flag when user resumes
+        manuallyPausedRef.current = false;
+        sessionStorage.removeItem("audioManuallyPaused");
+        sessionStorage.setItem("audioPlaying", "true");
       }
     } catch (error) {
       console.error("Error toggling audio:", error);

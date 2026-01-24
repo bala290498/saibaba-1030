@@ -1,7 +1,14 @@
+"use client";
+
 import { EventsList } from "@/components/events-list";
 import { GRADIENTS } from "@/lib/constants";
+import { useLanguage } from "@/contexts/language-context";
+import { translations } from "@/lib/translations";
 
 export default function EventsPage() {
+  const { language } = useLanguage();
+  const t = translations[language].upcomingEvents;
+
   return (
     <div 
       className="min-h-screen py-16"
@@ -18,10 +25,10 @@ export default function EventsPage() {
             fontWeight: 900,
           }}
         >
-          Upcoming Events
+          {t.title}
         </h1>
         <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-          Join us for divine celebrations and spiritual gatherings
+          {t.subtitle}
         </p>
       </div>
         <EventsList />

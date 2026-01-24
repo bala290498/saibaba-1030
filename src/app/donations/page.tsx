@@ -317,7 +317,7 @@ export default function DonationsPage() {
               <div className="space-y-4">
                 {transparencyPoints.map((point, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    {language === "en" && <CheckCircle className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-0.5" />}
+                    <CheckCircle className="w-6 h-6 text-divine-saffron flex-shrink-0 mt-0.5" />
                     <p className="text-lg text-gray-700">{point}</p>
                   </div>
                 ))}
