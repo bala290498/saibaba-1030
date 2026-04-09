@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Heart, Info, Sparkles, ArrowRight } from "lucide-react";
+import { BookOpen, Heart, Landmark, Sparkles, ArrowRight } from "lucide-react";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -26,7 +26,7 @@ export function QuickDevotionalLinks() {
     {
       href: "/temple-info",
       label: t.templeInfo,
-      icon: Info,
+      icon: Landmark,
       color: "from-divine-saffron-dark to-divine-saffron",
     },
     {

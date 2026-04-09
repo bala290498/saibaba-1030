@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
-import { GlobalAudioPlayer } from "@/components/global-audio-player";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -31,7 +30,6 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen pt-[120px]">{children}</main>
           <Footer />
-          <GlobalAudioPlayer />
           <WhatsAppButton phoneNumber="9562623596" />
         </LanguageProvider>
       </body>

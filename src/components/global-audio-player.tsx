@@ -2,8 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export function GlobalAudioPlayer() {
+type GlobalAudioPlayerProps = {
+  inline?: boolean;
+};
+
+export function GlobalAudioPlayer({ inline = false }: GlobalAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const manuallyPausedRef = useRef(false);
@@ -106,16 +111,19 @@ export function GlobalAudioPlayer() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className={cn(inline ? "relative z-10" : "fixed bottom-4 right-4 z-50")}>
       <button
         onClick={togglePlayPause}
-        className="w-14 h-14 rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
+        className={cn(
+          "rounded-full bg-divine-saffron text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110",
+          inline ? "w-10 h-10" : "w-14 h-14"
+        )}
         aria-label={isPlaying ? "Pause" : "Play"}
       >
         {isPlaying ? (
-          <Pause className="w-6 h-6" />
+          <Pause className={cn(inline ? "w-4 h-4" : "w-6 h-6")} />
         ) : (
-          <Play className="w-6 h-6" />
+          <Play className={cn(inline ? "w-4 h-4" : "w-6 h-6")} />
         )}
       </button>
       <audio

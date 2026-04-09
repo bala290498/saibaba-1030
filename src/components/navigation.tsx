@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
+import { GlobalAudioPlayer } from "@/components/global-audio-player";
 
 // Grouped navigation items for better organization
 const getNavGroups = (lang: "en" | "ta"): Array<{ id: string; items: Array<{ href: string; label: string }> }> => [
@@ -102,7 +103,7 @@ export function Navigation() {
             >
               <div className="relative w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center flex-shrink-0">
                 <Image
-                  src="/home/logo.png"
+                  src="/home/logo.jpeg"
                   alt="Om Logo"
                   width={32}
                   height={32}
@@ -117,10 +118,10 @@ export function Navigation() {
                 }}
               >
                 <span className="lg:hidden block">
-                  Shri Shirdi Vijayasai Natha<br />Gurumoorthy temple
+                  Shri Shirdi Vijaya Sainatha<br />Gurumoorthy Temple
                 </span>
                 <span className="hidden lg:block whitespace-nowrap">
-                  Shri Shirdi Vijayasai Natha Gurumoorthy temple
+                  Shri Shirdi Vijaya Sainatha Gurumoorthy Temple
                 </span>
               </span>
             </Link>
@@ -151,44 +152,47 @@ export function Navigation() {
             </div>
 
             {/* Language Selector - Right */}
-            <div className="relative flex-shrink-0">
-              <button
-                onClick={() => setLanguageOpen(!languageOpen)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-divine-saffron hover:bg-white/30 transition-all duration-200"
-                style={{ fontWeight: 500 }}
-              >
-                <Globe className="w-4 h-4" />
-                <span>{languages.find(l => l.code === language)?.label || "English"}</span>
-                <ChevronDown className={cn(
-                  "w-4 h-4 transition-transform duration-200",
-                  languageOpen && "rotate-180"
-                )} />
-              </button>
-              
-              {/* Language Dropdown */}
-              {languageOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-amber-200/40 overflow-hidden min-w-[140px] z-50">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setLanguageOpen(false);
-                      }}
-                      className={cn(
-                        "w-full text-left px-4 py-2.5 text-sm font-medium transition-colors duration-200",
-                        "hover:bg-divine-cream hover:text-divine-saffron",
-                        language === lang.code
-                          ? "bg-divine-cream text-divine-saffron"
-                          : "text-gray-700"
-                      )}
-                      style={{ fontWeight: 500 }}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="relative">
+                <button
+                  onClick={() => setLanguageOpen(!languageOpen)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-divine-saffron hover:bg-white/30 transition-all duration-200"
+                  style={{ fontWeight: 500 }}
+                >
+                  <Globe className="w-4 h-4" />
+                  <span>{languages.find(l => l.code === language)?.label || "English"}</span>
+                  <ChevronDown className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    languageOpen && "rotate-180"
+                  )} />
+                </button>
+                
+                {/* Language Dropdown */}
+                {languageOpen && (
+                  <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-amber-200/40 overflow-hidden min-w-[140px] z-50">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => {
+                          setLanguage(lang.code);
+                          setLanguageOpen(false);
+                        }}
+                        className={cn(
+                          "w-full text-left px-4 py-2.5 text-sm font-medium transition-colors duration-200",
+                          "hover:bg-divine-cream hover:text-divine-saffron",
+                          language === lang.code
+                            ? "bg-divine-cream text-divine-saffron"
+                            : "text-gray-700"
+                        )}
+                        style={{ fontWeight: 500 }}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <GlobalAudioPlayer inline />
             </div>
           </div>
         </div>
