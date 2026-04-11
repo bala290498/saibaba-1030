@@ -542,6 +542,7 @@ export const translations = {
         maintenance: "Temple maintenance",
         festivals: "Festival celebrations",
         charitable: "Charitable activities",
+        goshala: "Goshala maintenance and development",
         quote: "Give with love, and love will return to you multiplied",
         quoteAuthor: "— Sai Baba",
       },
@@ -567,6 +568,11 @@ export const translations = {
         development: {
           title: "Temple Development",
           description: "Help us improve and expand temple facilities",
+        },
+        goshala: {
+          title: "Goshala Maintenance and Development",
+          description:
+            "Support the upkeep, care, and development of our goshala for cows and related facilities.",
         },
       },
       bankDetails: {
@@ -1166,6 +1172,7 @@ export const translations = {
         maintenance: "கோயில் பராமரிப்பு",
         festivals: "திருவிழா கொண்டாட்டங்கள்",
         charitable: "தாராளமான நடவடிக்கைகள்",
+        goshala: "கோசாலை பராமரிப்பு மற்றும் வளர்ச்சி",
         quote: "அன்புடன் கொடுங்கள், அன்பு உங்களிடம் பெருக்கமாக திரும்பும்",
         quoteAuthor: "— சாய் பாபா",
       },
@@ -1191,6 +1198,11 @@ export const translations = {
         development: {
           title: "கோயில் வளர்ச்சி",
           description: "கோயில் வசதிகளை மேம்படுத்தவும் விரிவுபடுத்தவும் எங்களுக்கு உதவுங்கள்",
+        },
+        goshala: {
+          title: "கோசாலை பராமரிப்பு மற்றும் வளர்ச்சி",
+          description:
+            "பசுக்கள் மற்றும் கோசாலை வசதிகளின் பராமரிப்பு, பாதுகாப்பு மற்றும் வளர்ச்சிக்கு ஆதரவளிக்கவும்.",
         },
       },
       bankDetails: {

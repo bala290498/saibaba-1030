@@ -1,8 +1,22 @@
-export default function GoshlaPage() {
-  // Same size as bottom row: 4/3 aspect, one shared class for all 6 placeholders
-  const imagePlaceholderClass =
-    "relative w-full aspect-[4/3] rounded-lg border-2 border-dashed border-amber-600/40 bg-white/50 flex items-center justify-center text-amber-900/40 text-xs font-medium shadow-inner";
+import Image from "next/image";
+import { GoshlaDonateButton } from "@/components/goshla-donate-button";
 
+const SIDE_IMAGES = {
+  left: "/goshla/maha%20periyava%2002.jpg",
+  right: "/goshla/maha%20periyava%20.jpg",
+} as const;
+
+const BOTTOM_IMAGES = [
+  { src: "/goshla/cow%2001.webp", alt: "கோசாலை — பசு" },
+  { src: "/goshla/go%20shala%20kachi%20periyava.webp", alt: "கோசாலை காட்சி" },
+  {
+    src: "/goshla/1000_F_189540001_HcPchAU3Und1YH2WevhTVgMlilOJwQu3.webp",
+    alt: "கோசாலை",
+  },
+  { src: "/goshla/Cow.webp", alt: "பசு" },
+] as const;
+
+export default function GoshlaPage() {
   return (
     <div className="min-h-screen w-full max-w-none bg-divine-cream/30 py-4 md:py-6">
       <section
@@ -13,11 +27,16 @@ export default function GoshlaPage() {
         }}
       >
         <div className="w-full px-2 sm:px-3 md:px-4 py-5 sm:py-6 md:py-8">
-          {/* Top: 12-col on lg — 3 | 6 | 3 matches bottom four at 3+3+3+3 */}
           <div className="mb-5 grid w-full grid-cols-1 items-center gap-3 sm:gap-4 md:mb-6 lg:grid-cols-12 lg:gap-4">
             <div className="lg:col-span-3">
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20">
+                <Image
+                  src={SIDE_IMAGES.left}
+                  alt="மஹா பெரியவா"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
               </div>
             </div>
 
@@ -31,34 +50,46 @@ export default function GoshlaPage() {
             </div>
 
             <div className="lg:col-span-3">
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20">
+                <Image
+                  src={SIDE_IMAGES.right}
+                  alt="மஹா பெரியவா"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
               </div>
             </div>
           </div>
 
-          {/* Bottom row: same track widths as top outer columns (3+3+3+3 = 12) */}
           <div
             className="w-full border-t border-amber-500/30 pt-3 md:pt-4"
-            aria-label="Gallery placeholders"
+            aria-label="Goshala gallery"
           >
             <div className="grid w-full grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
-              </div>
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
-              </div>
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
-              </div>
-              <div className={imagePlaceholderClass} aria-hidden>
-                <span className="select-none">Image</span>
-              </div>
+              {BOTTOM_IMAGES.map((item) => (
+                <div
+                  key={item.src}
+                  className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Donate CTA directly under the banner (full width strip, button centered) */}
+      <div className="mt-0 flex w-full justify-center border-b border-amber-400/50 bg-gradient-to-b from-amber-100/90 to-divine-cream/40 px-4 py-4 md:py-5">
+        <GoshlaDonateButton />
+      </div>
     </div>
   );
 }

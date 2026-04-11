@@ -27,6 +27,7 @@ export function DonationForm() {
     translations[language].donations.categories.festival.title,
     translations[language].donations.categories.pooja.title,
     translations[language].donations.categories.development.title,
+    translations[language].donations.categories.goshala.title,
   ];
 
   const handleSubmit = (e: React.FormEvent) => {

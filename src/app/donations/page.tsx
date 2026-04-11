@@ -37,6 +37,11 @@ export default function DonationsPage() {
       title: t.categories.development.title,
       description: t.categories.development.description,
     },
+    {
+      icon: "🐄",
+      title: t.categories.goshala.title,
+      description: t.categories.goshala.description,
+    },
   ];
 
   const transparencyPoints = [
@@ -140,6 +145,9 @@ export default function DonationsPage() {
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40">
                 <p className="text-lg font-semibold text-gray-800 mb-2">• {t.whyDonate.charitable}</p>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-200/40">
+                <p className="text-lg font-semibold text-gray-800 mb-2">• {t.whyDonate.goshala}</p>
               </div>
             </div>
 
