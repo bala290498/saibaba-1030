@@ -75,18 +75,26 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/donations"
-                  className="text-gray-700 hover:text-divine-saffron transition-colors"
-                >
-                  {navT.donations}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/gallery"
                   className="text-gray-700 hover:text-divine-saffron transition-colors"
                 >
                   {navT.gallery}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/goshla"
+                  className="text-gray-700 hover:text-divine-saffron transition-colors"
+                >
+                  {navT.goshla}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/donations"
+                  className="text-gray-700 hover:text-divine-saffron transition-colors"
+                >
+                  {navT.donations}
                 </Link>
               </li>
               <li>

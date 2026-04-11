@@ -11,6 +11,7 @@ export const translations = {
       devotion: "Devotion",
       events: "Events",
       gallery: "Gallery",
+      goshla: "Goshla",
       donations: "Donations",
       contact: "Contact",
     },
@@ -447,6 +448,28 @@ export const translations = {
         makeDonation: "Make a Donation",
       },
     },
+    // Goshla Page
+    goshla: {
+      hero: {
+        title: "Goshla",
+        subtitle:
+          "Serving cows with love, care, and devotion as part of our temple seva.",
+      },
+      section1: {
+        heading: "Our Goshla",
+        copy:
+          "The goshala (cow shelter) at our temple provides a safe home for cows. Caring for cows is considered sacred seva, and we welcome devotees to visit and offer support.",
+      },
+      section2: {
+        heading: "Seva & support",
+        copy:
+          "You can support the goshala through donations for feed, medical care, and shelter upkeep. Every contribution helps us care for these gentle beings with dignity.",
+      },
+      cta: {
+        donate: "Donate to Goshla",
+        contact: "Contact Us",
+      },
+    },
     // Contact Page
     contact: {
       hero: {
@@ -612,6 +635,7 @@ export const translations = {
       devotion: "பக்தி",
       events: "நிகழ்வுகள்",
       gallery: "கேலரி",
+      goshla: "கோசாலை",
       donations: "நன்கொடைகள்",
       contact: "தொடர்பு",
     },
@@ -1046,6 +1070,28 @@ export const translations = {
         viewAarti: "ஆர்த்தி & பஜனைகளைக் காண்க",
         visitShirdi: "ஷிர்டியைப் பார்வையிடுங்கள்",
         makeDonation: "நன்கொடை அளிக்கவும்",
+      },
+    },
+    // Goshla Page
+    goshla: {
+      hero: {
+        title: "கோசாலை",
+        subtitle:
+          "எங்கள் கோயில் சேவையின் ஒரு பகுதியாக பசுக்களுக்கு அன்பு, பாதுகாப்பு மற்றும் பக்தியுடன் சேவை செய்தல்.",
+      },
+      section1: {
+        heading: "எங்கள் கோசாலை",
+        copy:
+          "எங்கள் கோயிலின் கோசாலை பசுக்களுக்கு பாதுகாப்பான இருப்பிடம் அளிக்கிறது. பசுக்களைப் பராமரிப்பது புனிதமான சேவையாகக் கருதப்படுகிறது; பக்தர்கள் வருகை தந்து ஆதரிக்க அழைக்கிறோம்.",
+      },
+      section2: {
+        heading: "சேவை & ஆதரவு",
+        copy:
+          "தீவனம், மருத்துவ பராமரிப்பு மற்றும் கொட்டகை பராமரிப்புக்கு நன்கொடையளித்து கோசாலையை ஆதரிக்கலாம். ஒவ்வொரு பங்களிப்பும் இந்த உயிரினங்களை மரியாதையுடன் பராமரிக்க உதவுகிறது.",
+      },
+      cta: {
+        donate: "கோசாலைக்கு நன்கொடை",
+        contact: "தொடர்பு கொள்ளுங்கள்",
       },
     },
     // Contact Page

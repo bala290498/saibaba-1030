@@ -33,6 +33,7 @@ const getNavGroups = (lang: "en" | "ta"): Array<{ id: string; items: Array<{ hre
     items: [
       { href: "/events", label: translations[lang].nav.events },
       { href: "/gallery", label: translations[lang].nav.gallery },
+      { href: "/goshla", label: translations[lang].nav.goshla },
     ],
   },
   {
