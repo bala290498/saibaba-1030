@@ -5,8 +5,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import { useState } from "react";
 import Link from "next/link";
-import { Heart, Calendar, ArrowRight, Play } from "lucide-react";
-import Image from "next/image";
+import { Heart, Calendar, ArrowRight } from "lucide-react";
 
 type FilterType = "all" | "saiBaba" | "templeShirdi" | "aartiRituals" | "festivals" | "devoteeMoments";
 
@@ -24,20 +23,14 @@ export default function GalleryPage() {
     { id: "devoteeMoments" as FilterType, label: t.navigation.devoteeMoments },
   ];
 
-  // Sample gallery items - in a real app, this would come from a database
   const galleryItems = [
-    { id: 1, category: "saiBaba", title: t.photos.morningAarti, type: "image" },
-    { id: 2, category: "devoteeMoments", title: t.photos.devoteesSeeking, type: "image" },
-    { id: 3, category: "festivals", title: t.photos.festivalCelebrations, type: "image" },
-    { id: 4, category: "aartiRituals", title: t.photos.eveningAartiCaption, type: "image" },
-    { id: 5, category: "templeShirdi", title: "Temple architecture and sacred spaces", type: "image" },
-    { id: 6, category: "saiBaba", title: "Divine presence and blessings", type: "image" },
-    { id: 7, category: "aartiRituals", title: "Daily rituals and prayers", type: "image" },
-    { id: 8, category: "festivals", title: "Special celebrations", type: "image" },
-    { id: 9, category: "devoteeMoments", title: "Devotees in prayer", type: "image" },
-    { id: 10, category: "templeShirdi", title: "Shirdi temple views", type: "image" },
-    { id: 11, category: "saiBaba", title: "Sai Baba's teachings", type: "image" },
-    { id: 12, category: "aartiRituals", title: "Evening aarti ceremony", type: "image" },
+    { id: 1, category: "saiBaba" as const, title: t.photos.morningAarti, src: "/gallery/04.jpg" },
+    { id: 2, category: "devoteeMoments" as const, title: t.photos.devoteesSeeking, src: "/gallery/05.webp" },
+    { id: 3, category: "festivals" as const, title: t.photos.festivalCelebrations, src: "/gallery/07.jpg" },
+    { id: 4, category: "aartiRituals" as const, title: t.photos.eveningAartiCaption, src: "/gallery/08.webp" },
+    { id: 5, category: "templeShirdi" as const, title: t.navigation.templeShirdi, src: "/gallery/01.webp" },
+    { id: 6, category: "saiBaba" as const, title: t.navigation.saiBaba, src: "/gallery/03.jpg" },
+    { id: 7, category: "saiBaba" as const, title: t.hero.quote, src: "/gallery/saibaba.webp" },
   ];
 
   const videoItems = [
@@ -139,11 +132,11 @@ export default function GalleryPage() {
                   {/* Image */}
                   <div className="relative w-full h-full">
                     <img
-                      src="/saibaba.webp"
+                      src={item.src}
                       alt={item.title}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        console.error("Image failed to load:", "/saibaba.webp");
+                        console.error("Image failed to load:", item.src);
                         e.currentTarget.style.display = "none";
                       }}
                     />

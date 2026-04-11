@@ -55,55 +55,53 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Information Section */}
+      {/* Contact info (vertical) + Send message form (side by side on large screens) */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Phone Card */}
-              <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  {language === "en" && <Phone className="w-6 h-6 text-divine-saffron" />}
-                  <h3 className="text-xl font-bold text-gray-800">{t.info.phone.title}</h3>
-                </div>
-                <p className="text-lg font-semibold text-divine-saffron mb-2">{t.info.phone.number}</p>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                  {language === "en" && <Clock className="w-4 h-4" />}
-                  {t.info.phone.note}
-                </p>
-              </Card>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+              {/* Phone, email, address — vertical stack */}
+              <div className="flex flex-col gap-6 order-2 lg:order-1">
+                <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-4">
+                    {language === "en" && <Phone className="w-6 h-6 text-divine-saffron shrink-0" />}
+                    <h3 className="text-xl font-bold text-gray-800">{t.info.phone.title}</h3>
+                  </div>
+                  <p className="text-lg font-semibold text-divine-saffron mb-2">{t.info.phone.number}</p>
+                  <p className="text-sm text-gray-600 flex items-center gap-2">
+                    {language === "en" && <Clock className="w-4 h-4 shrink-0" />}
+                    {t.info.phone.note}
+                  </p>
+                </Card>
 
-              {/* Email Card */}
-              <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  {language === "en" && <Mail className="w-6 h-6 text-divine-saffron" />}
-                  <h3 className="text-xl font-bold text-gray-800">{t.info.email.title}</h3>
-                </div>
-                <p className="text-lg font-semibold text-divine-saffron mb-2">{t.info.email.address}</p>
-                <p className="text-sm text-gray-600">{t.info.email.note}</p>
-              </Card>
+                <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-4">
+                    {language === "en" && <Mail className="w-6 h-6 text-divine-saffron shrink-0" />}
+                    <h3 className="text-xl font-bold text-gray-800">{t.info.email.title}</h3>
+                  </div>
+                  <p className="text-lg font-semibold text-divine-saffron mb-2 break-all">{t.info.email.address}</p>
+                  <p className="text-sm text-gray-600">{t.info.email.note}</p>
+                </Card>
 
-              {/* Address Card */}
-              <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  {language === "en" && <MapPin className="w-6 h-6 text-divine-saffron" />}
-                  <h3 className="text-xl font-bold text-gray-800">{t.info.address.title}</h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  {t.info.address.line1}
-                  <br />
-                  {t.info.address.line2}
-                </p>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
+                <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center gap-3 mb-4">
+                    {language === "en" && <MapPin className="w-6 h-6 text-divine-saffron shrink-0" />}
+                    <h3 className="text-xl font-bold text-gray-800">{t.info.address.title}</h3>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    {t.info.address.line1}
+                    {t.info.address.line2 ? (
+                      <>
+                        <br />
+                        {t.info.address.line2}
+                      </>
+                    ) : null}
+                  </p>
+                </Card>
+              </div>
 
-      {/* Contact Form Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+              {/* Send Us a Message */}
+              <div className="order-1 lg:order-2">
             <Card className="p-6 md:p-8 bg-white shadow-lg border border-amber-200/40">
               <div className="text-center mb-6">
                 <h2
@@ -204,6 +202,8 @@ export default function ContactPage() {
                 </form>
               )}
             </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -224,14 +224,14 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl shadow-lg border border-amber-200/40 overflow-hidden">
               <div className="w-full h-[400px] md:h-[500px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d79.7489!3d12.7598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f8b8c8c8c8c8%3A0x8c8c8c8c8c8c8c8c!2sVedha%20Gardens%2C%20Thenpathi%2C%20Amoorndoor%2C%20Chengalpattu%20District%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3893.007644851194!2d79.92989727507094!3d12.6475028876389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1775890729204!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Sai Baba Temple Trust Location - Vedha Gardens, Thenpathi, Amoorndoor, Chengalpattu District, Tamil Nadu"
+                  title="Sai Baba Temple Trust Location - Veda Garden, Mamandur Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
                 />
               </div>
             </div>

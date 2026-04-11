@@ -133,7 +133,7 @@ export function GlobalAudioPlayer({ inline = false }: GlobalAudioPlayerProps) {
         preload="auto"
         className="hidden"
       >
-        <source src="/audio/background-music.mp3" type="audio/mpeg" />
+        <source src="/audio/music.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>

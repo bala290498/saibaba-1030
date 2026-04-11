@@ -4,7 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
-import { WhatsAppButton } from "@/components/whatsapp-button";
+import { SocialSideBar } from "@/components/social-side-bar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfairDisplay = Playfair_Display({ 
@@ -30,7 +30,12 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen pt-[120px]">{children}</main>
           <Footer />
-          <WhatsAppButton phoneNumber="9562623596" />
+          <SocialSideBar
+            whatsappNumber="+91 9562623596"
+            youtubeUrl="https://www.youtube.com"
+            facebookUrl="https://www.facebook.com"
+            instagramUrl="https://www.instagram.com"
+          />
         </LanguageProvider>
       </body>
     </html>

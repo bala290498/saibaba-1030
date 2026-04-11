@@ -457,7 +457,7 @@ export const translations = {
       info: {
         phone: {
           title: "Phone",
-          number: "+91 9562623596 / +91 9025071859",
+          number: "+91 9562623596",
           note: "Available for calls and inquiries",
         },
         email: {
@@ -467,8 +467,8 @@ export const translations = {
         },
         address: {
           title: "Address",
-          line1: "Vedha Gardens, Thenpathi",
-          line2: "Amoorndoor, Chengalpattu District, Tamil Nadu",
+          line1: "Veda Garden, (Behind Easwaran Temple), Mamandur Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District.",
+          line2: "",
         },
       },
       form: {
@@ -1058,7 +1058,7 @@ export const translations = {
       info: {
         phone: {
           title: "தொலைபேசி",
-          number: "+91 9562623596 / +91 9025071859",
+          number: "+91 9562623596",
           note: "அழைப்புகள் மற்றும் விசாரணைகளுக்கு கிடைக்கிறது",
         },
         email: {
@@ -1068,8 +1068,8 @@ export const translations = {
         },
         address: {
           title: "முகவரி",
-          line1: "வேதா கார்டன்ஸ், தென்பாதி",
-          line2: "அமூர்நூர், செங்கல்பட்டு மாவட்டம், தமிழ்நாடு",
+          line1: "வேதா கார்டன், (ஈஸ்வரன் கோவில் பின்புறம்),",
+          line2: "மாமண்டூர் கிராமம், தென்பாதி, மதுராந்தகம் தாலுகா, செங்கல்பட்டு மாவட்டம்.",
         },
       },
       form: {
