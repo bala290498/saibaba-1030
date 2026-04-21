@@ -6,19 +6,36 @@ import { Card } from "@/components/ui/card";
 const events = [
   {
     id: 1,
-    title: "Varushabishekhan",
-    date: "24th January",
+    title: "Ramanavami",
+    date: "March",
     time: "TBA",
     location: "Temple Premises",
-    description:
-      "Join us for the special Varushabishekhan celebration on 24th January.",
+    description: "Join us for the sacred Ramanavami celebration in March.",
+    type: "Festival",
+  },
+  {
+    id: 2,
+    title: "Guru Purnima",
+    date: "June",
+    time: "TBA",
+    location: "Temple Premises",
+    description: "Join us for Guru Purnima celebrations in June.",
+    type: "Festival",
+  },
+  {
+    id: 3,
+    title: "Shirdi Vijayadasami",
+    date: "October",
+    time: "TBA",
+    location: "Temple Premises",
+    description: "Join us for Shirdi Vijayadasami celebrations in October.",
     type: "Festival",
   },
 ];
 
 export function EventsList() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {events.map((event) => (
         <Card key={event.id} className="overflow-hidden">
           <div className="p-6">
