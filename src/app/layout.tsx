@@ -31,10 +31,10 @@ export default function RootLayout({
           <main className="min-h-screen pt-[120px]">{children}</main>
           <Footer />
           <SocialSideBar
-            whatsappNumber="+91 9562623596"
-            youtubeUrl="https://www.youtube.com"
+            whatsappUrl="https://wa.me/9566263596"
+            youtubeUrl="https://www.youtube.com/@SaibabaMamandoor"
             facebookUrl="https://www.facebook.com"
-            instagramUrl="https://www.instagram.com"
+            instagramUrl="https://www.instagram.com/saibaba_mamandoor/"
           />
         </LanguageProvider>
       </body>

@@ -10,24 +10,18 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 type SocialSideBarProps = {
-  whatsappNumber: string;
+  whatsappUrl: string;
   youtubeUrl: string;
   facebookUrl: string;
   instagramUrl: string;
 };
 
 export function SocialSideBar({
-  whatsappNumber,
+  whatsappUrl,
   youtubeUrl,
   facebookUrl,
   instagramUrl,
 }: SocialSideBarProps) {
-  const whatsappDigits = whatsappNumber.replace(/\D/g, "");
-  const whatsappMessage = encodeURIComponent(
-    "Hello, I would like to know more about Sai Baba Temple."
-  );
-  const whatsappUrl = `https://wa.me/${whatsappDigits}?text=${whatsappMessage}`;
-
   return (
     <div className="fixed right-3 top-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-col overflow-hidden rounded-2xl shadow-xl border border-white/20 backdrop-blur-sm">
@@ -36,7 +30,7 @@ export function SocialSideBar({
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#E8F8EE] hover:bg-[#D8F2E3] text-white p-3 flex items-center justify-center transition-colors duration-200"
-          aria-label={`Open WhatsApp chat ${whatsappNumber}`}
+          aria-label="Open WhatsApp chat"
         >
           <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
         </a>
