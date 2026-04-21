@@ -60,7 +60,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-              {/* Phone, email, address — vertical stack */}
+              {/* Left side stacked one-by-one: phone + email + address + map */}
               <div className="flex flex-col gap-6 order-2 lg:order-1">
                 <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
@@ -97,6 +97,30 @@ export default function ContactPage() {
                       </>
                     ) : null}
                   </p>
+                </Card>
+
+                <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
+                  <h3
+                    className="text-xl font-bold mb-4 text-gray-800 text-left"
+                    style={{
+                      fontFamily: "var(--font-playfair)",
+                      fontWeight: 900,
+                    }}
+                  >
+                    {t.map.title}
+                  </h3>
+                  <div className="w-full h-[250px] md:h-[280px] rounded-xl overflow-hidden border border-amber-200/40">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3893.007644851194!2d79.92989727507094!3d12.6475028876389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDM4JzUxLjAiTiA3OcKwNTUnNTYuOSJF!5e0!3m2!1sen!2sin!4v1776749576961!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Sai Baba Temple Trust Location - Veda Garden, Mamandur Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
+                    />
+                  </div>
                 </Card>
               </div>
 
@@ -202,37 +226,6 @@ export default function ContactPage() {
                 </form>
               )}
             </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Location Map Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-gray-800 text-center"
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 900,
-              }}
-            >
-              {t.map.title}
-            </h2>
-            <div className="bg-white rounded-2xl shadow-lg border border-amber-200/40 overflow-hidden">
-              <div className="w-full h-[400px] md:h-[500px]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3893.007644851194!2d79.92989727507094!3d12.6475028876389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1775890729204!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Sai Baba Temple Trust Location - Veda Garden, Mamandur Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
-                />
               </div>
             </div>
           </div>
