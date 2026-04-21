@@ -14,6 +14,8 @@ const BOTTOM_IMAGES = [
     alt: "கோசாலை",
   },
   { src: "/goshla/Cow.webp", alt: "பசு" },
+  { src: "/goshla/20260124_093300.jpg.webp", alt: "கோசாலை தருணம்" },
+  { src: "/goshla/20260124_115836.jpg.webp", alt: "கோசாலை சேவை" },
 ] as const;
 
 export default function GoshlaPage() {
