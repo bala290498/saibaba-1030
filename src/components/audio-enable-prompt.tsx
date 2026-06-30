@@ -35,7 +35,7 @@ export function AudioEnablePrompt({ onEnable, onDismiss }: AudioEnablePromptProp
       <button
         type="button"
         onClick={onDismiss}
-        className="mt-2 w-full text-center text-xs text-gray-500 hover:text-gray-700 transition-colors"
+        className="mt-3 w-full rounded-xl border border-amber-300/50 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-gray-800 shadow-md backdrop-blur-sm transition-colors hover:bg-white hover:text-divine-saffron hover:border-amber-400/70"
       >
         {t.notNow}
       </button>
