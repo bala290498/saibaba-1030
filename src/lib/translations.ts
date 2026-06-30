@@ -11,9 +11,15 @@ export const translations = {
       devotion: "Devotion",
       events: "Events",
       gallery: "Gallery",
-      goshla: "Goshla",
+      goshala: "Goshala",
       donations: "Donations",
       contact: "Contact",
+    },
+    // Audio player
+    audio: {
+      tapToEnable: "Tap to enable devotional music",
+      tapHint: "Om Sai Ram — background bhajans for your visit",
+      notNow: "Not now",
     },
     // Hero Section
     hero: {
@@ -448,15 +454,15 @@ export const translations = {
         makeDonation: "Make a Donation",
       },
     },
-    // Goshla Page
-    goshla: {
+    // Goshala Page
+    goshala: {
       hero: {
-        title: "Goshla",
+        title: "Goshala",
         subtitle:
           "Serving cows with love, care, and devotion as part of our temple seva.",
       },
       section1: {
-        heading: "Our Goshla",
+        heading: "Our Goshala",
         copy:
           "The goshala (cow shelter) at our temple provides a safe home for cows. Caring for cows is considered sacred seva, and we welcome devotees to visit and offer support.",
       },
@@ -466,7 +472,7 @@ export const translations = {
           "You can support the goshala through donations for feed, medical care, and shelter upkeep. Every contribution helps us care for these gentle beings with dignity.",
       },
       cta: {
-        donate: "Donate to Goshla",
+        donate: "Donate to Goshala",
         contact: "Contact Us",
       },
     },
@@ -641,9 +647,15 @@ export const translations = {
       devotion: "பக்தி",
       events: "நிகழ்வுகள்",
       gallery: "கேலரி",
-      goshla: "கோசாலை",
+      goshala: "கோசாலை",
       donations: "நன்கொடைகள்",
       contact: "தொடர்பு",
+    },
+    // Audio player
+    audio: {
+      tapToEnable: "பக்தி இசையை இயக்க தட்டவும்",
+      tapHint: "ஓம் சாய் ராம் — உங்கள் வருகைக்கான பின்னணி பஜனை",
+      notNow: "இப்போது வேண்டாம்",
     },
     // Hero Section
     hero: {
@@ -1078,8 +1090,8 @@ export const translations = {
         makeDonation: "நன்கொடை அளிக்கவும்",
       },
     },
-    // Goshla Page
-    goshla: {
+    // Goshala Page
+    goshala: {
       hero: {
         title: "கோசாலை",
         subtitle:

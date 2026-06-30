@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/contexts/language-context";
+import { AudioProvider } from "@/contexts/audio-context";
 import { SocialSideBar } from "@/components/social-side-bar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -27,15 +28,17 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
       <body>
         <LanguageProvider>
-          <Navigation />
-          <main className="min-h-screen pt-[120px]">{children}</main>
-          <Footer />
-          <SocialSideBar
-            whatsappUrl="https://wa.me/9566263596"
-            youtubeUrl="https://www.youtube.com/@SaibabaMamandoor"
-            facebookUrl="https://www.facebook.com"
-            instagramUrl="https://www.instagram.com/saibaba_mamandoor/"
-          />
+          <AudioProvider>
+            <Navigation />
+            <main className="min-h-screen pt-[120px]">{children}</main>
+            <Footer />
+            <SocialSideBar
+              whatsappUrl="https://wa.me/9566263596"
+              youtubeUrl="https://www.youtube.com/@SaibabaMamandoor"
+              facebookUrl="https://www.facebook.com"
+              instagramUrl="https://www.instagram.com/saibaba_mamandoor/"
+            />
+          </AudioProvider>
         </LanguageProvider>
       </body>
     </html>

@@ -86,7 +86,7 @@ export function Footer() {
                   href="/goshla"
                   className="text-gray-700 hover:text-divine-saffron transition-colors"
                 >
-                  {navT.goshla}
+                  {navT.goshala}
                 </Link>
               </li>
               <li>

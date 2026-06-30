@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
-import { GlobalAudioPlayer } from "@/components/global-audio-player";
+import { AudioPlayerButton } from "@/components/audio-player-button";
 
 // Grouped navigation items for better organization
 const getNavGroups = (lang: "en" | "ta"): Array<{ id: string; items: Array<{ href: string; label: string }> }> => [
@@ -33,7 +33,7 @@ const getNavGroups = (lang: "en" | "ta"): Array<{ id: string; items: Array<{ hre
     items: [
       { href: "/events", label: translations[lang].nav.events },
       { href: "/gallery", label: translations[lang].nav.gallery },
-      { href: "/goshla", label: translations[lang].nav.goshla },
+      { href: "/goshla", label: translations[lang].nav.goshala },
     ],
   },
   {
@@ -193,7 +193,7 @@ export function Navigation() {
                   </div>
                 )}
               </div>
-              <GlobalAudioPlayer inline />
+              <AudioPlayerButton inline />
             </div>
           </div>
         </div>
