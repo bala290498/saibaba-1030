@@ -102,13 +102,13 @@ export function Navigation() {
               href="/" 
               className="flex items-center gap-2 lg:gap-3 hover:opacity-90 transition-opacity duration-200 flex-shrink-0"
             >
-              <div className="relative w-7 h-7 lg:w-8 lg:h-8 flex items-center justify-center flex-shrink-0">
+              <div className="relative w-7 h-7 lg:w-8 lg:h-8 flex-shrink-0 overflow-hidden rounded-full">
                 <Image
                   src="/home/logo.jpeg"
                   alt="Om Logo"
                   width={32}
                   height={32}
-                  className="object-contain"
+                  className="h-full w-full object-cover"
                   priority
                 />
               </div>
