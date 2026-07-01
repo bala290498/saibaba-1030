@@ -1,6 +1,6 @@
 "use client";
 
-import { GRADIENTS, SOCIAL_LINKS } from "@/lib/constants";
+import { GRADIENTS, SOCIAL_LINKS, MAP_EMBED_URL } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import { useState } from "react";
@@ -113,13 +113,13 @@ export default function ContactPage() {
                   </h3>
                   <div className="w-full h-[250px] md:h-[280px] rounded-xl overflow-hidden border border-amber-200/40">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3893.007644851194!2d79.92989727507094!3d12.6475028876389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDM4JzUxLjAiTiA3OcKwNTUnNTYuOSJF!5e0!3m2!1sen!2sin!4v1776749576961!5m2!1sen!2sin"
+                      src={MAP_EMBED_URL}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
+                      referrerPolicy="strict-origin-when-cross-origin"
                       title="Sai Baba Temple Trust Location - Veda Garden, Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
                     />
                   </div>

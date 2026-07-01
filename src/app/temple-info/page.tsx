@@ -1,6 +1,6 @@
 "use client";
 
-import { GRADIENTS } from "@/lib/constants";
+import { GRADIENTS, MAP_EMBED_URL } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
@@ -210,14 +210,24 @@ export default function TempleInfoPage() {
                   )}
 
                   {section.transport && (
-                    <div className={`space-y-3 ${textColor}`}>
-                      <p className="text-lg md:text-xl font-semibold mb-2">{t.section4.address}</p>
-                      <p className="text-lg md:text-xl">{t.section4.road}</p>
-                      <p className="text-lg md:text-xl">{t.section4.rail}</p>
-                      <p className="text-lg md:text-xl">{t.section4.air}</p>
-                      <p className={`text-base mt-4 ${isEven ? "text-gray-600" : "text-white/80"}`}>
-                        {t.section4.note}
+                    <div className={`space-y-4 ${textColor}`}>
+                      <p className="text-lg md:text-xl leading-relaxed">
+                        {t.section4.addressLine}
                       </p>
+                      <div className="rounded-xl overflow-hidden border border-amber-200/40 bg-white shadow-md">
+                        <div className="w-full h-[220px] md:h-[250px]">
+                          <iframe
+                            src={MAP_EMBED_URL}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            title="Sai Baba Temple Trust Location - Veda Garden, Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
+                          />
+                        </div>
+                      </div>
                     </div>
                   )}
 

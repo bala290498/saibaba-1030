@@ -37,7 +37,7 @@ export const translations = {
       title: "Daily Aarti Timings",
       morning: "Morning Aarti",
       evening: "Evening Aarti",
-      morningTime: "6:00 AM",
+      morningTime: "7:00 AM",
       eveningTime: "7:00 PM",
       note: "All devotees are welcome to join us for daily prayers",
     },
@@ -209,11 +209,8 @@ export const translations = {
       },
       section4: {
         heading: "How to Reach",
-        address: "Address",
-        road: "Road: Buses and taxis available",
-        rail: "Rail: Nearest railway station connects major cities",
-        air: "Air: Nearest airport with domestic flights",
-        note: "Local transport is easily accessible.",
+        addressLine:
+          "Veda Garden, (Behind Easwaran Temple), Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District.",
       },
       section5: {
         heading: "Facilities",
@@ -673,7 +670,7 @@ export const translations = {
       title: "தினசரி ஆர்த்தி நேரங்கள்",
       morning: "காலை ஆர்த்தி",
       evening: "மாலை ஆர்த்தி",
-      morningTime: "காலை 6:00",
+      morningTime: "காலை 7:00",
       eveningTime: "மாலை 7:00",
       note: "அனைத்து பக்தர்களும் தினசரி பிரார்த்தனைகளில் எங்களுடன் சேர வரவேற்கப்படுகிறார்கள்",
     },
@@ -845,11 +842,8 @@ export const translations = {
       },
       section4: {
         heading: "எப்படி செல்லலாம்",
-        address: "முகவரி",
-        road: "சாலை: பஸ்கள் மற்றும் டாக்ஸிகள் கிடைக்கின்றன",
-        rail: "ரயில்: அருகிலுள்ள ரயில் நிலையம் முக்கிய நகரங்களுடன் இணைக்கிறது",
-        air: "விமானம்: உள்நாட்டு விமானங்களுடன் அருகிலுள்ள விமான நிலையம்",
-        note: "உள்ளூர் போக்குவரத்து எளிதாக அணுகக்கூடியது.",
+        addressLine:
+          "வேதா கார்டன், (ஈஸ்வரன் கோவில் பின்புறம்), மாமன்டூர் கிராமம், தென்பாதி, மதுராந்தகம் தாலுகா, செங்கல்பட்டு மாவட்டம்.",
       },
       section5: {
         heading: "வசதிகள்",
