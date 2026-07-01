@@ -120,7 +120,7 @@ export default function ContactPage() {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Sai Baba Temple Trust Location - Veda Garden, Mamandur Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
+                      title="Sai Baba Temple Trust Location - Veda Garden, Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
                     />
                   </div>
                 </Card>
