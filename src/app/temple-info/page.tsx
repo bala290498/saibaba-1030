@@ -1,6 +1,7 @@
 "use client";
 
-import { GRADIENTS, MAP_EMBED_URL } from "@/lib/constants";
+import { GRADIENTS } from "@/lib/constants";
+import { TempleMap } from "@/components/temple-map";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
@@ -19,6 +20,7 @@ const TEMPLE_IMAGES = [
 export default function TempleInfoPage() {
   const { language } = useLanguage();
   const t = translations[language].templeInfo;
+  const contactT = translations[language].contact;
 
   const sections = [
     {
@@ -228,19 +230,8 @@ export default function TempleInfoPage() {
                       <p className="text-lg md:text-xl leading-relaxed">
                         {t.section4.addressLine}
                       </p>
-                      <div className="rounded-xl overflow-hidden border border-amber-200/40 bg-white shadow-md">
-                        <div className="w-full h-[220px] md:h-[250px]">
-                          <iframe
-                            src={MAP_EMBED_URL}
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            title="Sai Baba Temple Trust Location - Veda Garden, Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
-                          />
-                        </div>
+                      <div className="rounded-xl overflow-hidden border border-amber-200/40 bg-white shadow-md p-4 md:p-6">
+                        <TempleMap title={contactT.map.title} />
                       </div>
                     </div>
                   )}

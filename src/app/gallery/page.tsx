@@ -24,13 +24,6 @@ export default function GalleryPage() {
   ];
 
   const galleryItems = [
-    { id: 1, category: "saiBaba" as const, title: t.photos.morningAarti, src: "/gallery/04.jpg" },
-    { id: 2, category: "devoteeMoments" as const, title: t.photos.devoteesSeeking, src: "/gallery/05.webp" },
-    { id: 3, category: "festivals" as const, title: t.photos.festivalCelebrations, src: "/gallery/07.jpg" },
-    { id: 4, category: "aartiRituals" as const, title: t.photos.eveningAartiCaption, src: "/gallery/08.webp" },
-    { id: 5, category: "templeShirdi" as const, title: t.navigation.templeShirdi, src: "/gallery/01.webp" },
-    { id: 6, category: "saiBaba" as const, title: t.navigation.saiBaba, src: "/gallery/03.jpg" },
-    { id: 7, category: "saiBaba" as const, title: t.hero.quote, src: "/gallery/saibaba.webp" },
     { id: 8, category: "festivals" as const, title: "Festival Moments", src: "/gallery/20260124_195547.jpg.webp" },
     { id: 9, category: "devoteeMoments" as const, title: "Devotee Gatherings", src: "/gallery/20260124_194934.jpg.webp" },
     { id: 10, category: "templeShirdi" as const, title: "Temple View", src: "/gallery/20260124_124907.webp" },

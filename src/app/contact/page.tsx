@@ -1,6 +1,7 @@
 "use client";
 
-import { GRADIENTS, SOCIAL_LINKS, MAP_EMBED_URL } from "@/lib/constants";
+import { GRADIENTS, SOCIAL_LINKS } from "@/lib/constants";
+import { TempleMap } from "@/components/temple-map";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import { useState } from "react";
@@ -102,27 +103,7 @@ export default function ContactPage() {
                 </Card>
 
                 <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
-                  <h3
-                    className="text-xl font-bold mb-4 text-gray-800 text-left"
-                    style={{
-                      fontFamily: "var(--font-playfair)",
-                      fontWeight: 900,
-                    }}
-                  >
-                    {t.map.title}
-                  </h3>
-                  <div className="w-full h-[250px] md:h-[280px] rounded-xl overflow-hidden border border-amber-200/40">
-                    <iframe
-                      src={MAP_EMBED_URL}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      title="Sai Baba Temple Trust Location - Veda Garden, Mamandoor Village, Tenpadi, Maduranthakam Taluk, Chengalpattu District"
-                    />
-                  </div>
+                  <TempleMap title={t.map.title} />
                 </Card>
 
                 <Card className="p-6 bg-white shadow-lg border border-amber-200/40 hover:shadow-xl transition-shadow">
