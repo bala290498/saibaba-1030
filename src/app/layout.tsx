@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SOCIAL_LINKS } from "@/lib/constants";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
@@ -33,10 +34,10 @@ export default function RootLayout({
             <main className="min-h-screen pt-[120px]">{children}</main>
             <Footer />
             <SocialSideBar
-              whatsappUrl="https://wa.me/9566263596"
-              youtubeUrl="https://www.youtube.com/@SaibabaMamandoor"
-              facebookUrl="https://www.facebook.com"
-              instagramUrl="https://www.instagram.com/saibaba_mamandoor/"
+              whatsappUrl={SOCIAL_LINKS.whatsapp}
+              youtubeUrl={SOCIAL_LINKS.youtube}
+              facebookUrl={SOCIAL_LINKS.facebook}
+              instagramUrl={SOCIAL_LINKS.instagram}
             />
           </AudioProvider>
         </LanguageProvider>

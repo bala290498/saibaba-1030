@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { GoshlaDonateButton } from "@/components/goshla-donate-button";
-
+import { Card } from "@/components/ui/card";
 const SIDE_IMAGES = {
-  left: "/goshla/maha%20periyava%2002.jpg",
-  right: "/goshla/maha%20periyava%20.jpg",
+  left: "/goshla/new%20%20(2).png",
+  right: "/goshla/new%20%20(1).png",
 } as const;
 
 const BOTTOM_IMAGES = [
@@ -18,6 +18,9 @@ const BOTTOM_IMAGES = [
   { src: "/goshla/20260124_115836.jpg.webp", alt: "கோசாலை சேவை" },
 ] as const;
 
+const SIDE_IMAGE_FRAME =
+  "relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20";
+
 export default function GoshlaPage() {
   return (
     <div className="min-h-screen w-full max-w-none bg-divine-cream/30 py-4 md:py-6">
@@ -31,33 +34,34 @@ export default function GoshlaPage() {
         <div className="w-full px-2 sm:px-3 md:px-4 py-5 sm:py-6 md:py-8">
           <div className="mb-5 grid w-full grid-cols-1 items-center gap-3 sm:gap-4 md:mb-6 lg:grid-cols-12 lg:gap-4">
             <div className="lg:col-span-3">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20">
+              <div className={SIDE_IMAGE_FRAME}>
                 <Image
                   src={SIDE_IMAGES.left}
                   alt="மஹா பெரியவா"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>
             </div>
 
-            <div className="order-first w-full min-w-0 py-1 text-center lg:order-none lg:col-span-6">
-              <h1 className="text-[0.95rem] sm:text-base md:text-lg lg:text-xl xl:text-2xl font-extrabold leading-snug tracking-tight text-red-600 drop-shadow-sm break-words [overflow-wrap:anywhere]">
-                ஸ்ரீ சந்திரசேகரேந்திர சரஸ்வதி சுவாமிகள்
-              </h1>
-              <h2 className="mt-1.5 text-[0.8rem] sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold leading-snug text-red-600 break-words [overflow-wrap:anywhere]">
-                ஸ்ரீ மஹாபெரியவா கோசாலை
-              </h2>
+            <div className="order-first w-full min-w-0 lg:order-none lg:col-span-6">
+              <Card className="border-amber-300/60 bg-white/95 px-4 py-5 text-center shadow-lg backdrop-blur-sm sm:px-6 sm:py-6 md:px-8">
+                <h1 className="text-[0.95rem] sm:text-base md:text-lg lg:text-xl xl:text-2xl font-extrabold leading-snug tracking-tight text-red-600 drop-shadow-sm break-words [overflow-wrap:anywhere]">
+                  ஸ்ரீ சந்திரசேகரேந்திர சரஸ்வதி சுவாமிகள்
+                </h1>
+                <h2 className="mt-1.5 text-[0.8rem] sm:text-sm md:text-base lg:text-lg xl:text-xl font-extrabold leading-snug text-red-600 break-words [overflow-wrap:anywhere]">
+                  ஸ்ரீ மஹாபெரியவா கோசாலை
+                </h2>
+              </Card>
             </div>
-
             <div className="lg:col-span-3">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-inner ring-1 ring-amber-600/20">
+              <div className={SIDE_IMAGE_FRAME}>
                 <Image
                   src={SIDE_IMAGES.right}
                   alt="மஹா பெரியவா"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>

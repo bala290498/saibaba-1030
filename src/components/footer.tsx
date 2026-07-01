@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Heart, Facebook, Instagram, Youtube } from "lucide-react";
-import { GRADIENTS } from "@/lib/constants";
+import { FaWhatsapp } from "react-icons/fa";
+import { GRADIENTS, SOCIAL_LINKS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 
@@ -125,9 +126,18 @@ export function Footer() {
               <p className="text-gray-600 text-sm mb-3">
                 {footerT.socialMedia}
               </p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://www.facebook.com"
+                  href={SOCIAL_LINKS.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#25D366] text-divine-saffron hover:text-[#25D366] transition-all duration-300"
+                  aria-label="WhatsApp"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#1877F2] text-divine-saffron hover:text-[#1877F2] transition-all duration-300"
@@ -136,7 +146,7 @@ export function Footer() {
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.instagram.com"
+                  href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#E4405F] text-divine-saffron hover:text-[#E4405F] transition-all duration-300"
@@ -145,7 +155,7 @@ export function Footer() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.youtube.com"
+                  href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 bg-white rounded-lg border border-divine-cream shadow-sm hover:shadow-md hover:border-[#FF0000] text-divine-saffron hover:text-[#FF0000] transition-all duration-300"
