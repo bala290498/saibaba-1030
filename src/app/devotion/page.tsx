@@ -7,6 +7,11 @@ import Link from "next/link";
 import { HeroWithSideImages } from "@/components/hero-side-images";
 import { Heart, BookOpen, Music, Sparkles, Play, ArrowRight, Flame, FileText } from "lucide-react";
 
+const DEVOTION_HERO_IMAGES = {
+  left: "/devotion/Devotion%20to%20Sai%20Baba%20Left.webp",
+  right: "/devotion/Devotion%20to%20Sai%20Baba%20Right.webp",
+} as const;
+
 export default function DevotionPage() {
   const { language } = useLanguage();
   const t = translations[language].devotion;
@@ -67,7 +72,11 @@ export default function DevotionPage() {
           />
         </div>
 
-        <HeroWithSideImages>
+        <HeroWithSideImages
+          leftImage={DEVOTION_HERO_IMAGES.left}
+          rightImage={DEVOTION_HERO_IMAGES.right}
+          imageAlt="Devotion to Sai Baba"
+        >
               <h1
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
                 style={{

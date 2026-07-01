@@ -4,7 +4,17 @@ import { GRADIENTS, MAP_EMBED_URL } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ArrowRight, Heart } from "lucide-react";
+
+const TEMPLE_IMAGES = [
+  "/temple/Temple%20Info%20Image%201.webp",
+  "/temple/Temple%20Info%20Image%202.webp",
+  "/temple/Temple%20Info%20Image%203.webp",
+  "/temple/Temple%20Info%20Image%204.webp",
+  "/temple/Temple%20Info%20Image%205.webp",
+  "/temple/Temple%20Info%20Image%206.webp",
+] as const;
 
 export default function TempleInfoPage() {
   const { language } = useLanguage();
@@ -16,12 +26,14 @@ export default function TempleInfoPage() {
       heading: t.section1.heading,
       copy: t.section1.copy,
       layout: "left-image",
+      image: TEMPLE_IMAGES[0],
     },
     {
       id: 2,
       heading: t.section2.heading,
       layout: "right-image",
       timings: true,
+      image: TEMPLE_IMAGES[1],
     },
     {
       id: 8,
@@ -41,24 +53,28 @@ export default function TempleInfoPage() {
       copy: t.section3.copy,
       layout: "left-image",
       darshan: true,
+      image: TEMPLE_IMAGES[2],
     },
     {
       id: 4,
       heading: t.section4.heading,
       layout: "right-image",
       transport: true,
+      image: TEMPLE_IMAGES[3],
     },
     {
       id: 5,
       heading: t.section5.heading,
       layout: "left-image",
       facilities: true,
+      image: TEMPLE_IMAGES[4],
     },
     {
       id: 6,
       heading: t.section6.heading,
       layout: "right-image",
       guidelines: true,
+      image: TEMPLE_IMAGES[5],
     },
   ];
 
@@ -115,17 +131,15 @@ export default function TempleInfoPage() {
                 } items-center gap-6 sm:gap-8 lg:gap-10 max-w-7xl mx-auto`}
               >
                 {/* Image - Hidden for center layout */}
-                {section.layout !== "center" && (
+                {section.layout !== "center" && section.image && (
                 <div className="flex-shrink-0 w-full lg:w-[30%] max-w-md mx-auto lg:mx-0">
                   <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg bg-gray-200">
-                    <img
-                      src="/saibaba.webp"
+                    <Image
+                      src={section.image}
                       alt={section.heading}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        console.error("Image failed to load:", "/saibaba.webp");
-                        e.currentTarget.style.display = "none";
-                      }}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 30vw"
                     />
                   </div>
                 </div>
