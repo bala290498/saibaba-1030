@@ -1,19 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Shield } from "lucide-react";
+import { Shield, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
+import { loadRazorpayScript } from "@/lib/razorpay-client";
 
 const donationAmounts = [500, 1000, 2500, 5000];
+
+type PaymentStatus = "idle" | "loading" | "success" | "error";
 
 export function DonationForm() {
   const { language } = useLanguage();
   const t = translations[language].donations.form;
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const successCardRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,11 +36,175 @@ export function DonationForm() {
     translations[language].donations.categories.goshala.title,
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle donation submission
-    alert("Thank you for your generous donation! Om Sai Ram.");
+  const getDonationAmountInRupees = () => {
+    if (selectedAmount) return selectedAmount;
+    const parsed = Number(customAmount);
+    return Number.isFinite(parsed) ? parsed : 0;
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    const amountInRupees = getDonationAmountInRupees();
+    const amountInPaise = Math.round(amountInRupees * 100);
+
+    if (amountInPaise < 100) {
+      setPaymentStatus("error");
+      setErrorMessage(t.minAmount);
+      return;
+    }
+
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    if (!razorpayKey) {
+      setPaymentStatus("error");
+      setErrorMessage(t.paymentError);
+      return;
+    }
+
+    setPaymentStatus("loading");
+
+    try {
+      const scriptLoaded = await loadRazorpayScript();
+      if (!scriptLoaded) {
+        throw new Error(t.paymentError);
+      }
+
+      const orderResponse = await fetch("/api/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: amountInPaise }),
+      });
+
+      const orderData = await orderResponse.json();
+
+      if (!orderResponse.ok) {
+        throw new Error(orderData.error || t.paymentError);
+      }
+
+      const description = formData.sevaCategory
+        ? `Donation - ${formData.sevaCategory}`
+        : "Temple Donation";
+
+      let paymentCompleted = false;
+
+      const razorpay = new window.Razorpay({
+        key: razorpayKey,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "SRI SHIRDI SAIBABA RELIGIOUS TRUST",
+        description,
+        order_id: orderData.order_id,
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: "#f59e0b",
+        },
+        handler: async (response) => {
+          paymentCompleted = true;
+          try {
+            const verifyResponse = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }),
+            });
+
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyResponse.ok || !verifyData.success) {
+              throw new Error(verifyData.error || t.paymentFailed);
+            }
+
+            setPaymentStatus("success");
+            setSelectedAmount(null);
+            setCustomAmount("");
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              sevaCategory: "",
+            });
+          } catch (error) {
+            setPaymentStatus("error");
+            setErrorMessage(
+              error instanceof Error ? error.message : t.paymentFailed
+            );
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            if (!paymentCompleted) {
+              setErrorMessage(t.paymentCancelled);
+            }
+          },
+        },
+      });
+
+      razorpay.on("payment.failed", (response) => {
+        setPaymentStatus("error");
+        setErrorMessage(response.error.description || t.paymentFailed);
+      });
+
+      setPaymentStatus("idle");
+      razorpay.open();
+    } catch (error) {
+      setPaymentStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : t.paymentError
+      );
+    }
+  };
+
+  const isProcessing = paymentStatus === "loading";
+  const donationAmount = getDonationAmountInRupees();
+
+  useEffect(() => {
+    if (paymentStatus !== "success") return;
+
+    const timer = window.setTimeout(() => {
+      successCardRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 100);
+
+    return () => window.clearTimeout(timer);
+  }, [paymentStatus]);
+
+  if (paymentStatus === "success") {
+    return (
+      <div ref={successCardRef}>
+        <Card className="p-6 md:p-8">
+        <div className="text-center py-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-divine-cream mb-4">
+            {language === "en" && (
+              <CheckCircle className="w-8 h-8 text-divine-saffron" />
+            )}
+          </div>
+          <p className="text-lg text-gray-700 font-medium">{t.paymentSuccess}</p>
+          <Button
+            type="button"
+            className="mt-6 bg-divine-saffron hover:bg-divine-saffron-dark"
+            onClick={() => {
+              setPaymentStatus("idle");
+              setErrorMessage("");
+            }}
+          >
+            {t.title}
+          </Button>
+        </div>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <Card className="p-6 md:p-8">
@@ -51,6 +221,12 @@ export function DonationForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {errorMessage && (
+          <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {errorMessage}
+          </div>
+        )}
+
         {/* Donation Amount */}
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-3">
@@ -64,6 +240,7 @@ export function DonationForm() {
                 onClick={() => {
                   setSelectedAmount(amount);
                   setCustomAmount("");
+                  setErrorMessage("");
                 }}
                 className={`p-4 rounded-lg border-2 font-semibold transition-all ${
                   selectedAmount === amount
@@ -78,11 +255,14 @@ export function DonationForm() {
           <div className="mt-3">
             <input
               type="number"
+              min="1"
+              step="1"
               placeholder={t.customAmount}
               value={customAmount}
               onChange={(e) => {
                 setCustomAmount(e.target.value);
                 setSelectedAmount(null);
+                setErrorMessage("");
               }}
               className="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-divine-saffron focus:outline-none"
             />
@@ -92,7 +272,7 @@ export function DonationForm() {
         {/* Donor Details */}
         <div>
           <h3 className="text-lg font-bold text-gray-800 mb-4">{t.donorDetails}</h3>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -164,22 +344,19 @@ export function DonationForm() {
           </div>
         </div>
 
-        {/* Payment Methods */}
+        {/* Accepted payment methods — selection happens in Razorpay checkout */}
         <div>
-          <h3 className="text-lg font-bold text-gray-800 mb-4">{t.paymentMethods}</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="p-4 border-2 border-gray-200 rounded-lg text-center hover:border-divine-saffron/50 transition-colors cursor-pointer">
-              <p className="text-sm font-semibold text-gray-700">{t.debitCard}</p>
-            </div>
-            <div className="p-4 border-2 border-gray-200 rounded-lg text-center hover:border-divine-saffron/50 transition-colors cursor-pointer">
-              <p className="text-sm font-semibold text-gray-700">{t.creditCard}</p>
-            </div>
-            <div className="p-4 border-2 border-gray-200 rounded-lg text-center hover:border-divine-saffron/50 transition-colors cursor-pointer">
-              <p className="text-sm font-semibold text-gray-700">{t.upi}</p>
-            </div>
-            <div className="p-4 border-2 border-gray-200 rounded-lg text-center hover:border-divine-saffron/50 transition-colors cursor-pointer">
-              <p className="text-sm font-semibold text-gray-700">{t.netBanking}</p>
-            </div>
+          <h3 className="text-lg font-bold text-gray-800 mb-2">{t.paymentMethods}</h3>
+          <p className="text-sm text-gray-600 mb-4">{t.paymentMethodsNote}</p>
+          <div className="flex flex-wrap gap-2">
+            {[t.upi, t.debitCard, t.creditCard, t.netBanking].map((method) => (
+              <span
+                key={method}
+                className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-sm font-medium text-gray-700"
+              >
+                {method}
+              </span>
+            ))}
           </div>
           <p className="text-sm text-gray-600 mt-4 flex items-center gap-2">
             {language === "en" && <Shield className="w-4 h-4 text-divine-saffron" />}
@@ -190,9 +367,9 @@ export function DonationForm() {
         <Button
           type="submit"
           className="w-full py-4 text-lg font-semibold bg-divine-saffron hover:bg-divine-saffron-dark"
-          disabled={!selectedAmount && !customAmount}
+          disabled={isProcessing || donationAmount < 1}
         >
-          {t.proceed}
+          {isProcessing ? t.processing : t.proceed}
         </Button>
       </form>
     </Card>
