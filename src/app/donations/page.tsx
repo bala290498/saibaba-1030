@@ -4,6 +4,7 @@ import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import { DonationForm } from "@/components/donation-form";
+import { HeroWithSideImages } from "@/components/hero-side-images";
 import { Heart, ArrowRight, Shield, CheckCircle, Building2, CreditCard } from "lucide-react";
 import Link from "next/link";
 
@@ -62,12 +63,12 @@ export default function DonationsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
-        className="py-20 md:py-32 relative overflow-hidden"
+        className="relative py-20 md:py-32 overflow-hidden flex items-center"
         style={{
           background: GRADIENTS.dark,
         }}
       >
-        <div className="container mx-auto px-4 text-center">
+        <HeroWithSideImages>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
             style={{
@@ -94,7 +95,7 @@ export default function DonationsPage() {
               {t.hero.secureNote}
             </p>
           </div>
-        </div>
+        </HeroWithSideImages>
       </section>
 
       {/* Why Donate Section */}

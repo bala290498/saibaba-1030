@@ -4,7 +4,7 @@ import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
-import Image from "next/image";
+import { HeroWithSideImages } from "@/components/hero-side-images";
 import { Heart, BookOpen, Music, Sparkles, Play, ArrowRight, Flame, FileText } from "lucide-react";
 
 export default function DevotionPage() {
@@ -67,35 +67,35 @@ export default function DevotionPage() {
           />
         </div>
 
-        <div className="relative z-[3] container mx-auto px-4 text-center">
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
-            style={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 900,
-            }}
-          >
-            {t.hero.heading}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
-            {t.hero.subheading}
-          </p>
-          <blockquote
-            className="text-lg md:text-xl text-white/95 italic mb-8 max-w-2xl mx-auto"
-            style={{
-              fontFamily: "var(--font-playfair)",
-            }}
-          >
-            &ldquo;{t.hero.quote}&rdquo;
-          </blockquote>
-          <Link
-            href="/aarti-bhajans"
-            className={`inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ${language === "ta" ? "gap-0" : ""}`}
-          >
-            {t.hero.cta}
-            {language === "en" && <ArrowRight className="w-5 h-5" />}
-          </Link>
-        </div>
+        <HeroWithSideImages>
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontWeight: 900,
+                }}
+              >
+                {t.hero.heading}
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
+                {t.hero.subheading}
+              </p>
+              <blockquote
+                className="text-lg md:text-xl text-white/95 italic mb-8 max-w-2xl mx-auto"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                }}
+              >
+                &ldquo;{t.hero.quote}&rdquo;
+              </blockquote>
+              <Link
+                href="/aarti-bhajans"
+                className={`inline-flex items-center gap-2 px-8 py-4 bg-white text-divine-saffron rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ${language === "ta" ? "gap-0" : ""}`}
+              >
+                {t.hero.cta}
+                {language === "en" && <ArrowRight className="w-5 h-5" />}
+              </Link>
+        </HeroWithSideImages>
       </section>
 
       {/* Daily Devotional Practices */}

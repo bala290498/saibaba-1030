@@ -4,6 +4,7 @@ import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
 import Link from "next/link";
+import { HeroWithSideImages } from "@/components/hero-side-images";
 import { Music, Play, FileText, Download, Heart, Calendar, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -74,12 +75,12 @@ export default function AartiBhajansPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
-        className="py-20 md:py-32 relative overflow-hidden"
+        className="relative py-20 md:py-32 overflow-hidden flex items-center"
         style={{
           background: GRADIENTS.dark,
         }}
       >
-        <div className="container mx-auto px-4 text-center">
+        <HeroWithSideImages>
           {language === "en" && (
             <div className="mb-6 inline-flex items-center justify-center">
               <Music className="w-12 h-12 md:w-16 md:h-16 text-white mb-4" />
@@ -97,7 +98,7 @@ export default function AartiBhajansPage() {
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             {t.hero.subheading}
           </p>
-        </div>
+        </HeroWithSideImages>
       </section>
 
       {/* Daily Aarti Schedule Section */}
