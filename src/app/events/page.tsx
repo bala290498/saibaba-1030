@@ -11,13 +11,13 @@ export default function EventsPage() {
 
   return (
     <div
-      className="min-h-screen py-16 relative"
+      className="min-h-screen py-16"
       style={{
         background: GRADIENTS.light,
       }}
     >
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-12 relative z-10">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8 md:mb-10">
           <h1
             className="text-5xl font-bold mb-4 text-gray-800"
             style={{
@@ -32,18 +32,15 @@ export default function EventsPage() {
           </p>
         </div>
 
-        <div className="relative pb-16 md:pb-24">
-          <div
-            className="pointer-events-none absolute left-1/2 bottom-0 z-0 w-full max-w-xs sm:max-w-sm md:max-w-md h-48 sm:h-56 md:h-64 -translate-x-1/2 bg-center bg-contain bg-no-repeat opacity-30"
-            style={{
-              backgroundImage: "url('/events/background.jpeg')",
-            }}
-            aria-hidden
-          />
-          <div className="relative z-10">
-            <EventsList />
-          </div>
-        </div>
+        <div
+          className="mx-auto mb-8 md:mb-10 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl h-52 sm:h-60 md:h-72 lg:h-80 bg-center bg-contain bg-no-repeat opacity-40"
+          style={{
+            backgroundImage: "url('/events/background.jpeg')",
+          }}
+          aria-hidden
+        />
+
+        <EventsList />
       </div>
     </div>
   );
