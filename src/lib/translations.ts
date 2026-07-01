@@ -502,7 +502,7 @@ export const translations = {
         },
         email: {
           title: "Email",
-          address: "contact@saibabatemple.com",
+          address: "saibabavedhagarden@gmail.com",
           note: "We respond within 24 hours",
         },
         address: {
@@ -1154,7 +1154,7 @@ export const translations = {
         },
         email: {
           title: "மின்னஞ்சல்",
-          address: "contact@saibabatemple.com",
+          address: "saibabavedhagarden@gmail.com",
           note: "24 மணி நேரத்திற்குள் பதிலளிக்கிறோம்",
         },
         address: {

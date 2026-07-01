@@ -24,6 +24,15 @@ const events = [
   },
   {
     id: 3,
+    title: "Navarathri",
+    date: "September - October",
+    time: "TBA",
+    location: "Temple Premises",
+    description: "Join us for Navarathri celebrations from September to October.",
+    type: "Festival",
+  },
+  {
+    id: 4,
     title: "Shirdi Vijayadasami",
     date: "October",
     time: "TBA",
@@ -37,7 +46,10 @@ export function EventsList() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {events.map((event) => (
-        <Card key={event.id} className="overflow-hidden">
+        <Card
+          key={event.id}
+          className="overflow-hidden border-amber-200/50 bg-white/85 shadow-md backdrop-blur-sm hover:bg-white/95"
+        >
           <div className="p-6">
             <div className="flex items-start justify-between mb-4">
               <div>

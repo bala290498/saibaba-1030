@@ -16,7 +16,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0" style={{ bottom: "-20%" }}>
           <Image
-            src="/home/hero-image/hero.jpg"
+            src="/home/hero-image/Home%20Page%20Main%20Photo.webp"
             alt="Sai Baba Vedha Garden"
             fill
             className="object-cover"
