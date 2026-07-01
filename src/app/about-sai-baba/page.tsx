@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import { GRADIENTS } from "@/lib/constants";
 import { useLanguage } from "@/contexts/language-context";
 import { translations } from "@/lib/translations";
@@ -8,14 +8,17 @@ import { translations } from "@/lib/translations";
 export default function AboutSaiBabaPage() {
   const { language } = useLanguage();
   const t = translations[language].about;
+  const [section1Expanded, setSection1Expanded] = useState(false);
 
   const sections = [
     {
       id: 1,
       heading: t.section1.heading,
-      copy: t.section1.copy,
       layout: "left-content",
       image: "/saibaba.webp",
+      expandable: true,
+      copyPreview: t.section1.copyPreview,
+      expandedParagraphs: t.section1.expandedParagraphs,
     },
     {
       id: 2,
@@ -58,7 +61,7 @@ export default function AboutSaiBabaPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div 
+      <div
         className="py-16"
         style={{
           background: GRADIENTS.light,
@@ -66,7 +69,7 @@ export default function AboutSaiBabaPage() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 
+            <h1
               className="text-4xl md:text-5xl font-bold mb-4 text-gray-800"
               style={{
                 fontFamily: "var(--font-playfair)",
@@ -88,6 +91,12 @@ export default function AboutSaiBabaPage() {
         const bgGradient = isEven ? GRADIENTS.light : GRADIENTS.dark;
         const textColor = isEven ? "text-gray-800" : "text-white";
         const headingColor = isEven ? "text-divine-saffron" : "text-white";
+        const bodyTextClass = `text-lg md:text-xl leading-relaxed ${
+          isEven ? "text-gray-700" : "text-white/90"
+        }`;
+        const readMoreClass = `mt-4 text-sm font-semibold underline underline-offset-4 transition-opacity hover:opacity-80 ${
+          isEven ? "text-divine-saffron" : "text-white"
+        }`;
 
         return (
           <section
@@ -104,11 +113,7 @@ export default function AboutSaiBabaPage() {
                 } items-center gap-8 lg:gap-12 max-w-7xl mx-auto`}
               >
                 {/* Content */}
-                <div
-                  className={`flex-1 ${
-                    section.layout === "left-content" ? "lg:w-[70%]" : "lg:w-[70%]"
-                  }`}
-                >
+                <div className="flex-1 lg:w-[70%]">
                   <h2
                     className={`text-3xl md:text-4xl font-bold mb-6 ${headingColor}`}
                     style={{
@@ -130,19 +135,32 @@ export default function AboutSaiBabaPage() {
                     </blockquote>
                   )}
 
-                  <p
-                    className={`text-lg md:text-xl leading-relaxed ${textColor} ${
-                      isEven ? "text-gray-700" : "text-white/90"
-                    }`}
-                  >
-                    {section.copy}
-                  </p>
+                  {section.expandable ? (
+                    <div className={bodyTextClass}>
+                      <p>{section.copyPreview}</p>
+                      {section1Expanded && (
+                        <div className="mt-4 space-y-4">
+                          {section.expandedParagraphs?.map((paragraph, paragraphIndex) => (
+                            <p key={paragraphIndex}>{paragraph}</p>
+                          ))}
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setSection1Expanded((expanded) => !expanded)}
+                        className={readMoreClass}
+                        aria-expanded={section1Expanded}
+                      >
+                        {section1Expanded ? t.readLess : t.readMore}
+                      </button>
+                    </div>
+                  ) : (
+                    <p className={bodyTextClass}>{section.copy}</p>
+                  )}
                 </div>
 
                 {/* Image */}
-                <div
-                  className="flex-shrink-0 w-full lg:w-[30%] max-w-md mx-auto lg:mx-0"
-                >
+                <div className="flex-shrink-0 w-full lg:w-[30%] max-w-md mx-auto lg:mx-0">
                   <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg bg-gray-200">
                     <img
                       src={encodeURI(section.image)}

@@ -18,6 +18,11 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Sai Baba Vedha Garden - Divine Blessings",
   description: "Experience the divine presence of Sai Baba at Vedha Garden",
+  icons: {
+    icon: "/home/logo.jpeg",
+    shortcut: "/home/logo.jpeg",
+    apple: "/home/logo.jpeg",
+  },
 };
 
 export default function RootLayout({
