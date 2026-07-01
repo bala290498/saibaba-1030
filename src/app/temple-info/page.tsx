@@ -26,7 +26,7 @@ export default function TempleInfoPage() {
       heading: t.section1.heading,
       copy: t.section1.copy,
       layout: "left-image",
-      image: TEMPLE_IMAGES[0],
+      image: TEMPLE_IMAGES[2],
     },
     {
       id: 2,
