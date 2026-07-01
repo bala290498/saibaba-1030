@@ -43,10 +43,8 @@ export default function GalleryPage() {
   ];
 
   const videoItems = [
-    { id: 1, title: t.videos.aartiRecordings, category: "aartiRituals", videoId: "k369IoS2LN0" },
-    { id: 2, title: t.videos.bhajans, category: "devoteeMoments", videoId: "k369IoS2LN0" },
-    { id: 3, title: t.videos.festivalCelebrations, category: "festivals", videoId: "k369IoS2LN0" },
-    { id: 4, title: t.videos.templeMoments, category: "templeShirdi", videoId: "k369IoS2LN0" },
+    { id: 1, title: t.videos.templeMoments, category: "templeShirdi", videoId: "jhLeY3a08QM" },
+    { id: 2, title: t.videos.festivalCelebrations, category: "festivals", videoId: "gjTrxwkoneg" },
   ];
 
   const filteredItems = activeFilter === "all" 
